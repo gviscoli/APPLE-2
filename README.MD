@@ -17,7 +17,7 @@ TBD
 
 Il seguente comando serve per generare il file .bin che deve essere caricaro all'interno del file immagine con estensione .DSK
 
-<b>cl65</b> -t apple2 helloworld.c -o helloworld.bin -O  -m helloworld.bin.map -vm ../00.IP65/ip65/ip65.lib ../00.IP65/drivers/ip65_apple2.lib
+<b>cl65</b> <b>-t</b> apple2 helloworld.c <b>-o</b> helloworld.bin <b>-O</b>  <b>-m</b> helloworld.bin.map <b>-vm</b> ../00.IP65/ip65/ip65.lib ../00.IP65/drivers/ip65_apple2.lib
 
 CC65 include configurazioni predefinite per varie piattaforme, come Commodore 64, NES, Apple II, ecc. qui di seguito vengono descritti i parametri dell'esempio precedente:
 
