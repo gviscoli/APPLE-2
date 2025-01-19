@@ -15,6 +15,8 @@ AppleCommander è uno strumento software multipiattaforma utilizzato per gestire
 
 AppleCommander è attualmente in grado di leggere e visualizzare informazioni sulle immagini disco, esportare file di vario tipo, creare immagini disco, importare file in immagini disco e ha un compilatore rudimentale.
 
+<b>AppleWin</b> (https://github.com/AppleWin/AppleWin)<br>
+AppleWin è un popolare emulatore per computer Apple II che funziona su sistemi Windows. È uno strumento molto usato dagli appassionati di retrocomputing per emulare i computer Apple II su hardware moderno, permettendo di eseguire vecchi programmi, giochi e sistemi operativi come DOS 3.3 o ProDOS.
 
 ## Compilazione
 
@@ -37,3 +39,10 @@ CC65 include configurazioni predefinite per varie piattaforme, come Commodore 64
 
 
 ## Creazione di file immagine .DSK
+La seguente guida descrive la procedura per la creazione di una immagine .DSK a partire dall'immagine base prodos.dsk. prodos.dsk è generalmente un'immagine disco creata per essere utilizzata con computer Apple II che eseguono il sistema operativo ProDOS. ProDOS è un sistema operativo sviluppato da Apple per sostituire DOS 3.3 sui computer Apple II, introducendo miglioramenti significativi come un supporto migliore per dischi rigidi, directory gerarchiche, e maggiore efficienza nella gestione dei file.
+
+1) Copiare l'immagine base in una nuova immaginne: <b>copy</b> prodos.dsk hello.dsk
+
+2) Usare il programma <b>AppleCommander</b> per aggiungere al file hello.dsk il programma helloworld.bin
+
+3) 
