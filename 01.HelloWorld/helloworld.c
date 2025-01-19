@@ -6,7 +6,7 @@
 
 // Compilazione
 //
-// cl65 -t apple2 helloworld.c -o helloworld.bin -O  -m helloworld.bin.map -vm ../00.IP65/ip65/ip65.lib ../00.IP65/drivers/ip65_apple2.lib
+// cl65 -t apple2 helloworld.c -o helloworld.bin -O  -m helloworld.map -vm ../00.LIBRERIE/IP65/lib/ip65.lib ../00.LIBRERIE/IP65/drivers/ip65_apple2.lib
 //
 
 void prinPCH()

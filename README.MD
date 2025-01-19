@@ -16,6 +16,12 @@ AppleCommander è uno strumento software multipiattaforma utilizzato per gestire
 
 AppleCommander è attualmente in grado di leggere e visualizzare informazioni sulle immagini disco, esportare file di vario tipo, creare immagini disco, importare file in immagini disco e ha un compilatore rudimentale.
 
+Esempio ambiente UBUNTU
+ - java -jar ~/PROGRAMMI/AppleCommander/AppleCommander-linux-x86_64-1.9.0.jar 
+
+ Esempio ambiente Windows
+ - java -jar C:\UTILITY\AppleCommander\AppleCommander-win32-x86_64-1.9.0.jar  
+
 <b>AppleWin</b> (https://github.com/AppleWin/AppleWin)<br>
 AppleWin è un popolare emulatore per computer Apple II che funziona su sistemi Windows. È uno strumento molto usato dagli appassionati di retrocomputing per emulare i computer Apple II su hardware moderno, permettendo di eseguire vecchi programmi, giochi e sistemi operativi come DOS 3.3 o ProDOS.
 
