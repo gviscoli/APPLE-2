@@ -21,7 +21,7 @@ AppleWin è un popolare emulatore per computer Apple II che funziona su sistemi 
 
 ## Compilazione
 
-Il seguente comando serve per compilare un sorgente in codice c per generare i seguenti files:
+Il seguente comando serve per compilare un sorgente in codice c e genera i seguenti files:
 
  - helloworld.bin
  - helloworld.bin.map
