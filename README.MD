@@ -41,7 +41,7 @@ CC65 include configurazioni predefinite per varie piattaforme, come Commodore 64
 ## Creazione di file immagine .DSK
 La seguente guida descrive la procedura per la creazione di una immagine .DSK a partire dall'immagine base prodos.dsk. prodos.dsk è generalmente un'immagine disco creata per essere utilizzata con computer Apple II che eseguono il sistema operativo ProDOS. ProDOS è un sistema operativo sviluppato da Apple per sostituire DOS 3.3 sui computer Apple II, introducendo miglioramenti significativi come un supporto migliore per dischi rigidi, directory gerarchiche, e maggiore efficienza nella gestione dei file.
 
-1) Copiare l'immagine base in una nuova immaginne: <b>copy</b> prodos.dsk hello.dsk
+1) Copiare l'immagine base in una nuova immagine: <b>copy</b> prodos.dsk hello.dsk
 
 2) Usare il programma <b>AppleCommander</b> per aggiungere al file hello.dsk il programma helloworld.bin
 
