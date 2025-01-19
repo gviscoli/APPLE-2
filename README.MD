@@ -1,9 +1,10 @@
 
 # Sviluppatori appassionati di retrocomputing 
 
-## Repository per lo sviluppo di programmi Apple 2e 
-
 ![logo](/00.ASSETS/images/apple-ii_logo.jpg)
+
+## Repository per lo sviluppo di programmi Apple ][
+Questo repository Github è stato realizzato per raccogliere e condividere esperienze nello sviluppo di programmi Apple ][
 
 ## Tools
 
