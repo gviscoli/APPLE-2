@@ -45,4 +45,4 @@ La seguente guida descrive la procedura per la creazione di una immagine .DSK a 
 
 2) Usare il programma <b>AppleCommander</b> per aggiungere al file hello.dsk il programma helloworld.bin
 
-3) 
+3) Usare l'emulatore <b>AppleWin</b> per caricare l'immagine hello.dsk e testare i programmi sviluppati
