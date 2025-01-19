@@ -1,9 +1,11 @@
 
 # Sviluppatori appassionati di retrocomputing 
 
-## Repository per lo sviluppo di programmi Apple 2e ![logo](/00.ASSETS/images/apple-ii_logo.jpg)
+## Repository per lo sviluppo di programmi Apple 2e 
 
-## TOOLS
+![logo](/00.ASSETS/images/apple-ii_logo.jpg)
+
+## Tools
 
 <b>CC65</b> (https://cc65.github.io/)
 CC65 è una suite completa di strumenti open-source per lo sviluppo di software in linguaggio C e assembly per computer a 8 bit, tra cui Commodore 64, Apple II, NES, Atari 8-bit e molte altre piattaforme retro. È particolarmente apprezzata dagli sviluppatori e dagli appassionati di retrocomputing per la sua capacità di generare codice ottimizzato e compatibile con queste macchine.
@@ -14,7 +16,7 @@ AppleCommander è uno strumento software multipiattaforma utilizzato per gestire
 AppleCommander è attualmente in grado di leggere e visualizzare informazioni sulle immagini disco, esportare file di vario tipo, creare immagini disco, importare file in immagini disco e ha un compilatore rudimentale.
 
 
-## COMPILAZIONE SORGENTI
+## Compilazione
 
 Il seguente comando serve per compilare un sorgente in codice c per generare i seguenti files:
 
@@ -33,4 +35,4 @@ CC65 include configurazioni predefinite per varie piattaforme, come Commodore 64
 - <b>[-vm]</b>  | abilita messaggi di avviso più dettagliati durante il processo di compilazione e linking
 
 
-### CREAZIONE DI  IMMAGINE .DSK PARTENDO DAL PRODOS.DSK
+## Creazione di file immagine .DSK
