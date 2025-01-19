@@ -3,19 +3,24 @@
 
 # Repository per lo sviluppo di programmi Apple 2e
 
-# Link utili
+## TOOLS
 
-## Tools
+<b>CC65</b> (https://cc65.github.io/)
+CC65 è una suite completa di strumenti open-source per lo sviluppo di software in linguaggio C e assembly per computer a 8 bit, tra cui Commodore 64, Apple II, NES, Atari 8-bit e molte altre piattaforme retro. È particolarmente apprezzata dagli sviluppatori e dagli appassionati di retrocomputing per la sua capacità di generare codice ottimizzato e compatibile con queste macchine.
 
-cc65 è un pacchetto completo di sviluppo per sistemi 65(C)02, che include un potente assemblatore di macro, un compilatore C, un linker, un librarian e molti altri strumenti: https://cc65.github.io/
+<b>AppleCommander</b> (https://applecommander.github.io/)
+AppleCommander è uno strumento software multipiattaforma utilizzato per gestire file system e immagini disco dei computer Apple II. È scritto in Java ed è molto popolare tra gli appassionati di retrocomputing per il suo supporto ampio e flessibile dei formati di disco utilizzati dall'Apple II. 
 
-## Repository per sviluppo
+AppleCommander è attualmente in grado di leggere e visualizzare informazioni sulle immagini disco, esportare file di vario tipo, creare immagini disco, importare file in immagini disco e ha un compilatore rudimentale.
 
-TBD
 
-### Compilazione
+## COMPILAZIONE SORGENTI
 
-Il seguente comando serve per generare il file .bin che deve essere caricaro all'interno del file immagine con estensione .DSK
+Il seguente comando serve per compilare un sorgente in codice c per generare i seguenti files:
+
+ - helloworld.bin
+ - helloworld.bin.map
+ - helloworld.o
 
 <b>cl65</b> <b>-t</b> apple2 helloworld.c <b>-o</b> helloworld.bin <b>-O</b>  <b>-m</b> helloworld.bin.map <b>-vm</b> ../00.IP65/ip65/ip65.lib ../00.IP65/drivers/ip65_apple2.lib
 
@@ -26,3 +31,6 @@ CC65 include configurazioni predefinite per varie piattaforme, come Commodore 64
 - <b>[-O]</b>  | abilita le ottimizzazioni del compilatore per migliorare le prestazioni del codice generato
 - <b>[-m helloworld.bin.map]</b>  | genera una mappa di memoria durante il processo di linking. Il file helloworld.bin.map contiene informazioni utili per il debug, come la disposizione delle sezioni di memoria
 - <b>[-vm]</b>  | abilita messaggi di avviso più dettagliati durante il processo di compilazione e linking
+
+
+### CREAZIONE DI  IMMAGINE .DSK PARTENDO DAL PRODOS.DSK
