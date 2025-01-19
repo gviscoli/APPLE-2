@@ -4,3 +4,17 @@
 # Repository per lo sviluppo di programmi Apple 2e
 
 # Link utili
+
+## Tools
+
+cc65 è un pacchetto completo di sviluppo per sistemi 65(C)02, che include un potente assemblatore di macro, un compilatore C, un linker, un librarian e molti altri strumenti: https://cc65.github.io/
+
+## Repository per sviluppo
+
+
+### Compilazione
+
+Il seguente comando serve per generare il file .bin che deve essere caricaro all'interno del file immagine con estensione .DSK
+
+cl65 -t apple2 helloworld.c -o helloworld.bin -O  -m helloworld.bin.map -vm ../00.IP65/ip65/ip65.lib ../00.IP65/drivers/ip65_apple2.lib
+
