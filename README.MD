@@ -23,3 +23,6 @@ CC65 include configurazioni predefinite per varie piattaforme, come Commodore 64
 
 - <b>[-t apple2]</b> | serve per specificare il target della piattaforma come Apple II.
 - <b>[-o helloworld.bin]</b>  | specifica il nome del file di output. In questo caso, il file binario eseguibile sarà helloworld.bin
+- <b>[-O]</b>  | abilita le ottimizzazioni del compilatore per migliorare le prestazioni del codice generato
+- <b>[-m helloworld.bin.map]</b>  | genera una mappa di memoria durante il processo di linking. Il file helloworld.bin.map contiene informazioni utili per il debug, come la disposizione delle sezioni di memoria
+- <b>[-vm]</b>  | abilita messaggi di avviso più dettagliati durante il processo di compilazione e linking
