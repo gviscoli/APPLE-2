@@ -11,14 +11,15 @@ cc65 è un pacchetto completo di sviluppo per sistemi 65(C)02, che include un po
 
 ## Repository per sviluppo
 
+TBD
 
 ### Compilazione
 
 Il seguente comando serve per generare il file .bin che deve essere caricaro all'interno del file immagine con estensione .DSK
 
-cl65 -t apple2 helloworld.c -o helloworld.bin -O  -m helloworld.bin.map -vm ../00.IP65/ip65/ip65.lib ../00.IP65/drivers/ip65_apple2.lib
+<b>cl65</b> -t apple2 helloworld.c -o helloworld.bin -O  -m helloworld.bin.map -vm ../00.IP65/ip65/ip65.lib ../00.IP65/drivers/ip65_apple2.lib
 
 CC65 include configurazioni predefinite per varie piattaforme, come Commodore 64, NES, Apple II, ecc. qui di seguito vengono descritti i parametri dell'esempio precedente:
 
-- [-t apple2] | serve per specificare il target della piattaforma come Apple II.
-- [-o helloworld.bin]  | specifica il nome del file di output. In questo caso, il file binario eseguibile sarà helloworld.bin
+- <b>[-t apple2]</b> | serve per specificare il target della piattaforma come Apple II.
+- <b>[-o helloworld.bin]</b>  | specifica il nome del file di output. In questo caso, il file binario eseguibile sarà helloworld.bin
