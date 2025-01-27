@@ -32,7 +32,7 @@ int main(void) {
         if (is_uthernet2_installed(slot)) {
             slot_found = slot;
             printf("Uthernet II found in slot %d\n", slot);
-            break;
+            //break;
         }
     }
 
