@@ -15,6 +15,8 @@ int is_uthernet2_installed(int slot) {
     // Esegui una lettura di prova dal registro
     unsigned char value = *base_address;
 
+    printf("risposta lettura:  %s\n", value);
+    
     // Se la scheda è presente, dovrebbe rispondere in modo prevedibile
     // (questa logica dipende dalla documentazione della Uthernet II)
     return (value == 0x55 || value == 0xAA); // Sostituisci con la condizione appropriata
