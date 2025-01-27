@@ -7,6 +7,9 @@
 //
 // cl65 -t apple2 pch-uthernet-scan.c -o pch-uthernet-scan.bin -O  -m pch-uthernet-scan.map -vm ../00.LIBRERIE/IP65/lib/ip65.lib ../00.LIBRERIE/IP65/drivers/ip65_apple2.lib
 //
+//
+// 
+//
 
 // Funzione per verificare se una Uthernet II è nello slot specificato
 int is_uthernet2_installed(int slot) {
@@ -15,7 +18,7 @@ int is_uthernet2_installed(int slot) {
     // Esegui una lettura di prova dal registro
     unsigned char value = *base_address;
 
-    printf("risposta lettura:  %s\n", value);
+    printf("risposta lettura:  %c\n", value);
     
     // Se la scheda è presente, dovrebbe rispondere in modo prevedibile
     // (questa logica dipende dalla documentazione della Uthernet II)
@@ -32,7 +35,7 @@ int main(void) {
         if (is_uthernet2_installed(slot)) {
             slot_found = slot;
             printf("Uthernet II found in slot %d\n", slot);
-            //break;
+            break;
         }
     }
 
