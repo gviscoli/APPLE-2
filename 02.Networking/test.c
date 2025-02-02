@@ -21,14 +21,18 @@
 //
 // cl65 -t apple2 test.c stream3.c -o test.bin -O  -m test.map -vm ../00.LIBRERIE/IP65/lib/ip65.lib ../00.LIBRERIE/IP65/drivers/ip65_apple2.lib
 //
+// java -jar C:\UTILITY\AppleCommander\AppleCommander-win32-x86_64-1.9.0.jar
+// 
+//
+
 
 #define MIN(a,b) (((a)<(b))?(a):(b))
 
-byte ip_addr[4] = {192, 100,   1, 211};
+byte ip_addr[4] = {192, 100,   1, 222};
 byte submask[4] = {255, 255, 255, 0};
 byte gateway[4] = {192, 100,   1, 1};
 
-byte server[4] = {192, 100,   1, 222};
+byte server[4] = {192, 100,   1, 211};
 
 byte buffer[0x1000];
 
