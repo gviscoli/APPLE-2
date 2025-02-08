@@ -68,7 +68,7 @@ void main(void)
 {
   unsigned int slot;
 
-  printf("PCH (c)\n");
+  printf("\n");
 
   printf("Start Uthernet Init\n");
   slot = check_uthernet();
@@ -92,21 +92,25 @@ void main(void)
     printf("DHCP init OK\n");
   }
 
-  printf("\n* --------------------- *\n");
-  printf("IP Address: ");
+  printf("\n* -------------------------------- *\n\n");
+  printf("  IP Address:  ");
   print_ip(cfg_ip);
 
-  printf("Netmask: ");
+  printf("  Netmask:     ");
   print_ip(cfg_netmask);
 
-  printf("Gateway: ");
+  printf("  Gateway:     ");
   print_ip(cfg_gateway);
 
-  printf("DNS Server: ");
+  printf("  DNS Server:  ");
   print_ip(cfg_dns);
 
-  printf("DHCP Server: ");
+  printf("  DHCP Server: ");
   print_ip(dhcp_server);
 
-  printf("Done\n");
+  printf("\n* -------------------------------- *\n\n");
+
+  printf("\n\n");
+
+  printf("Copyright 2025 - Viscoli Giuseppe\n");
 }
