@@ -100,7 +100,7 @@ void main(void)
   // printf("Destination Ip Address: %02X %02X %02X %02X\n",
   //   ip_addr_destination[0], ip_addr_destination[1], ip_addr_destination[2], ip_addr_destination[3]);
 
-  for (i = 0; i < 10; i++)
+  for (i = 0; i < 3; i++)
   {
     result = icmp_ping(ip_addr_destination);
     printf("Ping result: %d\n", result);  
