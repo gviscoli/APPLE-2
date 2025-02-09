@@ -1,0 +1,1681 @@
+Modules list:
+-------------
+test-client1.o:
+    CODE              Offs=000000  Size=0003DB  Align=00001  Fill=0000
+    RODATA            Offs=000000  Size=000134  Align=00001  Fill=0000
+    BSS               Offs=000000  Size=001016  Align=00001  Fill=0000
+    DATA              Offs=000000  Size=000004  Align=00001  Fill=0000
+    ZEROPAGE          Offs=000000  Size=000000  Align=00001  Fill=0000
+    NULL              Offs=000000  Size=000000  Align=00001  Fill=0000
+stream3.o:
+    CODE              Offs=0003DB  Size=000377  Align=00001  Fill=0000
+    RODATA            Offs=000134  Size=000000  Align=00001  Fill=0000
+    BSS               Offs=001016  Size=00000E  Align=00001  Fill=0000
+    DATA              Offs=000004  Size=00001C  Align=00001  Fill=0000
+    ZEROPAGE          Offs=000000  Size=000000  Align=00001  Fill=0000
+    NULL              Offs=000000  Size=000000  Align=00001  Fill=0000
+../00.LIBRERIE/PCH/pch_network.lib(pch_network.o):
+    CODE              Offs=000752  Size=000109  Align=00001  Fill=0000
+    RODATA            Offs=000134  Size=00000D  Align=00001  Fill=0000
+    BSS               Offs=001024  Size=000000  Align=00001  Fill=0000
+    DATA              Offs=000020  Size=000000  Align=00001  Fill=0000
+    ZEROPAGE          Offs=000000  Size=000000  Align=00001  Fill=0000
+    NULL              Offs=000000  Size=000000  Align=00001  Fill=0000
+../00.LIBRERIE/IP65/lib/ip65.lib(arp.o):
+    CODE              Offs=00085B  Size=000202  Align=00001  Fill=0000
+    RODATA            Offs=000141  Size=000000  Align=00001  Fill=0000
+    BSS               Offs=001024  Size=000066  Align=00001  Fill=0000
+    DATA              Offs=000020  Size=000000  Align=00001  Fill=0000
+    ZEROPAGE          Offs=000000  Size=000000  Align=00001  Fill=0000
+    NULL              Offs=000000  Size=000000  Align=00001  Fill=0000
+../00.LIBRERIE/IP65/lib/ip65.lib(config.o):
+    CODE              Offs=000A5D  Size=000000  Align=00001  Fill=0000
+    RODATA            Offs=000141  Size=000000  Align=00001  Fill=0000
+    BSS               Offs=00108A  Size=000000  Align=00001  Fill=0000
+    DATA              Offs=000020  Size=00001E  Align=00001  Fill=0000
+    ZEROPAGE          Offs=000000  Size=000000  Align=00001  Fill=0000
+    NULL              Offs=000000  Size=000000  Align=00001  Fill=0000
+../00.LIBRERIE/IP65/lib/ip65.lib(config_c.o):
+    CODE              Offs=000A5D  Size=000000  Align=00001  Fill=0000
+    RODATA            Offs=000141  Size=000000  Align=00001  Fill=0000
+    BSS               Offs=00108A  Size=000000  Align=00001  Fill=0000
+    DATA              Offs=00003E  Size=000000  Align=00001  Fill=0000
+    ZEROPAGE          Offs=000000  Size=000000  Align=00001  Fill=0000
+    NULL              Offs=000000  Size=000000  Align=00001  Fill=0000
+../00.LIBRERIE/IP65/lib/ip65.lib(copymem.o):
+    CODE              Offs=000A5D  Size=000027  Align=00001  Fill=0000
+    RODATA            Offs=000141  Size=000000  Align=00001  Fill=0000
+    BSS               Offs=00108A  Size=000001  Align=00001  Fill=0000
+    DATA              Offs=00003E  Size=000000  Align=00001  Fill=0000
+    ZEROPAGE          Offs=000000  Size=000000  Align=00001  Fill=0000
+    NULL              Offs=000000  Size=000000  Align=00001  Fill=0000
+../00.LIBRERIE/IP65/lib/ip65.lib(dhcp.o):
+    CODE              Offs=000A84  Size=000294  Align=00001  Fill=0000
+    RODATA            Offs=000141  Size=000000  Align=00001  Fill=0000
+    BSS               Offs=00108B  Size=000009  Align=00001  Fill=0000
+    DATA              Offs=00003E  Size=000000  Align=00001  Fill=0000
+    ZEROPAGE          Offs=000000  Size=000000  Align=00001  Fill=0000
+    NULL              Offs=000000  Size=000000  Align=00001  Fill=0000
+../00.LIBRERIE/IP65/lib/ip65.lib(dhcp_c.o):
+    CODE              Offs=000D18  Size=000008  Align=00001  Fill=0000
+    RODATA            Offs=000141  Size=000000  Align=00001  Fill=0000
+    BSS               Offs=001094  Size=000000  Align=00001  Fill=0000
+    DATA              Offs=00003E  Size=000000  Align=00001  Fill=0000
+    ZEROPAGE          Offs=000000  Size=000000  Align=00001  Fill=0000
+    NULL              Offs=000000  Size=000000  Align=00001  Fill=0000
+../00.LIBRERIE/IP65/lib/ip65.lib(error.o):
+    CODE              Offs=000D20  Size=000071  Align=00001  Fill=0000
+    RODATA            Offs=000141  Size=0000BD  Align=00001  Fill=0000
+    BSS               Offs=001094  Size=000000  Align=00001  Fill=0000
+    DATA              Offs=00003E  Size=000000  Align=00001  Fill=0000
+    ZEROPAGE          Offs=000000  Size=000000  Align=00001  Fill=0000
+    NULL              Offs=000000  Size=000000  Align=00001  Fill=0000
+../00.LIBRERIE/IP65/lib/ip65.lib(eth.o):
+    CODE              Offs=000D91  Size=000020  Align=00001  Fill=0000
+    RODATA            Offs=0001FE  Size=000000  Align=00001  Fill=0000
+    BSS               Offs=001094  Size=000004  Align=00001  Fill=0000
+    DATA              Offs=00003E  Size=000000  Align=00001  Fill=0000
+    ZEROPAGE          Offs=000000  Size=000000  Align=00001  Fill=0000
+    NULL              Offs=000000  Size=000000  Align=00001  Fill=0000
+../00.LIBRERIE/IP65/lib/ip65.lib(eth_buffer.o):
+    CODE              Offs=000DB1  Size=000000  Align=00001  Fill=0000
+    RODATA            Offs=0001FE  Size=000000  Align=00001  Fill=0000
+    BSS               Offs=001098  Size=000BDC  Align=00001  Fill=0000
+    DATA              Offs=00003E  Size=000000  Align=00001  Fill=0000
+    ZEROPAGE          Offs=000000  Size=000000  Align=00001  Fill=0000
+    NULL              Offs=000000  Size=000000  Align=00001  Fill=0000
+../00.LIBRERIE/IP65/lib/ip65.lib(ip65.o):
+    CODE              Offs=000DB1  Size=00005F  Align=00001  Fill=0000
+    RODATA            Offs=0001FE  Size=000000  Align=00001  Fill=0000
+    BSS               Offs=001C74  Size=000004  Align=00001  Fill=0000
+    DATA              Offs=00003E  Size=000000  Align=00001  Fill=0000
+    ZEROPAGE          Offs=000000  Size=000000  Align=00001  Fill=0000
+    NULL              Offs=000000  Size=000000  Align=00001  Fill=0000
+../00.LIBRERIE/IP65/lib/ip65.lib(ip65_c.o):
+    CODE              Offs=000E10  Size=000010  Align=00001  Fill=0000
+    RODATA            Offs=0001FE  Size=000000  Align=00001  Fill=0000
+    BSS               Offs=001C78  Size=000000  Align=00001  Fill=0000
+    DATA              Offs=00003E  Size=000000  Align=00001  Fill=0000
+    ZEROPAGE          Offs=000000  Size=000000  Align=00001  Fill=0000
+    NULL              Offs=000000  Size=000000  Align=00001  Fill=0000
+../00.LIBRERIE/IP65/lib/ip65.lib(timer.o):
+    CODE              Offs=000E20  Size=000018  Align=00001  Fill=0000
+    RODATA            Offs=0001FE  Size=000000  Align=00001  Fill=0000
+    BSS               Offs=001C78  Size=000002  Align=00001  Fill=0000
+    DATA              Offs=00003E  Size=000000  Align=00001  Fill=0000
+    ZEROPAGE          Offs=000000  Size=000000  Align=00001  Fill=0000
+    NULL              Offs=000000  Size=000000  Align=00001  Fill=0000
+../00.LIBRERIE/IP65/lib/ip65.lib(output_buffer.o):
+    CODE              Offs=000E38  Size=000000  Align=00001  Fill=0000
+    RODATA            Offs=0001FE  Size=000000  Align=00001  Fill=0000
+    BSS               Offs=001C7A  Size=000208  Align=00001  Fill=0000
+    DATA              Offs=00003E  Size=000000  Align=00001  Fill=0000
+    ZEROPAGE          Offs=000000  Size=000000  Align=00001  Fill=0000
+    NULL              Offs=000000  Size=000000  Align=00001  Fill=0000
+../00.LIBRERIE/IP65/lib/ip65.lib(udp.o):
+    CODE              Offs=000E38  Size=000176  Align=00001  Fill=0000
+    RODATA            Offs=0001FE  Size=000000  Align=00001  Fill=0000
+    BSS               Offs=001E82  Size=00001F  Align=00001  Fill=0000
+    DATA              Offs=00003E  Size=000003  Align=00001  Fill=0000
+    ZEROPAGE          Offs=000000  Size=000000  Align=00001  Fill=0000
+    NULL              Offs=000000  Size=000000  Align=00001  Fill=0000
+../00.LIBRERIE/IP65/lib/ip65.lib(ip.o):
+    CODE              Offs=000FAE  Size=00020B  Align=00001  Fill=0000
+    RODATA            Offs=0001FE  Size=000000  Align=00001  Fill=0000
+    BSS               Offs=001EA1  Size=00000C  Align=00001  Fill=0000
+    DATA              Offs=000041  Size=000000  Align=00001  Fill=0000
+    ZEROPAGE          Offs=000000  Size=000000  Align=00001  Fill=0000
+    NULL              Offs=000000  Size=000000  Align=00001  Fill=0000
+../00.LIBRERIE/IP65/lib/ip65.lib(icmp.o):
+    CODE              Offs=0011B9  Size=00010D  Align=00001  Fill=0000
+    RODATA            Offs=0001FE  Size=000000  Align=00001  Fill=0000
+    BSS               Offs=001EAD  Size=000009  Align=00001  Fill=0000
+    DATA              Offs=000041  Size=000003  Align=00001  Fill=0000
+    ZEROPAGE          Offs=000000  Size=000000  Align=00001  Fill=0000
+    NULL              Offs=000000  Size=000000  Align=00001  Fill=0000
+../00.LIBRERIE/IP65/drivers/ip65_apple2.lib(uthernet.o):
+    CODE              Offs=0012C6  Size=000000  Align=00001  Fill=0000
+    RODATA            Offs=0001FE  Size=000020  Align=00001  Fill=0000
+    BSS               Offs=001EB6  Size=000000  Align=00001  Fill=0000
+    DATA              Offs=000044  Size=00017C  Align=00001  Fill=0000
+    ZEROPAGE          Offs=000000  Size=000000  Align=00001  Fill=0000
+    NULL              Offs=000000  Size=000000  Align=00001  Fill=0000
+../00.LIBRERIE/IP65/drivers/ip65_apple2.lib(lancegs.o):
+    CODE              Offs=0012C6  Size=000000  Align=00001  Fill=0000
+    RODATA            Offs=00021E  Size=00002E  Align=00001  Fill=0000
+    BSS               Offs=001EB6  Size=000000  Align=00001  Fill=0000
+    DATA              Offs=0001C0  Size=00018B  Align=00001  Fill=0000
+    ZEROPAGE          Offs=000000  Size=000000  Align=00001  Fill=0000
+    NULL              Offs=000000  Size=000000  Align=00001  Fill=0000
+../00.LIBRERIE/IP65/drivers/ip65_apple2.lib(uthernet2.o):
+    CODE              Offs=0012C6  Size=000000  Align=00001  Fill=0000
+    RODATA            Offs=00024C  Size=00002B  Align=00001  Fill=0000
+    BSS               Offs=001EB6  Size=000000  Align=00001  Fill=0000
+    DATA              Offs=00034B  Size=000238  Align=00001  Fill=0000
+    ZEROPAGE          Offs=000000  Size=000000  Align=00001  Fill=0000
+    NULL              Offs=000000  Size=000000  Align=00001  Fill=0000
+../00.LIBRERIE/IP65/drivers/ip65_apple2.lib(a2combo.o):
+    CODE              Offs=0012C6  Size=0000BF  Align=00001  Fill=0000
+    RODATA            Offs=000277  Size=000000  Align=00001  Fill=0000
+    BSS               Offs=001EB6  Size=000015  Align=00001  Fill=0000
+    DATA              Offs=000583  Size=000043  Align=00001  Fill=0000
+    ZEROPAGE          Offs=000000  Size=000000  Align=00001  Fill=0000
+    NULL              Offs=000000  Size=000000  Align=00001  Fill=0000
+../00.LIBRERIE/IP65/drivers/ip65_apple2.lib(a2_timer.o):
+    CODE              Offs=001385  Size=00002E  Align=00001  Fill=0000
+    RODATA            Offs=000277  Size=000000  Align=00001  Fill=0000
+    BSS               Offs=001ECB  Size=000002  Align=00001  Fill=0000
+    DATA              Offs=0005C6  Size=000000  Align=00001  Fill=0000
+    ZEROPAGE          Offs=000000  Size=000000  Align=00001  Fill=0000
+    NULL              Offs=000000  Size=000000  Align=00001  Fill=0000
+../00.LIBRERIE/IP65/drivers/ip65_apple2.lib(a2_input.o):
+    CODE              Offs=0013B3  Size=00000F  Align=00001  Fill=0000
+    RODATA            Offs=000277  Size=000000  Align=00001  Fill=0000
+    BSS               Offs=001ECD  Size=000000  Align=00001  Fill=0000
+    DATA              Offs=0005C6  Size=000001  Align=00001  Fill=0000
+    ZEROPAGE          Offs=000000  Size=000000  Align=00001  Fill=0000
+    NULL              Offs=000000  Size=000000  Align=00001  Fill=0000
+../00.LIBRERIE/CC65/lib/apple2.lib(_directerrno.o):
+    CODE              Offs=0013C2  Size=00000A  Align=00001  Fill=0000
+    RODATA            Offs=000277  Size=000000  Align=00001  Fill=0000
+    BSS               Offs=001ECD  Size=000000  Align=00001  Fill=0000
+    DATA              Offs=0005C7  Size=000000  Align=00001  Fill=0000
+    ZEROPAGE          Offs=000000  Size=000000  Align=00001  Fill=0000
+    NULL              Offs=000000  Size=000000  Align=00001  Fill=0000
+../00.LIBRERIE/CC65/lib/apple2.lib(_file.o):
+    CODE              Offs=0013CC  Size=000000  Align=00001  Fill=0000
+    RODATA            Offs=000277  Size=000000  Align=00001  Fill=0000
+    BSS               Offs=001ECD  Size=000000  Align=00001  Fill=0000
+    DATA              Offs=0005C7  Size=00001E  Align=00001  Fill=0000
+    ZEROPAGE          Offs=000000  Size=000000  Align=00001  Fill=0000
+    NULL              Offs=000000  Size=000000  Align=00001  Fill=0000
+../00.LIBRERIE/CC65/lib/apple2.lib(_hextab.o):
+    CODE              Offs=0013CC  Size=000000  Align=00001  Fill=0000
+    RODATA            Offs=000277  Size=000010  Align=00001  Fill=0000
+    BSS               Offs=001ECD  Size=000000  Align=00001  Fill=0000
+    DATA              Offs=0005E5  Size=000000  Align=00001  Fill=0000
+    ZEROPAGE          Offs=000000  Size=000000  Align=00001  Fill=0000
+    NULL              Offs=000000  Size=000000  Align=00001  Fill=0000
+../00.LIBRERIE/CC65/lib/apple2.lib(_longminstr.o):
+    CODE              Offs=0013CC  Size=000000  Align=00001  Fill=0000
+    RODATA            Offs=000287  Size=00000C  Align=00001  Fill=0000
+    BSS               Offs=001ECD  Size=000000  Align=00001  Fill=0000
+    DATA              Offs=0005E5  Size=000000  Align=00001  Fill=0000
+    ZEROPAGE          Offs=000000  Size=000000  Align=00001  Fill=0000
+    NULL              Offs=000000  Size=000000  Align=00001  Fill=0000
+../00.LIBRERIE/CC65/lib/apple2.lib(_mappederrno.o):
+    CODE              Offs=0013CC  Size=000010  Align=00001  Fill=0000
+    RODATA            Offs=000293  Size=000000  Align=00001  Fill=0000
+    BSS               Offs=001ECD  Size=000000  Align=00001  Fill=0000
+    DATA              Offs=0005E5  Size=000000  Align=00001  Fill=0000
+    ZEROPAGE          Offs=000000  Size=000000  Align=00001  Fill=0000
+    NULL              Offs=000000  Size=000000  Align=00001  Fill=0000
+../00.LIBRERIE/CC65/lib/apple2.lib(_oserror.o):
+    CODE              Offs=0013DC  Size=000000  Align=00001  Fill=0000
+    RODATA            Offs=000293  Size=000000  Align=00001  Fill=0000
+    BSS               Offs=001ECD  Size=000001  Align=00001  Fill=0000
+    DATA              Offs=0005E5  Size=000000  Align=00001  Fill=0000
+    ZEROPAGE          Offs=000000  Size=000000  Align=00001  Fill=0000
+    NULL              Offs=000000  Size=000000  Align=00001  Fill=0000
+../00.LIBRERIE/CC65/lib/apple2.lib(_printf.o):
+    CODE              Offs=0013DC  Size=0003A2  Align=00001  Fill=0000
+    RODATA            Offs=000293  Size=000000  Align=00001  Fill=0000
+    BSS               Offs=001ECE  Size=00002B  Align=00001  Fill=0000
+    DATA              Offs=0005E5  Size=000003  Align=00001  Fill=0000
+    ZEROPAGE          Offs=000000  Size=000000  Align=00001  Fill=0000
+    NULL              Offs=000000  Size=000000  Align=00001  Fill=0000
+../00.LIBRERIE/CC65/lib/apple2.lib(_seterrno.o):
+    CODE              Offs=00177E  Size=000009  Align=00001  Fill=0000
+    RODATA            Offs=000293  Size=000000  Align=00001  Fill=0000
+    BSS               Offs=001EF9  Size=000000  Align=00001  Fill=0000
+    DATA              Offs=0005E8  Size=000000  Align=00001  Fill=0000
+    ZEROPAGE          Offs=000000  Size=000000  Align=00001  Fill=0000
+    NULL              Offs=000000  Size=000000  Align=00001  Fill=0000
+../00.LIBRERIE/CC65/lib/apple2.lib(addeqsp.o):
+    CODE              Offs=001787  Size=000011  Align=00001  Fill=0000
+    RODATA            Offs=000293  Size=000000  Align=00001  Fill=0000
+    BSS               Offs=001EF9  Size=000000  Align=00001  Fill=0000
+    DATA              Offs=0005E8  Size=000000  Align=00001  Fill=0000
+    ZEROPAGE          Offs=000000  Size=000000  Align=00001  Fill=0000
+    NULL              Offs=000000  Size=000000  Align=00001  Fill=0000
+../00.LIBRERIE/CC65/lib/apple2.lib(addysp.o):
+    CODE              Offs=001798  Size=00000E  Align=00001  Fill=0000
+    RODATA            Offs=000293  Size=000000  Align=00001  Fill=0000
+    BSS               Offs=001EF9  Size=000000  Align=00001  Fill=0000
+    DATA              Offs=0005E8  Size=000000  Align=00001  Fill=0000
+    ZEROPAGE          Offs=000000  Size=000000  Align=00001  Fill=0000
+    NULL              Offs=000000  Size=000000  Align=00001  Fill=0000
+../00.LIBRERIE/CC65/lib/apple2.lib(axlong.o):
+    CODE              Offs=0017A6  Size=00000D  Align=00001  Fill=0000
+    RODATA            Offs=000293  Size=000000  Align=00001  Fill=0000
+    BSS               Offs=001EF9  Size=000000  Align=00001  Fill=0000
+    DATA              Offs=0005E8  Size=000000  Align=00001  Fill=0000
+    ZEROPAGE          Offs=000000  Size=000000  Align=00001  Fill=0000
+    NULL              Offs=000000  Size=000000  Align=00001  Fill=0000
+../00.LIBRERIE/CC65/lib/apple2.lib(bneg.o):
+    CODE              Offs=0017B3  Size=00000E  Align=00001  Fill=0000
+    RODATA            Offs=000293  Size=000000  Align=00001  Fill=0000
+    BSS               Offs=001EF9  Size=000000  Align=00001  Fill=0000
+    DATA              Offs=0005E8  Size=000000  Align=00001  Fill=0000
+    ZEROPAGE          Offs=000000  Size=000000  Align=00001  Fill=0000
+    NULL              Offs=000000  Size=000000  Align=00001  Fill=0000
+../00.LIBRERIE/CC65/lib/apple2.lib(callmain.o):
+    CODE              Offs=0017C1  Size=000042  Align=00001  Fill=0000
+    RODATA            Offs=000293  Size=000000  Align=00001  Fill=0000
+    BSS               Offs=001EF9  Size=000000  Align=00001  Fill=0000
+    DATA              Offs=0005E8  Size=000004  Align=00001  Fill=0000
+    ZEROPAGE          Offs=000000  Size=000000  Align=00001  Fill=0000
+    NULL              Offs=000000  Size=000000  Align=00001  Fill=0000
+../00.LIBRERIE/CC65/lib/apple2.lib(condes.o):
+    CODE              Offs=001803  Size=00000C  Align=00001  Fill=0000
+    RODATA            Offs=000293  Size=000000  Align=00001  Fill=0000
+    BSS               Offs=001EF9  Size=000000  Align=00001  Fill=0000
+    DATA              Offs=0005EC  Size=000025  Align=00001  Fill=0000
+    ZEROPAGE          Offs=000000  Size=000000  Align=00001  Fill=0000
+    NULL              Offs=000000  Size=000000  Align=00001  Fill=0000
+    ONCE              Offs=000000  Size=00000C  Align=00001  Fill=0000
+../00.LIBRERIE/CC65/lib/apple2.lib(cout.o):
+    CODE              Offs=00180F  Size=000000  Align=00001  Fill=0000
+    RODATA            Offs=000293  Size=000000  Align=00001  Fill=0000
+    BSS               Offs=001EF9  Size=000000  Align=00001  Fill=0000
+    DATA              Offs=000611  Size=000000  Align=00001  Fill=0000
+    ZEROPAGE          Offs=000000  Size=000000  Align=00001  Fill=0000
+    NULL              Offs=000000  Size=000000  Align=00001  Fill=0000
+    LOWCODE           Offs=000000  Size=00000A  Align=00001  Fill=0000
+../00.LIBRERIE/CC65/lib/apple2.lib(crt0.o):
+    CODE              Offs=00180F  Size=000012  Align=00001  Fill=0000
+    RODATA            Offs=000293  Size=000007  Align=00001  Fill=0000
+    BSS               Offs=001EF9  Size=000000  Align=00001  Fill=0000
+    DATA              Offs=000611  Size=000003  Align=00001  Fill=0000
+    ZEROPAGE          Offs=000000  Size=000000  Align=00001  Fill=0000
+    NULL              Offs=000000  Size=000000  Align=00001  Fill=0000
+    STARTUP           Offs=000000  Size=00000C  Align=00001  Fill=0000
+    ONCE              Offs=00000C  Size=00006A  Align=00001  Fill=0000
+    INIT              Offs=000000  Size=00001D  Align=00001  Fill=0000
+../00.LIBRERIE/CC65/lib/apple2.lib(ctype.o):
+    CODE              Offs=001821  Size=000000  Align=00001  Fill=0000
+    RODATA            Offs=00029A  Size=00008B  Align=00001  Fill=0000
+    BSS               Offs=001EF9  Size=000000  Align=00001  Fill=0000
+    DATA              Offs=000614  Size=000000  Align=00001  Fill=0000
+    ZEROPAGE          Offs=000000  Size=000000  Align=00001  Fill=0000
+    NULL              Offs=000000  Size=000000  Align=00001  Fill=0000
+../00.LIBRERIE/CC65/lib/apple2.lib(ctypemask.o):
+    CODE              Offs=001821  Size=00001E  Align=00001  Fill=0000
+    RODATA            Offs=000325  Size=000000  Align=00001  Fill=0000
+    BSS               Offs=001EF9  Size=000000  Align=00001  Fill=0000
+    DATA              Offs=000614  Size=000000  Align=00001  Fill=0000
+    ZEROPAGE          Offs=000000  Size=000000  Align=00001  Fill=0000
+    NULL              Offs=000000  Size=000000  Align=00001  Fill=0000
+../00.LIBRERIE/CC65/lib/apple2.lib(decsp4.o):
+    CODE              Offs=00183F  Size=00000D  Align=00001  Fill=0000
+    RODATA            Offs=000325  Size=000000  Align=00001  Fill=0000
+    BSS               Offs=001EF9  Size=000000  Align=00001  Fill=0000
+    DATA              Offs=000614  Size=000000  Align=00001  Fill=0000
+    ZEROPAGE          Offs=000000  Size=000000  Align=00001  Fill=0000
+    NULL              Offs=000000  Size=000000  Align=00001  Fill=0000
+../00.LIBRERIE/CC65/lib/apple2.lib(decsp6.o):
+    CODE              Offs=00184C  Size=00000D  Align=00001  Fill=0000
+    RODATA            Offs=000325  Size=000000  Align=00001  Fill=0000
+    BSS               Offs=001EF9  Size=000000  Align=00001  Fill=0000
+    DATA              Offs=000614  Size=000000  Align=00001  Fill=0000
+    ZEROPAGE          Offs=000000  Size=000000  Align=00001  Fill=0000
+    NULL              Offs=000000  Size=000000  Align=00001  Fill=0000
+../00.LIBRERIE/CC65/lib/apple2.lib(dosdetect.o):
+    CODE              Offs=001859  Size=000000  Align=00001  Fill=0000
+    RODATA            Offs=000325  Size=000000  Align=00001  Fill=0000
+    BSS               Offs=001EF9  Size=000000  Align=00001  Fill=0000
+    DATA              Offs=000614  Size=000001  Align=00001  Fill=0000
+    ZEROPAGE          Offs=000000  Size=000000  Align=00001  Fill=0000
+    NULL              Offs=000000  Size=000000  Align=00001  Fill=0000
+    ONCE              Offs=000076  Size=000014  Align=00001  Fill=0000
+../00.LIBRERIE/CC65/lib/apple2.lib(errno.o):
+    CODE              Offs=001859  Size=000000  Align=00001  Fill=0000
+    RODATA            Offs=000325  Size=000000  Align=00001  Fill=0000
+    BSS               Offs=001EF9  Size=000002  Align=00001  Fill=0000
+    DATA              Offs=000615  Size=000000  Align=00001  Fill=0000
+    ZEROPAGE          Offs=000000  Size=000000  Align=00001  Fill=0000
+    NULL              Offs=000000  Size=000000  Align=00001  Fill=0000
+../00.LIBRERIE/CC65/lib/apple2.lib(exehdr.o):
+    CODE              Offs=001859  Size=000000  Align=00001  Fill=0000
+    RODATA            Offs=000325  Size=000000  Align=00001  Fill=0000
+    BSS               Offs=001EFB  Size=000000  Align=00001  Fill=0000
+    DATA              Offs=000615  Size=000000  Align=00001  Fill=0000
+    ZEROPAGE          Offs=000000  Size=000000  Align=00001  Fill=0000
+    NULL              Offs=000000  Size=000000  Align=00001  Fill=0000
+    EXEHDR            Offs=000000  Size=00003A  Align=00001  Fill=0000
+../00.LIBRERIE/CC65/lib/apple2.lib(filedes.o):
+    CODE              Offs=001859  Size=000016  Align=00001  Fill=0000
+    RODATA            Offs=000325  Size=000000  Align=00001  Fill=0000
+    BSS               Offs=001EFB  Size=000000  Align=00001  Fill=0000
+    DATA              Offs=000615  Size=000020  Align=00001  Fill=0000
+    ZEROPAGE          Offs=000000  Size=000000  Align=00001  Fill=0000
+    NULL              Offs=000000  Size=000000  Align=00001  Fill=0000
+../00.LIBRERIE/CC65/lib/apple2.lib(fwrite.o):
+    CODE              Offs=00186F  Size=000079  Align=00001  Fill=0000
+    RODATA            Offs=000325  Size=000000  Align=00001  Fill=0000
+    BSS               Offs=001EFB  Size=000002  Align=00001  Fill=0000
+    DATA              Offs=000635  Size=000000  Align=00001  Fill=0000
+    ZEROPAGE          Offs=000000  Size=000000  Align=00001  Fill=0000
+    NULL              Offs=000000  Size=000000  Align=00001  Fill=0000
+../00.LIBRERIE/CC65/lib/apple2.lib(icmp.o):
+    CODE              Offs=0018E8  Size=00002E  Align=00001  Fill=0000
+    RODATA            Offs=000325  Size=000000  Align=00001  Fill=0000
+    BSS               Offs=001EFD  Size=000000  Align=00001  Fill=0000
+    DATA              Offs=000635  Size=000000  Align=00001  Fill=0000
+    ZEROPAGE          Offs=000000  Size=000000  Align=00001  Fill=0000
+    NULL              Offs=000000  Size=000000  Align=00001  Fill=0000
+../00.LIBRERIE/CC65/lib/apple2.lib(incax1.o):
+    CODE              Offs=001916  Size=000007  Align=00001  Fill=0000
+    RODATA            Offs=000325  Size=000000  Align=00001  Fill=0000
+    BSS               Offs=001EFD  Size=000000  Align=00001  Fill=0000
+    DATA              Offs=000635  Size=000000  Align=00001  Fill=0000
+    ZEROPAGE          Offs=000000  Size=000000  Align=00001  Fill=0000
+    NULL              Offs=000000  Size=000000  Align=00001  Fill=0000
+../00.LIBRERIE/CC65/lib/apple2.lib(incax2.o):
+    CODE              Offs=00191D  Size=000007  Align=00001  Fill=0000
+    RODATA            Offs=000325  Size=000000  Align=00001  Fill=0000
+    BSS               Offs=001EFD  Size=000000  Align=00001  Fill=0000
+    DATA              Offs=000635  Size=000000  Align=00001  Fill=0000
+    ZEROPAGE          Offs=000000  Size=000000  Align=00001  Fill=0000
+    NULL              Offs=000000  Size=000000  Align=00001  Fill=0000
+../00.LIBRERIE/CC65/lib/apple2.lib(incax3.o):
+    CODE              Offs=001924  Size=000005  Align=00001  Fill=0000
+    RODATA            Offs=000325  Size=000000  Align=00001  Fill=0000
+    BSS               Offs=001EFD  Size=000000  Align=00001  Fill=0000
+    DATA              Offs=000635  Size=000000  Align=00001  Fill=0000
+    ZEROPAGE          Offs=000000  Size=000000  Align=00001  Fill=0000
+    NULL              Offs=000000  Size=000000  Align=00001  Fill=0000
+../00.LIBRERIE/CC65/lib/apple2.lib(incaxy.o):
+    CODE              Offs=001929  Size=00000B  Align=00001  Fill=0000
+    RODATA            Offs=000325  Size=000000  Align=00001  Fill=0000
+    BSS               Offs=001EFD  Size=000000  Align=00001  Fill=0000
+    DATA              Offs=000635  Size=000000  Align=00001  Fill=0000
+    ZEROPAGE          Offs=000000  Size=000000  Align=00001  Fill=0000
+    NULL              Offs=000000  Size=000000  Align=00001  Fill=0000
+../00.LIBRERIE/CC65/lib/apple2.lib(incsp1.o):
+    CODE              Offs=001934  Size=000007  Align=00001  Fill=0000
+    RODATA            Offs=000325  Size=000000  Align=00001  Fill=0000
+    BSS               Offs=001EFD  Size=000000  Align=00001  Fill=0000
+    DATA              Offs=000635  Size=000000  Align=00001  Fill=0000
+    ZEROPAGE          Offs=000000  Size=000000  Align=00001  Fill=0000
+    NULL              Offs=000000  Size=000000  Align=00001  Fill=0000
+../00.LIBRERIE/CC65/lib/apple2.lib(incsp2.o):
+    CODE              Offs=00193B  Size=000016  Align=00001  Fill=0000
+    RODATA            Offs=000325  Size=000000  Align=00001  Fill=0000
+    BSS               Offs=001EFD  Size=000000  Align=00001  Fill=0000
+    DATA              Offs=000635  Size=000000  Align=00001  Fill=0000
+    ZEROPAGE          Offs=000000  Size=000000  Align=00001  Fill=0000
+    NULL              Offs=000000  Size=000000  Align=00001  Fill=0000
+../00.LIBRERIE/CC65/lib/apple2.lib(incsp3.o):
+    CODE              Offs=001951  Size=000005  Align=00001  Fill=0000
+    RODATA            Offs=000325  Size=000000  Align=00001  Fill=0000
+    BSS               Offs=001EFD  Size=000000  Align=00001  Fill=0000
+    DATA              Offs=000635  Size=000000  Align=00001  Fill=0000
+    ZEROPAGE          Offs=000000  Size=000000  Align=00001  Fill=0000
+    NULL              Offs=000000  Size=000000  Align=00001  Fill=0000
+../00.LIBRERIE/CC65/lib/apple2.lib(incsp4.o):
+    CODE              Offs=001956  Size=000005  Align=00001  Fill=0000
+    RODATA            Offs=000325  Size=000000  Align=00001  Fill=0000
+    BSS               Offs=001EFD  Size=000000  Align=00001  Fill=0000
+    DATA              Offs=000635  Size=000000  Align=00001  Fill=0000
+    ZEROPAGE          Offs=000000  Size=000000  Align=00001  Fill=0000
+    NULL              Offs=000000  Size=000000  Align=00001  Fill=0000
+../00.LIBRERIE/CC65/lib/apple2.lib(incsp6.o):
+    CODE              Offs=00195B  Size=000005  Align=00001  Fill=0000
+    RODATA            Offs=000325  Size=000000  Align=00001  Fill=0000
+    BSS               Offs=001EFD  Size=000000  Align=00001  Fill=0000
+    DATA              Offs=000635  Size=000000  Align=00001  Fill=0000
+    ZEROPAGE          Offs=000000  Size=000000  Align=00001  Fill=0000
+    NULL              Offs=000000  Size=000000  Align=00001  Fill=0000
+../00.LIBRERIE/CC65/lib/apple2.lib(incsp8.o):
+    CODE              Offs=001960  Size=000005  Align=00001  Fill=0000
+    RODATA            Offs=000325  Size=000000  Align=00001  Fill=0000
+    BSS               Offs=001EFD  Size=000000  Align=00001  Fill=0000
+    DATA              Offs=000635  Size=000000  Align=00001  Fill=0000
+    ZEROPAGE          Offs=000000  Size=000000  Align=00001  Fill=0000
+    NULL              Offs=000000  Size=000000  Align=00001  Fill=0000
+../00.LIBRERIE/CC65/lib/apple2.lib(ldaxi.o):
+    CODE              Offs=001965  Size=00000D  Align=00001  Fill=0000
+    RODATA            Offs=000325  Size=000000  Align=00001  Fill=0000
+    BSS               Offs=001EFD  Size=000000  Align=00001  Fill=0000
+    DATA              Offs=000635  Size=000000  Align=00001  Fill=0000
+    ZEROPAGE          Offs=000000  Size=000000  Align=00001  Fill=0000
+    NULL              Offs=000000  Size=000000  Align=00001  Fill=0000
+../00.LIBRERIE/CC65/lib/apple2.lib(ldaxsp.o):
+    CODE              Offs=001972  Size=000009  Align=00001  Fill=0000
+    RODATA            Offs=000325  Size=000000  Align=00001  Fill=0000
+    BSS               Offs=001EFD  Size=000000  Align=00001  Fill=0000
+    DATA              Offs=000635  Size=000000  Align=00001  Fill=0000
+    ZEROPAGE          Offs=000000  Size=000000  Align=00001  Fill=0000
+    NULL              Offs=000000  Size=000000  Align=00001  Fill=0000
+../00.LIBRERIE/CC65/lib/apple2.lib(ldeaxysp.o):
+    CODE              Offs=00197B  Size=000013  Align=00001  Fill=0000
+    RODATA            Offs=000325  Size=000000  Align=00001  Fill=0000
+    BSS               Offs=001EFD  Size=000000  Align=00001  Fill=0000
+    DATA              Offs=000635  Size=000000  Align=00001  Fill=0000
+    ZEROPAGE          Offs=000000  Size=000000  Align=00001  Fill=0000
+    NULL              Offs=000000  Size=000000  Align=00001  Fill=0000
+../00.LIBRERIE/CC65/lib/apple2.lib(lneg.o):
+    CODE              Offs=00198E  Size=00001E  Align=00001  Fill=0000
+    RODATA            Offs=000325  Size=000000  Align=00001  Fill=0000
+    BSS               Offs=001EFD  Size=000000  Align=00001  Fill=0000
+    DATA              Offs=000635  Size=000000  Align=00001  Fill=0000
+    ZEROPAGE          Offs=000000  Size=000000  Align=00001  Fill=0000
+    NULL              Offs=000000  Size=000000  Align=00001  Fill=0000
+../00.LIBRERIE/CC65/lib/apple2.lib(lpush.o):
+    CODE              Offs=0019AC  Size=000021  Align=00001  Fill=0000
+    RODATA            Offs=000325  Size=000000  Align=00001  Fill=0000
+    BSS               Offs=001EFD  Size=000000  Align=00001  Fill=0000
+    DATA              Offs=000635  Size=000000  Align=00001  Fill=0000
+    ZEROPAGE          Offs=000000  Size=000000  Align=00001  Fill=0000
+    NULL              Offs=000000  Size=000000  Align=00001  Fill=0000
+../00.LIBRERIE/CC65/lib/apple2.lib(ltoa.o):
+    CODE              Offs=0019CD  Size=000095  Align=00001  Fill=0000
+    RODATA            Offs=000325  Size=000000  Align=00001  Fill=0000
+    BSS               Offs=001EFD  Size=000000  Align=00001  Fill=0000
+    DATA              Offs=000635  Size=000000  Align=00001  Fill=0000
+    ZEROPAGE          Offs=000000  Size=000000  Align=00001  Fill=0000
+    NULL              Offs=000000  Size=000000  Align=00001  Fill=0000
+../00.LIBRERIE/CC65/lib/apple2.lib(makebool.o):
+    CODE              Offs=001A62  Size=00002C  Align=00001  Fill=0000
+    RODATA            Offs=000325  Size=000000  Align=00001  Fill=0000
+    BSS               Offs=001EFD  Size=000000  Align=00001  Fill=0000
+    DATA              Offs=000635  Size=000000  Align=00001  Fill=0000
+    ZEROPAGE          Offs=000000  Size=000000  Align=00001  Fill=0000
+    NULL              Offs=000000  Size=000000  Align=00001  Fill=0000
+../00.LIBRERIE/CC65/lib/apple2.lib(mli.o):
+    CODE              Offs=001A8E  Size=000000  Align=00001  Fill=0000
+    RODATA            Offs=000325  Size=000000  Align=00001  Fill=0000
+    BSS               Offs=001EFD  Size=000012  Align=00001  Fill=0000
+    DATA              Offs=000635  Size=000024  Align=00001  Fill=0000
+    ZEROPAGE          Offs=000000  Size=000000  Align=00001  Fill=0000
+    NULL              Offs=000000  Size=000000  Align=00001  Fill=0000
+../00.LIBRERIE/CC65/lib/apple2.lib(mul.o):
+    CODE              Offs=001A8E  Size=000045  Align=00001  Fill=0000
+    RODATA            Offs=000325  Size=000000  Align=00001  Fill=0000
+    BSS               Offs=001F0F  Size=000000  Align=00001  Fill=0000
+    DATA              Offs=000659  Size=000000  Align=00001  Fill=0000
+    ZEROPAGE          Offs=000000  Size=000000  Align=00001  Fill=0000
+    NULL              Offs=000000  Size=000000  Align=00001  Fill=0000
+../00.LIBRERIE/CC65/lib/apple2.lib(mul8.o):
+    CODE              Offs=001AD3  Size=00003A  Align=00001  Fill=0000
+    RODATA            Offs=000325  Size=000000  Align=00001  Fill=0000
+    BSS               Offs=001F0F  Size=000000  Align=00001  Fill=0000
+    DATA              Offs=000659  Size=000000  Align=00001  Fill=0000
+    ZEROPAGE          Offs=000000  Size=000000  Align=00001  Fill=0000
+    NULL              Offs=000000  Size=000000  Align=00001  Fill=0000
+../00.LIBRERIE/CC65/lib/apple2.lib(oserror.o):
+    CODE              Offs=001B0D  Size=000016  Align=00001  Fill=0000
+    RODATA            Offs=000325  Size=000032  Align=00001  Fill=0000
+    BSS               Offs=001F0F  Size=000000  Align=00001  Fill=0000
+    DATA              Offs=000659  Size=000000  Align=00001  Fill=0000
+    ZEROPAGE          Offs=000000  Size=000000  Align=00001  Fill=0000
+    NULL              Offs=000000  Size=000000  Align=00001  Fill=0000
+../00.LIBRERIE/CC65/lib/apple2.lib(popptr1.o):
+    CODE              Offs=001B23  Size=00000E  Align=00001  Fill=0000
+    RODATA            Offs=000357  Size=000000  Align=00001  Fill=0000
+    BSS               Offs=001F0F  Size=000000  Align=00001  Fill=0000
+    DATA              Offs=000659  Size=000000  Align=00001  Fill=0000
+    ZEROPAGE          Offs=000000  Size=000000  Align=00001  Fill=0000
+    NULL              Offs=000000  Size=000000  Align=00001  Fill=0000
+../00.LIBRERIE/CC65/lib/apple2.lib(printf.o):
+    CODE              Offs=001B31  Size=000033  Align=00001  Fill=0000
+    RODATA            Offs=000357  Size=000000  Align=00001  Fill=0000
+    BSS               Offs=001F0F  Size=000001  Align=00001  Fill=0000
+    DATA              Offs=000659  Size=000000  Align=00001  Fill=0000
+    ZEROPAGE          Offs=000000  Size=000000  Align=00001  Fill=0000
+    NULL              Offs=000000  Size=000000  Align=00001  Fill=0000
+../00.LIBRERIE/CC65/lib/apple2.lib(push1.o):
+    CODE              Offs=001B64  Size=000005  Align=00001  Fill=0000
+    RODATA            Offs=000357  Size=000000  Align=00001  Fill=0000
+    BSS               Offs=001F10  Size=000000  Align=00001  Fill=0000
+    DATA              Offs=000659  Size=000000  Align=00001  Fill=0000
+    ZEROPAGE          Offs=000000  Size=000000  Align=00001  Fill=0000
+    NULL              Offs=000000  Size=000000  Align=00001  Fill=0000
+../00.LIBRERIE/CC65/lib/apple2.lib(pusha.o):
+    CODE              Offs=001B69  Size=000016  Align=00001  Fill=0000
+    RODATA            Offs=000357  Size=000000  Align=00001  Fill=0000
+    BSS               Offs=001F10  Size=000000  Align=00001  Fill=0000
+    DATA              Offs=000659  Size=000000  Align=00001  Fill=0000
+    ZEROPAGE          Offs=000000  Size=000000  Align=00001  Fill=0000
+    NULL              Offs=000000  Size=000000  Align=00001  Fill=0000
+../00.LIBRERIE/CC65/lib/apple2.lib(pushax.o):
+    CODE              Offs=001B7F  Size=00001A  Align=00001  Fill=0000
+    RODATA            Offs=000357  Size=000000  Align=00001  Fill=0000
+    BSS               Offs=001F10  Size=000000  Align=00001  Fill=0000
+    DATA              Offs=000659  Size=000000  Align=00001  Fill=0000
+    ZEROPAGE          Offs=000000  Size=000000  Align=00001  Fill=0000
+    NULL              Offs=000000  Size=000000  Align=00001  Fill=0000
+../00.LIBRERIE/CC65/lib/apple2.lib(pushw.o):
+    CODE              Offs=001B99  Size=00000F  Align=00001  Fill=0000
+    RODATA            Offs=000357  Size=000000  Align=00001  Fill=0000
+    BSS               Offs=001F10  Size=000000  Align=00001  Fill=0000
+    DATA              Offs=000659  Size=000000  Align=00001  Fill=0000
+    ZEROPAGE          Offs=000000  Size=000000  Align=00001  Fill=0000
+    NULL              Offs=000000  Size=000000  Align=00001  Fill=0000
+../00.LIBRERIE/CC65/lib/apple2.lib(pushwsp.o):
+    CODE              Offs=001BA8  Size=00001C  Align=00001  Fill=0000
+    RODATA            Offs=000357  Size=000000  Align=00001  Fill=0000
+    BSS               Offs=001F10  Size=000000  Align=00001  Fill=0000
+    DATA              Offs=000659  Size=000000  Align=00001  Fill=0000
+    ZEROPAGE          Offs=000000  Size=000000  Align=00001  Fill=0000
+    NULL              Offs=000000  Size=000000  Align=00001  Fill=0000
+../00.LIBRERIE/CC65/lib/apple2.lib(rwcommon.o):
+    CODE              Offs=001BC4  Size=00003D  Align=00001  Fill=0000
+    RODATA            Offs=000357  Size=000000  Align=00001  Fill=0000
+    BSS               Offs=001F10  Size=000000  Align=00001  Fill=0000
+    DATA              Offs=000659  Size=000000  Align=00001  Fill=0000
+    ZEROPAGE          Offs=000000  Size=000000  Align=00001  Fill=0000
+    NULL              Offs=000000  Size=000000  Align=00001  Fill=0000
+../00.LIBRERIE/CC65/lib/apple2.lib(staxsp.o):
+    CODE              Offs=001C01  Size=00000B  Align=00001  Fill=0000
+    RODATA            Offs=000357  Size=000000  Align=00001  Fill=0000
+    BSS               Offs=001F10  Size=000000  Align=00001  Fill=0000
+    DATA              Offs=000659  Size=000000  Align=00001  Fill=0000
+    ZEROPAGE          Offs=000000  Size=000000  Align=00001  Fill=0000
+    NULL              Offs=000000  Size=000000  Align=00001  Fill=0000
+../00.LIBRERIE/CC65/lib/apple2.lib(staxspi.o):
+    CODE              Offs=001C0C  Size=00001B  Align=00001  Fill=0000
+    RODATA            Offs=000357  Size=000000  Align=00001  Fill=0000
+    BSS               Offs=001F10  Size=000000  Align=00001  Fill=0000
+    DATA              Offs=000659  Size=000000  Align=00001  Fill=0000
+    ZEROPAGE          Offs=000000  Size=000000  Align=00001  Fill=0000
+    NULL              Offs=000000  Size=000000  Align=00001  Fill=0000
+../00.LIBRERIE/CC65/lib/apple2.lib(strlen.o):
+    CODE              Offs=001C27  Size=000016  Align=00001  Fill=0000
+    RODATA            Offs=000357  Size=000000  Align=00001  Fill=0000
+    BSS               Offs=001F10  Size=000000  Align=00001  Fill=0000
+    DATA              Offs=000659  Size=000000  Align=00001  Fill=0000
+    ZEROPAGE          Offs=000000  Size=000000  Align=00001  Fill=0000
+    NULL              Offs=000000  Size=000000  Align=00001  Fill=0000
+../00.LIBRERIE/CC65/lib/apple2.lib(strlower.o):
+    CODE              Offs=001C3D  Size=000027  Align=00001  Fill=0000
+    RODATA            Offs=000357  Size=000000  Align=00001  Fill=0000
+    BSS               Offs=001F10  Size=000000  Align=00001  Fill=0000
+    DATA              Offs=000659  Size=000000  Align=00001  Fill=0000
+    ZEROPAGE          Offs=000000  Size=000000  Align=00001  Fill=0000
+    NULL              Offs=000000  Size=000000  Align=00001  Fill=0000
+../00.LIBRERIE/CC65/lib/apple2.lib(subysp.o):
+    CODE              Offs=001C64  Size=00000D  Align=00001  Fill=0000
+    RODATA            Offs=000357  Size=000000  Align=00001  Fill=0000
+    BSS               Offs=001F10  Size=000000  Align=00001  Fill=0000
+    DATA              Offs=000659  Size=000000  Align=00001  Fill=0000
+    ZEROPAGE          Offs=000000  Size=000000  Align=00001  Fill=0000
+    NULL              Offs=000000  Size=000000  Align=00001  Fill=0000
+../00.LIBRERIE/CC65/lib/apple2.lib(udiv.o):
+    CODE              Offs=001C71  Size=00004F  Align=00001  Fill=0000
+    RODATA            Offs=000357  Size=000000  Align=00001  Fill=0000
+    BSS               Offs=001F10  Size=000000  Align=00001  Fill=0000
+    DATA              Offs=000659  Size=000000  Align=00001  Fill=0000
+    ZEROPAGE          Offs=000000  Size=000000  Align=00001  Fill=0000
+    NULL              Offs=000000  Size=000000  Align=00001  Fill=0000
+../00.LIBRERIE/CC65/lib/apple2.lib(uppercasemask.o):
+    CODE              Offs=001CC0  Size=000000  Align=00001  Fill=0000
+    RODATA            Offs=000357  Size=000000  Align=00001  Fill=0000
+    BSS               Offs=001F10  Size=000000  Align=00001  Fill=0000
+    DATA              Offs=000659  Size=000001  Align=00001  Fill=0000
+    ZEROPAGE          Offs=000000  Size=000000  Align=00001  Fill=0000
+    NULL              Offs=000000  Size=000000  Align=00001  Fill=0000
+../00.LIBRERIE/CC65/lib/apple2.lib(vfprintf.o):
+    CODE              Offs=001CC0  Size=000061  Align=00001  Fill=0000
+    RODATA            Offs=000357  Size=000000  Align=00001  Fill=0000
+    BSS               Offs=001F10  Size=000000  Align=00001  Fill=0000
+    DATA              Offs=00065A  Size=000008  Align=00001  Fill=0000
+    ZEROPAGE          Offs=000000  Size=000000  Align=00001  Fill=0000
+    NULL              Offs=000000  Size=000000  Align=00001  Fill=0000
+../00.LIBRERIE/CC65/lib/apple2.lib(write.o):
+    CODE              Offs=001D21  Size=000071  Align=00001  Fill=0000
+    RODATA            Offs=000357  Size=000000  Align=00001  Fill=0000
+    BSS               Offs=001F10  Size=000000  Align=00001  Fill=0000
+    DATA              Offs=000662  Size=000000  Align=00001  Fill=0000
+    ZEROPAGE          Offs=000000  Size=000000  Align=00001  Fill=0000
+    NULL              Offs=000000  Size=000000  Align=00001  Fill=0000
+../00.LIBRERIE/CC65/lib/apple2.lib(zerobss.o):
+    CODE              Offs=001D92  Size=000023  Align=00001  Fill=0000
+    RODATA            Offs=000357  Size=000000  Align=00001  Fill=0000
+    BSS               Offs=001F10  Size=000000  Align=00001  Fill=0000
+    DATA              Offs=000662  Size=000000  Align=00001  Fill=0000
+    ZEROPAGE          Offs=000000  Size=000000  Align=00001  Fill=0000
+    NULL              Offs=000000  Size=000000  Align=00001  Fill=0000
+../00.LIBRERIE/CC65/lib/apple2.lib(zeropage.o):
+    CODE              Offs=001DB5  Size=000000  Align=00001  Fill=0000
+    RODATA            Offs=000357  Size=000000  Align=00001  Fill=0000
+    BSS               Offs=001F10  Size=000000  Align=00001  Fill=0000
+    DATA              Offs=000662  Size=000000  Align=00001  Fill=0000
+    ZEROPAGE          Offs=000000  Size=00001A  Align=00001  Fill=0000
+    NULL              Offs=000000  Size=000000  Align=00001  Fill=0000
+
+
+Segment list:
+-------------
+Name                   Start     End    Size  Align
+----------------------------------------------------
+NULL                  000000  000000  000000  00001
+ZEROPAGE              000080  000099  00001A  00001
+EXEHDR                0007C9  000802  00003A  00001
+STARTUP               000803  00080E  00000C  00001
+LOWCODE               00080F  000818  00000A  00001
+CODE                  000819  0025CD  001DB5  00001
+RODATA                0025CE  002924  000357  00001
+DATA                  002925  002F86  000662  00001
+INIT                  002F87  002FA3  00001D  00001
+BSS                   002FA4  004EB3  001F10  00001
+ONCE                  002FA4  00302F  00008C  00001
+
+
+Exports list by name:
+---------------------
+COUT                      00080F RLA    __BSS_LOAD__              002FA4  LA    
+__BSS_RUN__               002FA4 RLA    __BSS_SIZE__              001F10 REA    
+__CONSTRUCTOR_COUNT__     000001 REA    __CONSTRUCTOR_TABLE__     00302E RLA    
+__DESTRUCTOR_COUNT__      000000 REA    __DESTRUCTOR_TABLE__      002925 RLA    
+__EXEHDR__                000001 REA    __FILETYPE__              000006 REA    
+__HIMEM__                 009600 REA    __LCADDR__                00D400 REA    
+__LCSIZE__                000C00 REA    __LC_FILEOFFS__           000000  EA    
+__LC_LAST__               00D400 RLA    __LC_SIZE__               000C00  EA    
+__LC_START__              00D400 RLA    __MAIN_FILEOFFS__         00003A  EA    
+__MAIN_LAST__             003030 RLA    __MAIN_SIZE__             008DFD  EA    
+__MAIN_START__            000803 RLA    __ONCE_LOAD__             002FA4 RLA    
+__ONCE_RUN__              002FA4 RLA    __ONCE_SIZE__             00008C REA    
+__STACKSIZE__             000800 REA    __STARTUP__               000001 REA    
+__ZP_FILEOFFS__           000000  EA    __ZP_LAST__               00009A  LA    
+__ZP_SIZE__               00001A  EA    __ZP_START__              000080  LA    
+___directerrno            001BDB RLA    ___errno                  004E9D RLA    
+___mappederrno            001BE5 RLA    ___oserror                004E71 RLA    
+___osmaperrno             002326 RLA    ___seterrno               001F97 RLA    
+__argc                    002F0D  LA    __argv                    002F0F  LA    
+__ctype                   002868 RLA    __ctypeidx                002873 RLA    
+__dos_type                002F39 RLA    __filetab                 002EEC  LA    
+__hextab                  002845 RLA    __longminstr              002855 RLA    
+__printf                  001CE6 RLA    _buffer                   002FA4  LA    
+_cfg_dns                  002957  LA    _cfg_gateway              002953 RLA    
+_cfg_ip                   00294B RLA    _cfg_mac                  002945  LA    
+_cfg_netmask              00294F RLA    _check_uthernet           000FCF RLA    
+_cs8900a                  002969 RLA    _cs8900a_name             0027E3 RLA    
+_dhcp_init                001531 RLA    _dhcp_server              00295B  LA    
+_exit                     001FF1 RLA    _fwrite                   002088 RLA    
+_gateway                  003FAE  LA    _ip65_error               004C1B  LA    
+_ip65_init                001629 RLA    _ip65_process             001631  LA    
+_ip65_random_word         0015CA  LA    _ip65_strerror            001539  LA    
+_ip_addr                  003FA6  LA    _lan91c96                 002AE5 RLA    
+_lan91c96_name            002812 RLA    _ltoa                     0021FE RLA    
+_main                     00086D RLA    _netmask                  003FAA  LA    
+_print_ip                 000F6B RLA    _printf                   00234A RLA    
+_server                   002925  LA    _slot                     003FA4  LA    
+_stderr                   002F08  LA    _stdin                    002F04  LA    
+_stdout                   002F06 RLA    _stream_connect           000DF7 RLA    
+_stream_connected         000E72 RLA    _stream_data_commit       000CE9 RLA    
+_stream_data_request      000BF4 RLA    _stream_disconnect        000E7E  LA    
+_stream_init              000D45 RLA    _strlen                   002440 RLA    
+_strlen_ptr4              002444  LA    _strlower                 002456 RLA    
+_strlwr                   002456  LA    _uint32_to_bytes          000819  LA    
+_ultoa                    00223F RLA    _vfprintf                 002511 RLA    
+_w5100                    002C70 RLA    _w5100_name               002839 RLA    
+_write                    00253A RLA    abort_key                 002EEB  LA    
+abort_key_default         00009B  EZ    abort_key_disable         000080  EZ    
+ac_size                   000008  EZ    addeq0sp                  001FA0  LA    
+addeqysp                  001FA2 RLA    addysp                    001FB2 RLA    
+addysp1                   001FB1  LA    arp_add                   001200  LA    
+arp_cache                 003FD3  LA    arp_calculate_gateway_mask 00107E RLA    
+arp_init                  001074 RLA    arp_ip                    003FCF RLA    
+arp_lookup                0010A3 RLA    arp_mac                   003FC9 RLA    
+arp_process               001182 RLA    axlong                    001FBF RLA    
+axulong                   001FC5 RLA    bnega                     001FD0  LA    
+bnegax                    001FCC RLA    booleq                    002281 RLA    
+boolge                    002292  LA    boolgt                    002290  LA    
+boolle                    002288  LA    boollt                    00228A  LA    
+boolne                    00227B  LA    booluge                   0022A2  LA    
+boolugt                   0022A0  LA    boolule                   002298  LA    
+boolult                   00229A  LA    callmain                  001FDA RLA    
+callmli                   002F5A RLA    cfg_dns                   002957 RLA    
+cfg_gateway               002953 RLA    cfg_ip                    00294B RLA    
+cfg_mac                   002945 RLA    cfg_netmask               00294F RLA    
+cfg_tftp_server           00295F  LA    check_for_abort_key       001BCC RLA    
+condes                    002F11  LA    copy_dest                 00008A REZ    
+copy_src                  000088 REZ    copymem                   001276 RLA    
+ctypemask                 00203A  LA    ctypemaskdirect           00203E RLA    
+decsp4                    002058 RLA    decsp6                    002065 RLA    
+dhcp_init                 00129D RLA    dhcp_server               00295B RLA    
+dhcp_state                00402F  LA    done                      002F36 RLA    
+donelib                   00201C RLA    eth_data                  00000E REZ    
+eth_dest                  000000 REZ    eth_init                  001B63 RLA    
+eth_inp                   00403C RLA    eth_inp_len               004038 RLA    
+eth_name                  004E5A  LA    eth_outp                  00462A RLA    
+eth_outp_len              00403A RLA    eth_proto_arp             000006 REZ    
+eth_proto_ip              000000 REZ    eth_rx                    002EC4 RLA    
+eth_set_broadcast_dest    0015AA RLA    eth_set_my_mac_src        0015B5 RLA    
+eth_set_proto             0015C1 RLA    eth_src                   000006 REZ    
+eth_tx                    002ED8 RLA    eth_type                  00000C  EZ    
+fdtab                     002F3A RLA    getfd                     002072 RLA    
+icmp_add_listener         001A7E  LA    icmp_callback             004E51  LA    
+icmp_cksum                000002  EZ    icmp_code                 000001  EZ    
+icmp_data                 000004  EZ    icmp_init                 0019D2 RLA    
+icmp_inp                  00405E  EA    icmp_outp                 00464C  EA    
+icmp_process              0019D8 RLA    icmp_remove_listener      001AAA  LA    
+icmp_type                 000000  EZ    incax1                    00212F RLA    
+incax2                    002136 RLA    incax3                    00213D RLA    
+incax4                    002142  LA    incaxy                    002144 RLA    
+incsp1                    00214D RLA    incsp2                    00215C RLA    
+incsp3                    00216A RLA    incsp4                    00216F RLA    
+incsp6                    002174 RLA    incsp8                    002179 RLA    
+initdostype               00301A  LAI   initlib                   002FA4 RLA    
+ip65_ctr                  004C18  LA    ip65_ctr_arp              004C19  LA    
+ip65_ctr_ip               004C1A  LA    ip65_error                004C1B RLA    
+ip65_init                 0015F1 RLA    ip65_process              001607 RLA    
+ip65_random_word          0015CA RLA    ip65_strerror             001539 RLA    
+ip_broadcast              004E49 RLA    ip_calc_cksum             00192E RLA    
+ip_cksum_ptr              00008A REZ    ip_create_packet          00189A RLA    
+ip_data                   000014 REZ    ip_dest                   000010 REZ    
+ip_frag                   000006  EZ    ip_header_cksum           00000A REZ    
+ip_id                     000004 REZ    ip_init                   0017C7 RLA    
+ip_inp                    00404A REA    ip_len                    000002 REZ    
+ip_outp                   004638 REA    ip_process                0017DC RLA    
+ip_proto                  000009 REZ    ip_proto_icmp             000001  EZ    
+ip_proto_tcp              000006  EZ    ip_proto_udp              000011 REZ    
+ip_send                   0018C7 RLA    ip_src                    00000C REZ    
+ip_tos                    000001  EZ    ip_ttl                    000008  EZ    
+ip_ver_ihl                000000  EZ    ldax0sp                   00218B RLA    
+ldaxi                     00217E RLA    ldaxidx                   002180  LA    
+ldaxysp                   00218D RLA    ldeax0sp                  002194  LA    
+ldeaxysp                  002196 RLA    mliparam                  004EA1 RLA    
+mul8x16                   0022EE RLA    mul8x16a                  0022F8 RLA    
+negeax                    0021A7 RLA    output_buffer             004C1E RLA    
+popax                     002154 RLA    popptr1                   00233C RLA    
+ptr1                      000088 RLZ    ptr2                      00008A RLZ    
+ptr3                      00008C RLZ    ptr4                      00008E RLZ    
+push0                     002398  LA    push0ax                   0021C8  LA    
+push1                     00237D RLA    pusha                     002386 RLA    
+pusha0                    00239A RLA    pusha0sp                  002382  LA    
+pushax                    00239C RLA    pushaysp                  002384  LA    
+pusheax                   0021CE RLA    pushl0                    0021C5  LA    
+pushptr1idx               0023B8  LA    pushw                     0023B2 RLA    
+pushw0sp                  0023C1  LA    pushwidx                  0023B4  LA    
+pushwysp                  0023C3 RLA    regbank                   000094 RLZ    
+regsave                   000084  LZ    reset                     002028 RLA    
+return                    002033  LA    rvsave                    002FA1 RLA    
+rwcommon                  0023EA RLA    rwepilog                  00240D RLA    
+rwprolog                  0023DD RLA    sp                        000080 RLZ    
+sreg                      000082 RLZ    stax0sp                   00241A RLA    
+staxspidx                 002425 RLA    staxysp                   00241C  LA    
+subysp                    00247D RLA    timer_init                001B9E RLA    
+timer_read                001BA9 RLA    timer_seconds             001BC9  LA    
+timer_timeout             001639 RLA    tmp1                      000090 RLZ    
+tmp2                      000091 RLZ    tmp3                      000092 RLZ    
+tmp4                      000093 RLZ    tosicmp                   002103 RLA    
+tosicmp0                  002101  LA    tosmula0                  0022EC  LA    
+tosmulax                  0022A7  LA    tosudiva0                 00248A  LA    
+tosudivax                 00248C RLA    tosumula0                 0022EC  LA    
+tosumulax                 0022A7 RLA    udiv16                    00249B  LA    
+udp_add_listener          001684 RLA    udp_callback              004E26 RLA    
+udp_cksum                 000006  EZ    udp_data                  000008 REZ    
+udp_dest_port             000002  EZ    udp_init                  001651 RLA    
+udp_inp                   00405E REA    udp_len                   000004  EZ    
+udp_outp                  00464C  EA    udp_process               001657 RLA    
+udp_remove_listener       0016CA RLA    udp_send                  001716 RLA    
+udp_send_dest             004E28 RLA    udp_send_dest_port        004E2E RLA    
+udp_send_internal         00172B  LA    udp_send_len              004E30 RLA    
+udp_send_src_port         004E2C RLA    udp_src_port              000000  EZ    
+uppercasemask             002F7E RLA    zerobss                   0025AB RLA    
+zpsave                    002F87 RLA    
+
+
+Exports list by value:
+----------------------
+__LC_FILEOFFS__           000000  EA    icmp_type                 000000  EZ    
+eth_proto_ip              000000 REZ    __ZP_FILEOFFS__           000000  EA    
+eth_dest                  000000 REZ    udp_src_port              000000  EZ    
+__DESTRUCTOR_COUNT__      000000 REA    ip_ver_ihl                000000  EZ    
+icmp_code                 000001  EZ    ip_proto_icmp             000001  EZ    
+__EXEHDR__                000001 REA    __CONSTRUCTOR_COUNT__     000001 REA    
+ip_tos                    000001  EZ    __STARTUP__               000001 REA    
+ip_len                    000002 REZ    udp_dest_port             000002  EZ    
+icmp_cksum                000002  EZ    ip_id                     000004 REZ    
+udp_len                   000004  EZ    icmp_data                 000004  EZ    
+eth_proto_arp             000006 REZ    udp_cksum                 000006  EZ    
+eth_src                   000006 REZ    ip_frag                   000006  EZ    
+__FILETYPE__              000006 REA    ip_proto_tcp              000006  EZ    
+ac_size                   000008  EZ    ip_ttl                    000008  EZ    
+udp_data                  000008 REZ    ip_proto                  000009 REZ    
+ip_header_cksum           00000A REZ    ip_src                    00000C REZ    
+eth_type                  00000C  EZ    eth_data                  00000E REZ    
+ip_dest                   000010 REZ    ip_proto_udp              000011 REZ    
+ip_data                   000014 REZ    __ZP_SIZE__               00001A  EA    
+__MAIN_FILEOFFS__         00003A  EA    sp                        000080 RLZ    
+abort_key_disable         000080  EZ    __ZP_START__              000080  LA    
+sreg                      000082 RLZ    regsave                   000084  LZ    
+copy_src                  000088 REZ    ptr1                      000088 RLZ    
+ptr2                      00008A RLZ    copy_dest                 00008A REZ    
+ip_cksum_ptr              00008A REZ    __ONCE_SIZE__             00008C REA    
+ptr3                      00008C RLZ    ptr4                      00008E RLZ    
+tmp1                      000090 RLZ    tmp2                      000091 RLZ    
+tmp3                      000092 RLZ    tmp4                      000093 RLZ    
+regbank                   000094 RLZ    __ZP_LAST__               00009A  LA    
+abort_key_default         00009B  EZ    __STACKSIZE__             000800 REA    
+__MAIN_START__            000803 RLA    COUT                      00080F RLA    
+_uint32_to_bytes          000819  LA    _main                     00086D RLA    
+_stream_data_request      000BF4 RLA    __LC_SIZE__               000C00  EA    
+__LCSIZE__                000C00 REA    _stream_data_commit       000CE9 RLA    
+_stream_init              000D45 RLA    _stream_connect           000DF7 RLA    
+_stream_connected         000E72 RLA    _stream_disconnect        000E7E  LA    
+_print_ip                 000F6B RLA    _check_uthernet           000FCF RLA    
+arp_init                  001074 RLA    arp_calculate_gateway_mask 00107E RLA    
+arp_lookup                0010A3 RLA    arp_process               001182 RLA    
+arp_add                   001200  LA    copymem                   001276 RLA    
+dhcp_init                 00129D RLA    _dhcp_init                001531 RLA    
+_ip65_strerror            001539  LA    ip65_strerror             001539 RLA    
+eth_set_broadcast_dest    0015AA RLA    eth_set_my_mac_src        0015B5 RLA    
+eth_set_proto             0015C1 RLA    ip65_random_word          0015CA RLA    
+_ip65_random_word         0015CA  LA    ip65_init                 0015F1 RLA    
+ip65_process              001607 RLA    _ip65_init                001629 RLA    
+_ip65_process             001631  LA    timer_timeout             001639 RLA    
+udp_init                  001651 RLA    udp_process               001657 RLA    
+udp_add_listener          001684 RLA    udp_remove_listener       0016CA RLA    
+udp_send                  001716 RLA    udp_send_internal         00172B  LA    
+ip_init                   0017C7 RLA    ip_process                0017DC RLA    
+ip_create_packet          00189A RLA    ip_send                   0018C7 RLA    
+ip_calc_cksum             00192E RLA    icmp_init                 0019D2 RLA    
+icmp_process              0019D8 RLA    icmp_add_listener         001A7E  LA    
+icmp_remove_listener      001AAA  LA    eth_init                  001B63 RLA    
+timer_init                001B9E RLA    timer_read                001BA9 RLA    
+timer_seconds             001BC9  LA    check_for_abort_key       001BCC RLA    
+___directerrno            001BDB RLA    ___mappederrno            001BE5 RLA    
+__printf                  001CE6 RLA    __BSS_SIZE__              001F10 REA    
+___seterrno               001F97 RLA    addeq0sp                  001FA0  LA    
+addeqysp                  001FA2 RLA    addysp1                   001FB1  LA    
+addysp                    001FB2 RLA    axlong                    001FBF RLA    
+axulong                   001FC5 RLA    bnegax                    001FCC RLA    
+bnega                     001FD0  LA    callmain                  001FDA RLA    
+_exit                     001FF1 RLA    donelib                   00201C RLA    
+reset                     002028 RLA    return                    002033  LA    
+ctypemask                 00203A  LA    ctypemaskdirect           00203E RLA    
+decsp4                    002058 RLA    decsp6                    002065 RLA    
+getfd                     002072 RLA    _fwrite                   002088 RLA    
+tosicmp0                  002101  LA    tosicmp                   002103 RLA    
+incax1                    00212F RLA    incax2                    002136 RLA    
+incax3                    00213D RLA    incax4                    002142  LA    
+incaxy                    002144 RLA    incsp1                    00214D RLA    
+popax                     002154 RLA    incsp2                    00215C RLA    
+incsp3                    00216A RLA    incsp4                    00216F RLA    
+incsp6                    002174 RLA    incsp8                    002179 RLA    
+ldaxi                     00217E RLA    ldaxidx                   002180  LA    
+ldax0sp                   00218B RLA    ldaxysp                   00218D RLA    
+ldeax0sp                  002194  LA    ldeaxysp                  002196 RLA    
+negeax                    0021A7 RLA    pushl0                    0021C5  LA    
+push0ax                   0021C8  LA    pusheax                   0021CE RLA    
+_ltoa                     0021FE RLA    _ultoa                    00223F RLA    
+boolne                    00227B  LA    booleq                    002281 RLA    
+boolle                    002288  LA    boollt                    00228A  LA    
+boolgt                    002290  LA    boolge                    002292  LA    
+boolule                   002298  LA    boolult                   00229A  LA    
+boolugt                   0022A0  LA    booluge                   0022A2  LA    
+tosmulax                  0022A7  LA    tosumulax                 0022A7 RLA    
+tosmula0                  0022EC  LA    tosumula0                 0022EC  LA    
+mul8x16                   0022EE RLA    mul8x16a                  0022F8 RLA    
+___osmaperrno             002326 RLA    popptr1                   00233C RLA    
+_printf                   00234A RLA    push1                     00237D RLA    
+pusha0sp                  002382  LA    pushaysp                  002384  LA    
+pusha                     002386 RLA    push0                     002398  LA    
+pusha0                    00239A RLA    pushax                    00239C RLA    
+pushw                     0023B2 RLA    pushwidx                  0023B4  LA    
+pushptr1idx               0023B8  LA    pushw0sp                  0023C1  LA    
+pushwysp                  0023C3 RLA    rwprolog                  0023DD RLA    
+rwcommon                  0023EA RLA    rwepilog                  00240D RLA    
+stax0sp                   00241A RLA    staxysp                   00241C  LA    
+staxspidx                 002425 RLA    _strlen                   002440 RLA    
+_strlen_ptr4              002444  LA    _strlower                 002456 RLA    
+_strlwr                   002456  LA    subysp                    00247D RLA    
+tosudiva0                 00248A  LA    tosudivax                 00248C RLA    
+udiv16                    00249B  LA    _vfprintf                 002511 RLA    
+_write                    00253A RLA    zerobss                   0025AB RLA    
+_cs8900a_name             0027E3 RLA    _lan91c96_name            002812 RLA    
+_w5100_name               002839 RLA    __hextab                  002845 RLA    
+__longminstr              002855 RLA    __ctype                   002868 RLA    
+__ctypeidx                002873 RLA    _server                   002925  LA    
+__DESTRUCTOR_TABLE__      002925 RLA    _cfg_mac                  002945  LA    
+cfg_mac                   002945 RLA    cfg_ip                    00294B RLA    
+_cfg_ip                   00294B RLA    cfg_netmask               00294F RLA    
+_cfg_netmask              00294F RLA    _cfg_gateway              002953 RLA    
+cfg_gateway               002953 RLA    cfg_dns                   002957 RLA    
+_cfg_dns                  002957  LA    _dhcp_server              00295B  LA    
+dhcp_server               00295B RLA    cfg_tftp_server           00295F  LA    
+_cs8900a                  002969 RLA    _lan91c96                 002AE5 RLA    
+_w5100                    002C70 RLA    eth_rx                    002EC4 RLA    
+eth_tx                    002ED8 RLA    abort_key                 002EEB  LA    
+__filetab                 002EEC  LA    _stdin                    002F04  LA    
+_stdout                   002F06 RLA    _stderr                   002F08  LA    
+__argc                    002F0D  LA    __argv                    002F0F  LA    
+condes                    002F11  LA    done                      002F36 RLA    
+__dos_type                002F39 RLA    fdtab                     002F3A RLA    
+callmli                   002F5A RLA    uppercasemask             002F7E RLA    
+zpsave                    002F87 RLA    rvsave                    002FA1 RLA    
+__BSS_LOAD__              002FA4  LA    __BSS_RUN__               002FA4 RLA    
+initlib                   002FA4 RLA    __ONCE_RUN__              002FA4 RLA    
+__ONCE_LOAD__             002FA4 RLA    _buffer                   002FA4  LA    
+initdostype               00301A  LAI   __CONSTRUCTOR_TABLE__     00302E RLA    
+__MAIN_LAST__             003030 RLA    _slot                     003FA4  LA    
+_ip_addr                  003FA6  LA    _netmask                  003FAA  LA    
+_gateway                  003FAE  LA    arp_mac                   003FC9 RLA    
+arp_ip                    003FCF RLA    arp_cache                 003FD3  LA    
+dhcp_state                00402F  LA    eth_inp_len               004038 RLA    
+eth_outp_len              00403A RLA    eth_inp                   00403C RLA    
+ip_inp                    00404A REA    icmp_inp                  00405E  EA    
+udp_inp                   00405E REA    eth_outp                  00462A RLA    
+ip_outp                   004638 REA    icmp_outp                 00464C  EA    
+udp_outp                  00464C  EA    ip65_ctr                  004C18  LA    
+ip65_ctr_arp              004C19  LA    ip65_ctr_ip               004C1A  LA    
+_ip65_error               004C1B  LA    ip65_error                004C1B RLA    
+output_buffer             004C1E RLA    udp_callback              004E26 RLA    
+udp_send_dest             004E28 RLA    udp_send_src_port         004E2C RLA    
+udp_send_dest_port        004E2E RLA    udp_send_len              004E30 RLA    
+ip_broadcast              004E49 RLA    icmp_callback             004E51  LA    
+eth_name                  004E5A  LA    ___oserror                004E71 RLA    
+___errno                  004E9D RLA    mliparam                  004EA1 RLA    
+__MAIN_SIZE__             008DFD  EA    __HIMEM__                 009600 REA    
+__LC_START__              00D400 RLA    __LC_LAST__               00D400 RLA    
+__LCADDR__                00D400 REA    
+
+
+Imports list:
+-------------
+COUT (cout.o):
+    write.o                   apple2/write.s:9
+__BSS_LOAD__ ([linker generated]):
+__BSS_RUN__ ([linker generated]):
+    zerobss.o                 common/zerobss.s:8
+__BSS_SIZE__ ([linker generated]):
+    zerobss.o                 common/zerobss.s:8
+__CONSTRUCTOR_COUNT__ ([linker generated]):
+    condes.o                  runtime/condes.s:18
+__CONSTRUCTOR_TABLE__ ([linker generated]):
+    condes.o                  runtime/condes.s:18
+__DESTRUCTOR_COUNT__ ([linker generated]):
+    condes.o                  runtime/condes.s:19
+__DESTRUCTOR_TABLE__ ([linker generated]):
+    condes.o                  runtime/condes.s:19
+__EXEHDR__ (exehdr.o):
+    [linker generated]        C:\UTILITY\cc65\cfg/apple2.cfg:7
+__FILETYPE__ ([linker generated]):
+    exehdr.o                  apple2/exehdr.s:9
+__HIMEM__ ([linker generated]):
+    [linker generated]        C:\UTILITY\cc65\cfg/apple2.cfg:18
+    [linker generated]        C:\UTILITY\cc65\cfg/apple2.cfg:17
+__LCADDR__ ([linker generated]):
+    [linker generated]        C:\UTILITY\cc65\cfg/apple2.cfg:19
+__LCSIZE__ ([linker generated]):
+    [linker generated]        C:\UTILITY\cc65\cfg/apple2.cfg:19
+__LC_FILEOFFS__ ([linker generated]):
+__LC_LAST__ ([linker generated]):
+    crt0.o                    apple2/crt0.s:14
+__LC_SIZE__ ([linker generated]):
+__LC_START__ ([linker generated]):
+    crt0.o                    apple2/crt0.s:14
+__MAIN_FILEOFFS__ ([linker generated]):
+__MAIN_LAST__ ([linker generated]):
+    exehdr.o                  apple2/exehdr.s:10
+__MAIN_SIZE__ ([linker generated]):
+__MAIN_START__ ([linker generated]):
+    exehdr.o                  apple2/exehdr.s:10
+__ONCE_LOAD__ ([linker generated]):
+    crt0.o                    apple2/crt0.s:13
+__ONCE_RUN__ ([linker generated]):
+    [linker generated]        C:\UTILITY\cc65\cfg/apple2.cfg:18
+    [linker generated]        C:\UTILITY\cc65\cfg/apple2.cfg:18
+__ONCE_SIZE__ ([linker generated]):
+    crt0.o                    apple2/crt0.s:13
+__STACKSIZE__ ([linker generated]):
+    [linker generated]        C:\UTILITY\cc65\cfg/apple2.cfg:18
+__STARTUP__ (crt0.o):
+    test-client1.o            test-client1.s:13
+__ZP_FILEOFFS__ ([linker generated]):
+__ZP_LAST__ ([linker generated]):
+__ZP_SIZE__ ([linker generated]):
+__ZP_START__ ([linker generated]):
+___directerrno (_directerrno.o):
+    write.o                   /home/runner/work/cc65/cc65/asminc/errno.inc:10
+___errno (errno.o):
+    _seterrno.o               /home/runner/work/cc65/cc65/asminc/errno.inc:7
+___mappederrno (_mappederrno.o):
+    rwcommon.o                /home/runner/work/cc65/cc65/asminc/errno.inc:10
+    write.o                   /home/runner/work/cc65/cc65/asminc/errno.inc:10
+___oserror (_oserror.o):
+    rwcommon.o                /home/runner/work/cc65/cc65/asminc/errno.inc:7
+    _mappederrno.o            /home/runner/work/cc65/cc65/asminc/errno.inc:7
+    _directerrno.o            /home/runner/work/cc65/cc65/asminc/errno.inc:7
+___osmaperrno (oserror.o):
+    _mappederrno.o            /home/runner/work/cc65/cc65/asminc/errno.inc:8
+___seterrno (_seterrno.o):
+    _mappederrno.o            /home/runner/work/cc65/cc65/asminc/errno.inc:9
+    _directerrno.o            /home/runner/work/cc65/cc65/asminc/errno.inc:9
+    fwrite.o                  /home/runner/work/cc65/cc65/asminc/errno.inc:9
+__argc (callmain.o):
+__argv (callmain.o):
+__ctype (ctype.o):
+    ctypemask.o               common/ctypemask.s:23
+__ctypeidx (ctype.o):
+    ctypemask.o               common/ctypemask.s:24
+__dos_type (dosdetect.o):
+    mli.o                     apple2/mli.s:7
+__filetab (_file.o):
+__hextab (_hextab.o):
+    ltoa.o                    common/ltoa.s:10
+__longminstr (_longminstr.o):
+    ltoa.o                    common/ltoa.s:10
+__printf (_printf.o):
+    vfprintf.o                common/vfprintf.s:10
+_buffer (test-client1.o):
+_cfg_dns (config_c.o):
+_cfg_gateway (config_c.o):
+    test-client1.o            test-client1.s:18
+_cfg_ip (config_c.o):
+    test-client1.o            test-client1.s:16
+_cfg_mac (config_c.o):
+_cfg_netmask (config_c.o):
+    test-client1.o            test-client1.s:17
+_check_uthernet (pch_network.o):
+    test-client1.o            test-client1.s:20
+_cs8900a (uthernet.o):
+    a2combo.o                 ethernetcombo.s:19
+_cs8900a_name (uthernet.o):
+    a2combo.o                 ethernetcombo.s:20
+_dhcp_init (dhcp_c.o):
+    test-client1.o            test-client1.s:15
+_dhcp_server (config_c.o):
+_exit (callmain.o):
+    crt0.o                    apple2/crt0.s:11
+_fwrite (fwrite.o):
+    vfprintf.o                common/vfprintf.s:10
+_gateway (test-client1.o):
+_ip65_error (ip65_c.o):
+_ip65_init (ip65_c.o):
+    pch_network.o             build\pch_network.s:14
+_ip65_process (ip65_c.o):
+_ip65_random_word (ip65_c.o):
+_ip65_strerror (ip65_c.o):
+_ip_addr (test-client1.o):
+_lan91c96 (lancegs.o):
+    a2combo.o                 ethernetcombo.s:22
+_lan91c96_name (lancegs.o):
+    a2combo.o                 ethernetcombo.s:23
+_ltoa (ltoa.o):
+    _printf.o                 common/_printf.s:12
+_main (test-client1.o):
+    callmain.o                apple2/callmain.s:11
+_netmask (test-client1.o):
+_print_ip (pch_network.o):
+    test-client1.o            test-client1.s:19
+_printf (printf.o):
+    pch_network.o             build\pch_network.s:13
+    test-client1.o            test-client1.s:14
+_server (test-client1.o):
+_slot (test-client1.o):
+_stderr (_file.o):
+_stdin (_file.o):
+_stdout (_file.o):
+    printf.o                  common/printf.s:8
+_stream_connect (stream3.o):
+    test-client1.o            test-client1.s:24
+_stream_connected (stream3.o):
+    test-client1.o            test-client1.s:25
+_stream_data_commit (stream3.o):
+    test-client1.o            test-client1.s:22
+_stream_data_request (stream3.o):
+    test-client1.o            test-client1.s:21
+_stream_disconnect (stream3.o):
+_stream_init (stream3.o):
+    test-client1.o            test-client1.s:23
+_strlen (strlen.o):
+    _printf.o                 common/_printf.s:13
+_strlen_ptr4 (strlen.o):
+_strlower (strlower.o):
+    _printf.o                 common/_printf.s:13
+_strlwr (strlower.o):
+_uint32_to_bytes (test-client1.o):
+_ultoa (ltoa.o):
+    _printf.o                 common/_printf.s:12
+_vfprintf (vfprintf.o):
+    printf.o                  common/printf.s:8
+_w5100 (uthernet2.o):
+    a2combo.o                 ethernetcombo.s:16
+_w5100_name (uthernet2.o):
+    a2combo.o                 ethernetcombo.s:17
+_write (write.o):
+    fwrite.o                  common/fwrite.s:10
+abort_key (a2_input.o):
+abort_key_default (a2_input.o):
+abort_key_disable (a2_input.o):
+ac_size (arp.o):
+addeq0sp (addeqsp.o):
+addeqysp (addeqsp.o):
+    pch_network.o             build\pch_network.s:188
+addysp (addysp.o):
+    fwrite.o                  common/fwrite.s:11
+    printf.o                  common/printf.s:8
+    incsp8.o                  runtime/incsp8.s:8
+    incsp6.o                  runtime/incsp6.s:8
+    incsp4.o                  runtime/incsp4.s:8
+    incsp3.o                  runtime/incsp3.s:8
+    pch_network.o             build\pch_network.s:188
+addysp1 (addysp.o):
+arp_add (arp.o):
+arp_cache (arp.o):
+arp_calculate_gateway_mask (arp.o):
+    dhcp.o                    dhcp.s:26
+arp_init (arp.o):
+    ip65.o                    ip65.s:17
+arp_ip (arp.o):
+    ip.o                      ip.s:47
+arp_lookup (arp.o):
+    ip.o                      ip.s:45
+arp_mac (arp.o):
+    ip.o                      ip.s:46
+arp_process (arp.o):
+    ip65.o                    ip65.s:26
+axlong (axlong.o):
+    _printf.o                 common/_printf.s:11
+axulong (axlong.o):
+    _printf.o                 common/_printf.s:11
+bnega (bneg.o):
+bnegax (bneg.o):
+    test-client1.o            test-client1.s:525
+booleq (makebool.o):
+    stream3.o                 stream3.s:655
+boolge (makebool.o):
+boolgt (makebool.o):
+boolle (makebool.o):
+boollt (makebool.o):
+boolne (makebool.o):
+booluge (makebool.o):
+boolugt (makebool.o):
+boolule (makebool.o):
+boolult (makebool.o):
+callmain (callmain.o):
+    crt0.o                    apple2/crt0.s:12
+callmli (mli.o):
+    rwcommon.o                apple2/mli.inc:131
+    write.o                   apple2/mli.inc:131
+cfg_dns (config.o):
+    dhcp.o                    dhcp.s:24
+    config_c.o                config_c.s:14
+cfg_gateway (config.o):
+    arp.o                     arp.s:29
+    dhcp.o                    dhcp.s:23
+    config_c.o                config_c.s:13
+cfg_ip (config.o):
+    arp.o                     arp.s:27
+    ip.o                      ip.s:29
+    udp.o                     udp.s:50
+    dhcp.o                    dhcp.s:21
+    config_c.o                config_c.s:11
+cfg_mac (config.o):
+    a2combo.o                 ethernetcombo.s:25
+    eth.o                     eth.s:21
+    arp.o                     arp.s:26
+    ip.o                      ip.s:28
+    dhcp.o                    dhcp.s:20
+    config_c.o                config_c.s:10
+cfg_netmask (config.o):
+    arp.o                     arp.s:28
+    dhcp.o                    dhcp.s:22
+    config_c.o                config_c.s:12
+cfg_tftp_server (config.o):
+check_for_abort_key (a2_input.o):
+    dhcp.o                    dhcp.s:46
+condes (condes.o):
+copy_dest (copymem.o):
+    udp.o                     udp.s:48
+copy_src (copymem.o):
+    udp.o                     udp.s:47
+copymem (copymem.o):
+    udp.o                     udp.s:46
+ctypemask (ctypemask.o):
+ctypemaskdirect (ctypemask.o):
+    strlower.o                common/strlower.s:14
+decsp4 (decsp4.o):
+    lpush.o                   runtime/lpush.s:12
+decsp6 (decsp6.o):
+    _printf.o                 common/_printf.s:11
+dhcp_init (dhcp.o):
+    dhcp_c.o                  dhcp_c.s:5
+dhcp_server (config.o):
+    dhcp.o                    dhcp.s:16
+    config_c.o                config_c.s:15
+dhcp_state (dhcp.o):
+done (crt0.o):
+    callmain.o                apple2/callmain.s:11
+donelib (condes.o):
+    callmain.o                apple2/callmain.s:11
+eth_data (eth.o):
+    ip.o                      ip.s:41
+eth_dest (eth.o):
+    ip.o                      ip.s:38
+eth_init (a2combo.o):
+    ip65.o                    ip65.s:15
+eth_inp (eth_buffer.o):
+    a2combo.o                 ethernetcombo.s:11
+    arp.o                     arp.s:16
+    icmp.o                    icmp.s:46
+    ip.o                      ip.s:33
+    ip65.o                    ip65.s:21
+eth_inp_len (eth.o):
+    a2combo.o                 ethernetcombo.s:12
+    icmp.o                    icmp.s:47
+    ip.o                      ip.s:34
+eth_name (a2combo.o):
+eth_outp (eth_buffer.o):
+    a2combo.o                 ethernetcombo.s:13
+    eth.o                     eth.s:16
+    arp.o                     arp.s:18
+    icmp.o                    icmp.s:48
+    ip.o                      ip.s:35
+    ip65.o                    ip65.s:22
+eth_outp_len (eth.o):
+    a2combo.o                 ethernetcombo.s:14
+    arp.o                     arp.s:19
+    icmp.o                    icmp.s:49
+    ip.o                      ip.s:36
+eth_proto_arp (eth.o):
+    arp.o                     arp.s:24
+    ip65.o                    ip65.s:28
+eth_proto_ip (eth.o):
+    ip.o                      ip.s:42
+eth_rx (a2combo.o):
+    ip65.o                    ip65.s:23
+eth_set_broadcast_dest (eth.o):
+    arp.o                     arp.s:21
+eth_set_my_mac_src (eth.o):
+    arp.o                     arp.s:22
+eth_set_proto (eth.o):
+    arp.o                     arp.s:23
+    ip.o                      ip.s:32
+eth_src (eth.o):
+    ip.o                      ip.s:39
+eth_tx (a2combo.o):
+    arp.o                     arp.s:20
+    icmp.o                    icmp.s:45
+    ip.o                      ip.s:31
+eth_type (eth.o):
+fdtab (filedes.o):
+    write.o                   apple2/filedes.inc:13
+getfd (filedes.o):
+    rwcommon.o                apple2/filedes.inc:14
+icmp_add_listener (icmp.o):
+icmp_callback (icmp.o):
+icmp_cksum (icmp.o):
+icmp_code (icmp.o):
+icmp_data (icmp.o):
+icmp_init (icmp.o):
+    ip.o                      ip.s:49
+icmp_inp (icmp.o):
+icmp_outp (icmp.o):
+icmp_process (icmp.o):
+    ip.o                      ip.s:50
+icmp_remove_listener (icmp.o):
+icmp_type (icmp.o):
+incax1 (incax1.o):
+    test-client1.o            test-client1.s:525
+incax2 (incax2.o):
+    test-client1.o            test-client1.s:525
+incax3 (incax3.o):
+    test-client1.o            test-client1.s:525
+incax4 (incaxy.o):
+incaxy (incaxy.o):
+    incax3.o                  runtime/incax3.s:8
+incsp1 (incsp1.o):
+    stream3.o                 stream3.s:655
+incsp2 (incsp2.o):
+    popptr1.o                 runtime/popptr1.s:8
+    staxspi.o                 runtime/staxspi.s:9
+    stream3.o                 stream3.s:655
+    stream3.o                 stream3.s:655
+    stream3.o                 stream3.s:655
+incsp3 (incsp3.o):
+    stream3.o                 stream3.s:655
+    stream3.o                 stream3.s:655
+incsp4 (incsp4.o):
+    stream3.o                 stream3.s:655
+    stream3.o                 stream3.s:655
+incsp6 (incsp6.o):
+    fwrite.o                  common/fwrite.s:11
+    vfprintf.o                common/vfprintf.s:9
+    pch_network.o             build\pch_network.s:188
+    stream3.o                 stream3.s:655
+    test-client1.o            test-client1.s:525
+incsp8 (incsp8.o):
+    stream3.o                 stream3.s:655
+initdostype (dosdetect.o):
+initlib (condes.o):
+    crt0.o                    apple2/crt0.s:11
+ip65_ctr (ip65.o):
+ip65_ctr_arp (ip65.o):
+ip65_ctr_ip (ip65.o):
+ip65_error (ip65.o):
+    udp.o                     udp.s:6
+    dhcp.o                    dhcp.s:19
+    ip65_c.o                  ip65_c.s:12
+ip65_init (ip65.o):
+    ip65_c.o                  ip65_c.s:9
+ip65_process (ip65.o):
+    dhcp.o                    dhcp.s:28
+    ip65_c.o                  ip65_c.s:10
+ip65_random_word (ip65.o):
+    ip65_c.o                  ip65_c.s:11
+ip65_strerror (error.o):
+    ip65_c.o                  ip65_c.s:13
+ip_broadcast (ip.o):
+    icmp.o                    icmp.s:32
+ip_calc_cksum (ip.o):
+    icmp.o                    icmp.s:29
+    udp.o                     udp.s:31
+ip_cksum_ptr (ip.o):
+    icmp.o                    icmp.s:38
+    udp.o                     udp.s:36
+ip_create_packet (ip.o):
+    udp.o                     udp.s:33
+ip_data (ip.o):
+    icmp.o                    icmp.s:42
+    udp.o                     udp.s:40
+ip_dest (ip.o):
+    icmp.o                    icmp.s:41
+    udp.o                     udp.s:39
+ip_frag (ip.o):
+ip_header_cksum (ip.o):
+    icmp.o                    icmp.s:39
+ip_id (ip.o):
+    udp.o                     udp.s:43
+ip_init (ip.o):
+    ip65.o                    ip65.s:18
+ip_inp (ip.o):
+    icmp.o                    icmp.s:30
+    udp.o                     udp.s:34
+ip_len (ip.o):
+    udp.o                     udp.s:44
+ip_outp (ip.o):
+    icmp.o                    icmp.s:31
+    udp.o                     udp.s:35
+ip_process (ip.o):
+    ip65.o                    ip65.s:25
+ip_proto (ip.o):
+    udp.o                     udp.s:41
+ip_proto_icmp (ip.o):
+ip_proto_tcp (ip.o):
+ip_proto_udp (ip.o):
+    udp.o                     udp.s:42
+ip_send (ip.o):
+    udp.o                     udp.s:32
+ip_src (ip.o):
+    icmp.o                    icmp.s:40
+ip_tos (ip.o):
+ip_ttl (ip.o):
+ip_ver_ihl (ip.o):
+ldax0sp (ldaxsp.o):
+    stream3.o                 stream3.s:655
+    stream3.o                 stream3.s:655
+    test-client1.o            test-client1.s:525
+ldaxi (ldaxi.o):
+    stream3.o                 stream3.s:655
+    stream3.o                 stream3.s:655
+ldaxidx (ldaxi.o):
+ldaxysp (ldaxsp.o):
+    fwrite.o                  common/fwrite.s:11
+    stream3.o                 stream3.s:655
+    stream3.o                 stream3.s:655
+    stream3.o                 stream3.s:655
+    stream3.o                 stream3.s:655
+    stream3.o                 stream3.s:655
+ldeax0sp (ldeaxysp.o):
+ldeaxysp (ldeaxysp.o):
+    test-client1.o            test-client1.s:525
+mliparam (mli.o):
+    rwcommon.o                apple2/mli.inc:130
+    write.o                   apple2/mli.inc:130
+mul8x16 (mul8.o):
+    mul.o                     runtime/mul.s:8
+mul8x16a (mul8.o):
+    mul.o                     runtime/mul.s:8
+negeax (lneg.o):
+    ltoa.o                    common/ltoa.s:9
+output_buffer (output_buffer.o):
+    dhcp.o                    dhcp.s:40
+popax (incsp2.o):
+    rwcommon.o                apple2/rwcommon.s:6
+    ltoa.o                    common/ltoa.s:9
+    _printf.o                 common/_printf.s:11
+popptr1 (popptr1.o):
+    rwcommon.o                apple2/rwcommon.s:6
+    udiv.o                    runtime/udiv.s:9
+    mul8.o                    runtime/mul8.s:9
+    mul.o                     runtime/mul.s:9
+    ltoa.o                    common/ltoa.s:9
+ptr1 (zeropage.o):
+    rwcommon.o                /home/runner/work/cc65/cc65/asminc/zeropage.inc:12
+    write.o                   /home/runner/work/cc65/cc65/asminc/zeropage.inc:12
+    udiv.o                    runtime/udiv.s:10
+    strlower.o                common/strlower.s:13
+    popptr1.o                 runtime/popptr1.s:9
+    mul8.o                    runtime/mul8.s:10
+    mul.o                     runtime/mul.s:10
+    ltoa.o                    common/ltoa.s:11
+    fwrite.o                  common/fwrite.s:14
+    _printf.o                 /home/runner/work/cc65/cc65/asminc/zeropage.inc:12
+    zerobss.o                 common/zerobss.s:9
+    vfprintf.o                common/vfprintf.s:11
+    staxspi.o                 runtime/staxspi.s:10
+    pushw.o                   runtime/pushw.s:9
+    printf.o                  common/printf.s:9
+    ldaxi.o                   runtime/ldaxi.s:8
+    uthernet2.o               C:\UTILITY\cc65\asminc/zeropage.inc:12
+    lancegs.o                 C:\UTILITY\cc65\asminc/zeropage.inc:12
+    uthernet.o                C:\UTILITY\cc65\asminc/zeropage.inc:12
+    a2combo.o                 C:\UTILITY\cc65\asminc/zeropage.inc:12
+    copymem.o                 C:\UTILITY\cc65\asminc/zeropage.inc:12
+    arp.o                     C:\UTILITY\cc65\asminc/zeropage.inc:12
+    ip.o                      C:\UTILITY\cc65\asminc/zeropage.inc:12
+    pch_network.o             build\pch_network.s:11
+    stream3.o                 stream3.s:11
+    test-client1.o            test-client1.s:11
+ptr2 (zeropage.o):
+    rwcommon.o                /home/runner/work/cc65/cc65/asminc/zeropage.inc:12
+    write.o                   /home/runner/work/cc65/cc65/asminc/zeropage.inc:12
+    strlower.o                common/strlower.s:13
+    ltoa.o                    common/ltoa.s:11
+    _printf.o                 /home/runner/work/cc65/cc65/asminc/zeropage.inc:12
+    uthernet2.o               C:\UTILITY\cc65\asminc/zeropage.inc:12
+    lancegs.o                 C:\UTILITY\cc65\asminc/zeropage.inc:12
+    uthernet.o                C:\UTILITY\cc65\asminc/zeropage.inc:12
+    copymem.o                 C:\UTILITY\cc65\asminc/zeropage.inc:12
+    ip.o                      C:\UTILITY\cc65\asminc/zeropage.inc:12
+ptr3 (zeropage.o):
+    ltoa.o                    common/ltoa.s:11
+    uthernet2.o               C:\UTILITY\cc65\asminc/zeropage.inc:12
+    lancegs.o                 C:\UTILITY\cc65\asminc/zeropage.inc:12
+    uthernet.o                C:\UTILITY\cc65\asminc/zeropage.inc:12
+ptr4 (zeropage.o):
+    udiv.o                    runtime/udiv.s:10
+    strlen.o                  common/strlen.s:12
+    mul8.o                    runtime/mul8.s:10
+    mul.o                     runtime/mul.s:10
+    uthernet2.o               C:\UTILITY\cc65\asminc/zeropage.inc:12
+    uthernet.o                C:\UTILITY\cc65\asminc/zeropage.inc:12
+push0 (pushax.o):
+push0ax (lpush.o):
+push1 (push1.o):
+    _printf.o                 common/_printf.s:11
+    vfprintf.o                common/vfprintf.s:9
+pusha (pusha.o):
+    stream3.o                 stream3.s:655
+    stream3.o                 stream3.s:655
+    test-client1.o            test-client1.s:525
+pusha0 (pushax.o):
+    push1.o                   runtime/push1.s:8
+    fwrite.o                  common/fwrite.s:11
+    pch_network.o             build\pch_network.s:188
+    stream3.o                 stream3.s:655
+    test-client1.o            test-client1.s:525
+pusha0sp (pusha.o):
+pushax (pushax.o):
+    fwrite.o                  common/fwrite.s:11
+    callmain.o                apple2/callmain.s:11
+    _printf.o                 common/_printf.s:11
+    pushw.o                   runtime/pushw.s:8
+    printf.o                  common/printf.s:8
+    pch_network.o             build\pch_network.s:188
+    pch_network.o             build\pch_network.s:188
+    stream3.o                 stream3.s:655
+    stream3.o                 stream3.s:655
+    stream3.o                 stream3.s:655
+    stream3.o                 stream3.s:655
+    stream3.o                 stream3.s:655
+    stream3.o                 stream3.s:655
+    stream3.o                 stream3.s:655
+    stream3.o                 stream3.s:655
+    stream3.o                 stream3.s:655
+    stream3.o                 stream3.s:655
+    test-client1.o            test-client1.s:525
+    test-client1.o            test-client1.s:525
+pushaysp (pusha.o):
+pusheax (lpush.o):
+    _printf.o                 common/_printf.s:11
+    pch_network.o             build\pch_network.s:188
+    test-client1.o            test-client1.s:525
+pushl0 (lpush.o):
+pushptr1idx (pushw.o):
+pushw (pushw.o):
+    stream3.o                 stream3.s:655
+pushw0sp (pushwsp.o):
+pushwidx (pushw.o):
+pushwysp (pushwsp.o):
+    fwrite.o                  common/fwrite.s:11
+    vfprintf.o                common/vfprintf.s:9
+    stream3.o                 stream3.s:655
+    stream3.o                 stream3.s:655
+regbank (zeropage.o):
+    _printf.o                 /home/runner/work/cc65/cc65/asminc/zeropage.inc:14
+regsave (zeropage.o):
+reset (crt0.o):
+    callmain.o                apple2/callmain.s:12
+return (crt0.o):
+rvsave (crt0.o):
+    callmain.o                apple2/callmain.s:12
+rwcommon (rwcommon.o):
+    write.o                   apple2/write.s:8
+rwepilog (rwcommon.o):
+    write.o                   apple2/write.s:8
+rwprolog (rwcommon.o):
+    write.o                   apple2/write.s:8
+sp (zeropage.o):
+    popptr1.o                 runtime/popptr1.s:9
+    decsp6.o                  runtime/decsp6.s:8
+    decsp4.o                  runtime/decsp4.s:8
+    callmain.o                /home/runner/work/cc65/cc65/asminc/zeropage.inc:11
+    _printf.o                 /home/runner/work/cc65/cc65/asminc/zeropage.inc:11
+    vfprintf.o                common/vfprintf.s:11
+    subysp.o                  runtime/subysp.s:9
+    staxspi.o                 runtime/staxspi.s:10
+    staxsp.o                  runtime/staxsp.s:8
+    pushwsp.o                 runtime/pushwsp.s:8
+    pushax.o                  runtime/pushax.s:8
+    pusha.o                   runtime/pusha.s:8
+    printf.o                  common/printf.s:9
+    lpush.o                   runtime/lpush.s:13
+    ldeaxysp.o                runtime/ldeaxysp.s:12
+    ldaxsp.o                  runtime/ldaxsp.s:8
+    incsp2.o                  runtime/incsp2.s:8
+    incsp1.o                  runtime/incsp1.s:8
+    icmp.o                    runtime/icmp.s:9
+    crt0.o                    /home/runner/work/cc65/cc65/asminc/zeropage.inc:11
+    addysp.o                  runtime/addysp.s:8
+    addeqsp.o                 runtime/addeqsp.s:8
+    pch_network.o             build\pch_network.s:10
+    stream3.o                 stream3.s:10
+sreg (zeropage.o):
+    lneg.o                    runtime/lneg.s:11
+    udiv.o                    runtime/udiv.s:10
+    ltoa.o                    common/ltoa.s:11
+    axlong.o                  runtime/axlong.s:9
+    _printf.o                 /home/runner/work/cc65/cc65/asminc/zeropage.inc:11
+    lpush.o                   runtime/lpush.s:13
+    ldeaxysp.o                runtime/ldeaxysp.s:12
+    icmp.o                    runtime/icmp.s:9
+    uthernet2.o               C:\UTILITY\cc65\asminc/zeropage.inc:11
+    stream3.o                 stream3.s:10
+    test-client1.o            test-client1.s:10
+stax0sp (staxsp.o):
+    pch_network.o             build\pch_network.s:188
+staxspidx (staxspi.o):
+    pch_network.o             build\pch_network.s:188
+staxysp (staxsp.o):
+subysp (subysp.o):
+    pch_network.o             build\pch_network.s:188
+timer_init (a2_timer.o):
+    ip65.o                    ip65.s:16
+timer_read (a2_timer.o):
+    timer.o                   timer.s:13
+    arp.o                     arp.s:31
+    ip65.o                    ip65.s:19
+    dhcp.o                    dhcp.s:47
+timer_seconds (a2_timer.o):
+timer_timeout (timer.o):
+    arp.o                     arp.s:32
+tmp1 (zeropage.o):
+    mul.o                     runtime/mul.s:10
+    ltoa.o                    common/ltoa.s:11
+    _printf.o                 /home/runner/work/cc65/cc65/asminc/zeropage.inc:13
+    staxspi.o                 runtime/staxspi.s:10
+    incaxy.o                  runtime/incaxy.s:8
+    uthernet2.o               C:\UTILITY\cc65\asminc/zeropage.inc:13
+    pch_network.o             build\pch_network.s:11
+tmp2 (zeropage.o):
+    uthernet2.o               C:\UTILITY\cc65\asminc/zeropage.inc:13
+tmp3 (zeropage.o):
+    uthernet2.o               C:\UTILITY\cc65\asminc/zeropage.inc:13
+tmp4 (zeropage.o):
+    uthernet2.o               C:\UTILITY\cc65\asminc/zeropage.inc:13
+tosicmp (icmp.o):
+    stream3.o                 stream3.s:655
+tosicmp0 (icmp.o):
+tosmula0 (mul8.o):
+tosmulax (mul.o):
+tosudiva0 (udiv.o):
+tosudivax (udiv.o):
+    fwrite.o                  common/fwrite.s:12
+tosumula0 (mul8.o):
+tosumulax (mul.o):
+    fwrite.o                  common/fwrite.s:12
+udiv16 (udiv.o):
+udp_add_listener (udp.o):
+    dhcp.o                    dhcp.s:30
+udp_callback (udp.o):
+    dhcp.o                    dhcp.s:33
+udp_cksum (udp.o):
+udp_data (udp.o):
+    dhcp.o                    dhcp.s:38
+udp_dest_port (udp.o):
+udp_init (udp.o):
+    ip.o                      ip.s:52
+udp_inp (udp.o):
+    dhcp.o                    dhcp.s:36
+udp_len (udp.o):
+udp_outp (udp.o):
+udp_process (udp.o):
+    ip.o                      ip.s:53
+udp_remove_listener (udp.o):
+    dhcp.o                    dhcp.s:31
+udp_send (udp.o):
+    dhcp.o                    dhcp.s:34
+udp_send_dest (udp.o):
+    dhcp.o                    dhcp.s:42
+udp_send_dest_port (udp.o):
+    dhcp.o                    dhcp.s:44
+udp_send_internal (udp.o):
+udp_send_len (udp.o):
+    dhcp.o                    dhcp.s:45
+udp_send_src_port (udp.o):
+    dhcp.o                    dhcp.s:43
+udp_src_port (udp.o):
+uppercasemask (uppercasemask.o):
+    write.o                   apple2/write.s:11
+zerobss (zerobss.o):
+    crt0.o                    apple2/crt0.s:12
+zpsave (crt0.o):
+    callmain.o                apple2/callmain.s:12
+

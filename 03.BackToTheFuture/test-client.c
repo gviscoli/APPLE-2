@@ -12,6 +12,7 @@
 #include <string.h>
 
 #include "../00.LIBRERIE/IP65/inc/ip65.h"
+#include "../00.LIBRERIE/PCH/pch_network.h"
 
 
 #define SERVER "google.com"  // Cambia con il dominio del server

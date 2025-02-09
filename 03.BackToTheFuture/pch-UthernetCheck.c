@@ -1,9 +1,9 @@
-#include "../00.LIBRERIE/CC65/inc/cc65.h"
 #include <conio.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
+#include "../00.LIBRERIE/CC65/inc/cc65.h"
 #include "../00.LIBRERIE/IP65/inc/ip65.h"
 #include "../00.LIBRERIE/PCH/pch_network.h"
 
@@ -20,43 +20,6 @@
 // 
 //
 
-// // ---------------------------------------------------------------------------
-// // Nome: void print_ip(uint32_t ip)
-// //
-// // Descrizione: Funzione per stampare l'indirizzo IP attuale
-// //
-// //
-// void print_ip(uint32_t ip) 
-// {
-//   unsigned char *bytes = (unsigned char *)&ip;  // Converte in array di 4 byte
-//   printf("%d.%d.%d.%d\n", bytes[0], bytes[1], bytes[2], bytes[3]);
-// }
-
-// // ---------------------------------------------------------------------------
-// // Nome: int check_uthernet()
-// // Return: 
-// // -1 se non è stata trovata una scheda uthernet
-// // un intero maggiore di 1 che rappresenta lo slot dove è installata la scheda
-// //
-// //
-// unsigned int check_uthernet()
-// {
-//   unsigned int results[7];
-//   unsigned int n;
-//   unsigned int slot;
-
-//   slot = -1;
-
-//   for (n=0; n < 7; n++) {
-//     results[n] = ip65_init(n);
-//     if (results[n] == 0) {
-//       slot = n;
-//       break;
-//     }
-//   }
-
-//   return slot;
-// }
 
 // ------------
 // Main
@@ -67,10 +30,20 @@
 void main(void)
 {
   unsigned int slot;
+  //uint32_t ip_addr_destination[4] = {192, 100,   1, 211};
+
+  uint32_t ip_addr_destination = ((uint32_t)192 << 24) | 
+                                  ((uint32_t)100 << 16) | 
+                                  ((uint32_t)1 << 8) | 
+                                  (uint32_t)17;
+
+  uint16_t result, i;
+
+  uint16_t __fastcall__ icmp_ping(uint32_t dest);
 
   printf("\n");
 
-  printf("Start Uthernet Init\n");
+  printf("Start Uthernet searching...\n");
   slot = check_uthernet();
   if (slot == -1)
   {
@@ -79,6 +52,18 @@ void main(void)
   else
   {
     printf("Uthernet FOUND at slot: %d\n",slot);
+  }
+
+  // Inizializza la rete
+  //
+  if(ip65_init(slot))  
+  {
+    printf("ERROR init ip65 init failed!\n");
+    return;
+  }
+  else
+  {
+    printf("ip65 init OK\n");
   }
 
   printf("Obtaining IP address \n");
@@ -112,5 +97,16 @@ void main(void)
 
   printf("\n\n");
 
-  printf("Copyright 2025 - Viscoli Giuseppe\n");
+  // printf("Destination Ip Address: %02X %02X %02X %02X\n",
+  //   ip_addr_destination[0], ip_addr_destination[1], ip_addr_destination[2], ip_addr_destination[3]);
+
+  for (i = 0; i < 10; i++)
+  {
+    result = icmp_ping(ip_addr_destination);
+    printf("Ping result: %d\n", result);  
+  }
+  
+
+
+  printf("\nCopyright 2025 - Viscoli Giuseppe\n");
 }
