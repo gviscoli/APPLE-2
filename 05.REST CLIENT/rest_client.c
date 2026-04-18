@@ -14,11 +14,8 @@
 #include <stdint.h>
 
 /* ip65 headers */
-#include "ip65.h"
-#include "tcp.h"
-#include "http.h"
-#include "dhcp.h"
-#include "dns.h"
+#include "../00.LIBRERIE/IP65/inc/ip65.h"
+
 
 /* -----------------------------------------------
  * Configurazione

@@ -1,81 +1,143 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
+#include <stdint.h>
+#include <stdbool.h>
+#include <conio.h>                          /* FIX: cgetc() e' in conio.h di cc65 */
+
 #include "../00.LIBRERIE/IP65/inc/ip65.h"
+#include "../00.LIBRERIE/PCH/pch_network.h"
+
+#include "rest_lib.c"
 
 // Compilazione
 //
-// cl65 -t apple2 rest_hello.c -o rest_hello.bin -O -m rest_hello.map -vm ../00.LIBRERIE/IP65/lib/ip65.lib ../00.LIBRERIE/IP65/lib/ip65_tcp.lib ../00.LIBRERIE/IP65/drivers/ip65_apple2.lib ../00.LIBRERIE/CC65/lib/apple2.lib
-//
-// java -jar C:\UTILITY\AppleCommander\AppleCommander-win32-x86_64-1.9.0.jar
-// 
-//
+// cl65 -t apple2 rest_hello.c -o rest_hello.bin -O -m rest_hello.map -vm
+//      ../00.LIBRERIE/IP65/lib/ip65.lib
+//      ../00.LIBRERIE/IP65/lib/ip65_tcp.lib
+//      ../00.LIBRERIE/IP65/drivers/ip65_apple2.lib
+//      ../00.LIBRERIE/CC65/lib/apple2.lib
+//      ../00.LIBRERIE/PCH/pch_network.lib
 
-// Tentiamo di mappare le funzioni mancanti se il tuo header non le vede
-// In alcune versioni tcp_is_connected è una macro o definita in tcp.h
-extern uint8_t __fastcall__ tcp_get_state(void);
-#define TCP_STATE_ESTABLISHED 4
-#define TCP_STATE_CLOSED 0
+/* -----------------------------------------------
+ * Inizializzazione rete e scheda Uthernet
+ * ----------------------------------------------- */
+bool initialize_network(void) {
+    unsigned int slot;
 
-void __fastcall__ on_tcp_receive(const unsigned char* data, int len) {
-    int i;
-    static uint8_t body_started = 0; 
-    for (i = 0; i < len; ++i) {
-        if (!body_started) {
-            // Cerchiamo la fine degli header HTTP (\r\n\r\n)
-            if (i > 3 && data[i-3] == '\r' && data[i-2] == '\n' && data[i-1] == '\r' && data[i] == '\n') {
-                body_started = 1;
-            }
-        } else {
-            putchar(data[i]);
-        }
+    printf("\n");
+    printf("Start Uthernet searching...\n");
+
+    slot = check_uthernet();
+    if (slot == (unsigned int)-1) {
+        printf("ERROR Uthernet NO FOUND!\n");
+        return false;
     }
+    printf("Uthernet FOUND at slot: %d\n", slot);
+
+    if (ip65_init(slot)) {
+        printf("ERROR init ip65 init failed!\n");
+        return false;
+    }
+    printf("ip65 init OK\n");
+
+    puts("DHCP in corso...");
+    if (dhcp_init() != 0) {
+        puts("ERRORE: DHCP fallito");
+        return false;
+    }
+    printf("DHCP OK\n");
+
+    return true;
 }
 
-void make_request(void) {
-    uint8_t proxy_ip[4] = {192, 100, 1, 211}; 
-    uint16_t proxy_port = 8080;
-    char* http_req = "GET /api/data HTTP/1.1\r\nHost: proxy\r\nConnection: close\r\n\r\n";
-
-    printf("Inizializzazione IP65...\n");
-
-    /* CORREZIONE ip65_init: 
-       Molte versioni richiedono un parametro. Se non hai caricato un driver 
-       dinamicamente, prova a passare 0 (usa il driver linkato staticamente).
-    */
-    if (ip65_init(0) != 0) { 
-        printf("Errore Driver!\n");
-        return;
-    }
-
-    // Configurazione IP dell'Apple II (necessaria se non usi DHCP)
-    // ip65_set_ip(my_ip); // Opzionale se il driver è già configurato
-
-    printf("Connessione in corso...\n");
-    // Proviamo la firma a 4 argomenti (IP, Porto Remoto, Porto Locale, Callback)
-    if (tcp_connect(proxy_ip, proxy_port, on_tcp_receive) == 0) {
-        printf("Errore connessione!\n");
-        return;
-    }
-
-    tcp_send((unsigned char*)http_req, strlen(http_req));
-
-    // Invece di tcp_get_state, usiamo tcp_is_connected se l'header lo permette
-    // Oppure, più semplicemente, un timeout o il controllo del driver
-    printf("Ricezione in corso...\n");
-    
-    // Versione "Brute Force": processa lo stack per un po' 
-    // finché non ricevi i dati (per uno stub Hello World basta un attimo)
-    {
-        uint16_t timeout = 5000; 
-        while (timeout--) {
-            ip65_process();
-        }
-    }
-    
-    printf("\n---\nFine.");
+/* -----------------------------------------------
+ * Menu interattivo
+ * ----------------------------------------------- */
+static void show_menu(void) {
+    puts("\n--- REST Client Apple IIe ---");
+    puts("1. GET  /api/v1/status");
+    puts("2. POST /api/v1/data  (JSON)");
+    puts("3. GET  custom path");
+    puts("Q. Esci");
+    printf("Scelta: ");
 }
 
+/* -----------------------------------------------
+ * Entry Point
+ * ----------------------------------------------- */
 int main(void) {
-    make_request();
+    char     choice;
+    int16_t  result;
+    char     custom_path[64];              /* FIX: dichiarata qui, non mancava */
+
+    if (!initialize_network()) {
+        return 1;
+    }
+
+    for (;;) {
+        show_menu();
+        choice = cgetc();
+        putchar('\n');
+
+        switch (choice) {
+
+            case '1':
+                result = do_get("/api/v1/status",
+                                response_buf,
+                                RESPONSE_BUF_SIZE);
+                if (result > 0) {
+                    response_buf[200] = '\0';
+                    printf("%s\n", (char *)http_response_body);
+                }
+                break;
+
+            case '2':
+                result = do_post(
+                    "/api/v1/data",
+                    "{\"device\":\"apple2e\","
+                    "\"msg\":\"hello from 1983\","
+                    "\"temp\":42}",
+                    response_buf,
+                    RESPONSE_BUF_SIZE);
+                break;
+
+            case '3':
+                printf("Path (es. /api/v1/items): ");
+                {
+                    uint8_t i = 0;
+                    char    c;
+                    /* FIX: sizeof(custom_path) ora funziona perche'
+                     * custom_path e' un array dichiarato sopra       */
+                    while (i < (uint8_t)(sizeof(custom_path) - 1)) {
+                        c = cgetc();
+                        if (c == '\r') break;
+                        if (c == 0x08 && i > 0) {   /* backspace */
+                            i--;
+                            printf("\b \b");
+                        } else {
+                            custom_path[i++] = c;
+                            putchar(c);
+                        }
+                    }
+                    custom_path[i] = '\0';
+                    putchar('\n');
+                }
+                do_get(custom_path, response_buf, RESPONSE_BUF_SIZE);
+                break;
+
+            case 'Q':
+            case 'q':
+                puts("Arrivederci!");
+                return 0;
+
+            default:
+                break;
+        }
+
+        puts("\nPremi un tasto per continuare...");
+        cgetc();
+    }
+
     return 0;
 }
