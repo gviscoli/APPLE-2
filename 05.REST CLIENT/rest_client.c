@@ -21,7 +21,7 @@
  * Configurazione
  * ----------------------------------------------- */
 #define UTHERNET_SLOT     3          /* Slot scheda Uthernet II     */
-#define PROXY_HOST        "192.168.1.100"  /* IP del tuo proxy locale     */
+#define PROXY_HOST        "192.100.1.211"  /* IP del tuo proxy locale     */
 #define PROXY_PORT        8080              /* Porta HTTP del proxy        */
 #define RESPONSE_BUF_SIZE 2048             /* Buffer risposta             */
 

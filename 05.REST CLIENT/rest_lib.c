@@ -5,7 +5,7 @@
 
 /* ip65: contiene tcp_connect, tcp_send, tcp_close,
  * parse_dotted_quad, ip65_process, ip65_error, dhcp_init */
-#include "../00.LIBRERIE/IP65/inc/ip65.h"
+//#include "../00.LIBRERIE/IP65/inc/ip65.h"
 
 /* -----------------------------------------------
  * Configurazione
@@ -43,7 +43,17 @@ static uint16_t  s_recv_total     = 0;
  * print_ip65_error — ip65 non la fornisce
  * ----------------------------------------------- */
 static void print_ip65_error(void) {
-    printf("ip65 errore: %d\n", (int)ip65_error);
+    printf("ip65 errore %d: ", (int)ip65_error);
+    switch (ip65_error) {
+        case 0x80: puts("TIMEOUT ricezione");          break;
+        case 0x81: puts("TRASMISSIONE fallita");       break;
+        case 0x82: puts("DNS lookup fallito");         break;
+        case 0x83: puts("CONNESSIONE fallita");        break;
+        case 0x84: puts("Connessione chiusa (reset)"); break;
+        case 0x85: puts("Out of memory");              break;
+        case 0x86: puts("DHCP fallito");               break;
+        default:   puts("errore sconosciuto");         break;
+    }
 }
 
 /* -----------------------------------------------
@@ -110,6 +120,7 @@ static int16_t tcp_do_request(uint16_t  request_len,
         print_ip65_error();
         return -1;
     }
+    puts("TCP connect OK");
 
     /* Invia la request (gia' in request_buf) */
     if (tcp_send((const uint8_t *)request_buf, request_len) != 0) {
@@ -118,7 +129,7 @@ static int16_t tcp_do_request(uint16_t  request_len,
         tcp_close();
         return -1;
     }
-
+    puts("TCP send OK"); 
     /* Polling fino a: buffer pieno | timeout | errore ip65 */
     poll_count = 0;
     while (s_recv_remaining > 0 &&

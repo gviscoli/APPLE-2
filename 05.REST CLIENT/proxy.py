@@ -1,6 +1,11 @@
 from flask import Flask, request
 import requests
 
+# TEST
+# 
+# curl -v --http1.0 http://192.100.1.211:8080/api/v1/status
+#
+
 app = Flask(__name__)
 
 @app.route('/api/data', methods=['GET'])
@@ -15,7 +20,8 @@ def proxy():
 
     # Restituiamo solo il contenuto, possibilmente filtrato per l'Apple II
     # (Magari rimuovi i campi JSON inutili per risparmiare RAM sull'Apple)
-    return response.text[:256] 
+    # return response.text[:256] 
+    return response 
 
 if __name__ == '__main__':
     # Ascolta su tutte le interfacce (0.0.0.0) sulla porta 8080
