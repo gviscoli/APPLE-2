@@ -2,3 +2,4 @@
 .vscode/
 .git/
 00.LIB.SORGENTI/
+.env
