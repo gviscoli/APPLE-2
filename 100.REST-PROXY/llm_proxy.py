@@ -44,46 +44,80 @@ else:
 # ---------------------------------------------------------------
 MAX_RESPONSE_CHARS = 250
 
+def clean_for_apple2(text: str) -> str:
+    """
+    Converte le lettere accentate in formato compatibile Apple II (ASCII 7-bit).
+    Esempio: 'perché' -> "perche'"
+    """
+    replacements = {
+        'à': "a'", 'á': "a'",
+        'è': "e'", 'é': "e'",
+        'ì': "i'", 'í': "i'",
+        'ò': "o'", 'ó': "o'",
+        'ù': "u'", 'ú': "u'",
+        'È': "E'", 'À': "A'"
+    }
+    
+    # Sostituzione manuale per precisione
+    for char, replacement in replacements.items():
+        text = text.replace(char, replacement)
+    
+    # Rimuove eventuali altri caratteri non ASCII (Emoji, simboli strani)
+    # mantenendo solo i caratteri leggibili dall'Apple II
+    return "".join(c for c in text if ord(c) < 128)
+
 # ---------------------------------------------------------------
 # Funzione per chiamare Amazon Nova tramite Bedrock
 # ---------------------------------------------------------------
+
 def call_nova(prompt: str) -> str:
-    """
-    Chiama Amazon Nova tramite Bedrock con il prompt fornito.
-    Ritorna la risposta come stringa troncata a MAX_RESPONSE_CHARS.
-    """
+    # Chiediamo all'LLM di essere breve e di non usare fronzoli
+    system_prompt = (
+        "Sei un assistente per un computer Apple IIe del 1983. "
+        "Rispondi in ITALIANO. Sii estremamente sintetico. "
+        "La tua risposta NON deve superare i 240 caratteri. "
+        "Non usare markdown (niente grassetto o tabelle)."
+    )
+
     body = {
+        "system": [{"text": system_prompt}],
         "messages": [
-            {
-                "role": "user",
-                "content": [
-                    {
-                        "text": prompt
-                    }
-                ]
-            }
+            {"role": "user", "content": [{"text": prompt}]}
         ],
         "inferenceConfig": {
-            "maxTokens": 100,       # tieni basso: l'Apple IIe non puo' leggere romanzi
-            "temperature": 0.7
+            "maxTokens": 150,
+            "temperature": 0.4 # Più bassa per maggiore precisione sul limite
         }
     }
 
-    response = bedrock.invoke_model(
-        modelId=MODEL_ID,
-        body=json.dumps(body),
-        contentType="application/json",
-        accept="application/json"
-    )
+    try:
+        response = bedrock.invoke_model(
+            modelId=MODEL_ID,
+            body=json.dumps(body),
+            contentType="application/json",
+            accept="application/json"
+        )
 
-    result = json.loads(response["body"].read())
+        result = json.loads(response["body"].read())
+        text = result["output"]["message"]["content"][0]["text"]
 
-    # Estrai il testo dalla risposta Nova
-    text = result["output"]["message"]["content"][0]["text"]
+        # 1. Normalizza spazi e newline
+        text = " ".join(text.split())
 
-    # Tronca per Apple IIe e rimuovi newline multipli
-    text = " ".join(text.split())           # normalizza spazi/newline
-    return text[:MAX_RESPONSE_CHARS]
+        # 2. Converti accenti per Apple II
+        text = clean_for_apple2(text)
+
+        # 3. Taglio di sicurezza (se l'LLM ha sforato) senza troncare parole
+        if len(text) > MAX_RESPONSE_CHARS:
+            truncated = text[:MAX_RESPONSE_CHARS]
+            last_space = truncated.rfind(' ')
+            text = truncated[:last_space] if last_space != -1 else truncated
+
+        return text.upper() # Opzionale: l'Apple II spesso legge meglio tutto in MAIUSCOLO
+    
+    except Exception as e:
+        print(f"Errore: {e}")
+        return "ERRORE DI CONNESSIONE"
 
 
 # ---------------------------------------------------------------
