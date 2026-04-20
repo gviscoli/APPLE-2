@@ -6,7 +6,7 @@
  *
  * Compilazione:
  * 
- *  cl65 -t apple2 chatbot.c -o chatbot.bin -O  -m chatbot.map -vm ../00.LIBRERIE/IP65/lib/ip65_tcp.lib ../00.LIBRERIE/IP65/drivers/ip65_apple2.lib
+ *  cl65 -t apple2 chatbot.c -o pch_chatbot.bin -O  -m chatbot.map -vm ../00.LIBRERIE/IP65/lib/ip65_tcp.lib ../00.LIBRERIE/IP65/drivers/ip65_apple2.lib
  * 
  *  java -jar C:\UTILITY\AppleCommander\AppleCommander-win32-x86_64-1.9.0.jar
  * 
@@ -43,7 +43,7 @@ static char json_buf[JSON_BUF_SIZE];
  * ----------------------------------------------- */
 static void print_line(void) {
     uint8_t i;
-    for (i = 0; i < SCREEN_COLS; i++) putchar('-');
+    for (i = 0; i < SCREEN_COLS-10; i++) putchar('-');
     putchar('\n');
 }
 
@@ -260,7 +260,7 @@ static bool send_message(const char *message) {
     /* Stampa risposta con word wrap */
     puts("");
     print_line();
-    puts("AI:");
+    puts("BOT:");
     print_line();
 
     if (http_response_body && http_response_length > 0) {
@@ -307,7 +307,7 @@ int main(void) {
         }
     }
 
-    /* ── Loop principale chat ──────────────────── */
+    /* ── Loop principale chat  */
     for (;;) {
         /* Prompt utente */
         printf("TU[%d]: ", (int)turn + 1);
@@ -329,11 +329,11 @@ int main(void) {
 
         turn++;
 
-        /* Pausa prima del prossimo turno */
-        puts("");
-        puts("[Premi un tasto per continuare]");
-        cgetc();
-        puts("");
+        // /* Pausa prima del prossimo turno */
+        // puts("");
+        // puts("[Premi un tasto per continuare]");
+        // cgetc();
+        // puts("");
     }
 
     puts("\nArrivederci!");

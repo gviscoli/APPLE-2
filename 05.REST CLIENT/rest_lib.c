@@ -120,7 +120,9 @@ static int16_t tcp_do_request(uint16_t  request_len,
         print_ip65_error();
         return -1;
     }
-    puts("TCP connect OK");
+
+    // Debug
+    // puts("TCP connect OK");
 
     /* Invia la request (gia' in request_buf) */
     if (tcp_send((const uint8_t *)request_buf, request_len) != 0) {
@@ -129,7 +131,10 @@ static int16_t tcp_do_request(uint16_t  request_len,
         tcp_close();
         return -1;
     }
-    puts("TCP send OK"); 
+
+    // Dubug
+    // puts("TCP send OK"); 
+    
     /* Polling fino a: buffer pieno | timeout | errore ip65 */
     poll_count = 0;
     while (s_recv_remaining > 0 &&
@@ -166,9 +171,10 @@ static int16_t tcp_do_request(uint16_t  request_len,
     http_response_length = (uint16_t)(
         s_recv_total - (uint16_t)(body_start - out_buf));
 
-    printf("Status HTTP  : %d\n", http_status);
-    printf("Body (%d bytes):\n%s\n",
-           http_response_length, (char *)http_response_body);
+    // Debug
+    /* printf("Status HTTP  : %d\n", http_status);
+       printf("Body (%d bytes):\n%s\n",
+           http_response_length, (char *)http_response_body); */
 
     if (http_status < 200 || http_status >= 300) {
         printf("ERRORE: status %d\n", http_status);
@@ -245,8 +251,9 @@ static int16_t do_post(const char *path,
         return -1;
     }
 
-    printf("\nPOST http://%s:%d%s\n", PROXY_HOST, PROXY_PORT, path);
-    printf("Body (%d bytes): %s\n", body_len, json_body);
+    // debug
+    // printf("\nPOST http://%s:%d%s\n", PROXY_HOST, PROXY_PORT, path);
+    // printf("Body (%d bytes): %s\n", body_len, json_body);
 
     request_len = (uint16_t)snprintf(
         request_buf, sizeof(request_buf),
