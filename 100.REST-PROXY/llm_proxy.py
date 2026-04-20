@@ -1,8 +1,19 @@
+import os
 import json
 import boto3
 from flask import Flask, request, jsonify
+from dotenv import load_dotenv, find_dotenv
 
 app = Flask(__name__)
+
+path_env = find_dotenv()
+load_dotenv(path_env)
+print(f"File .env caricato da: {path_env}")
+
+AWS_DEFAULT_REGION = os.getenv("AWS_DEFAULT_REGION")
+LLM_MODEL_LOCAL = os.getenv("LLM_MODEL_LOCAL")
+LLM_MODEL_CLOUD = os.getenv("LLM_MODEL_CLOUD")
+INFERENCE_MODE = os.getenv("INFERENCE_MODE", "cloud").lower()
 
 # ---------------------------------------------------------------
 # Client AWS Bedrock
@@ -16,14 +27,26 @@ bedrock = boto3.client(
     region_name="us-east-1"         # cambia se usi una region diversa
 )
 
-MODEL_ID = "amazon.nova-lite-v1:0"  # oppure amazon.nova-pro-v1:0
+if INFERENCE_MODE == "local":
+    print(f"Modalità INFERENCE: LOCALE (modello {LLM_MODEL_LOCAL})")
+    # Qui potresti inizializzare un client per Ollama o simili  
+    MODEL_ID = LLM_MODEL_LOCAL
+elif INFERENCE_MODE == "cloud":
+    print(f"Modalità INFERENCE: CLOUD (modello {LLM_MODEL_CLOUD})")
+    MODEL_ID = LLM_MODEL_CLOUD
+else:
+    raise ValueError(f"INFERENCE_MODE non valido: {INFERENCE_MODE}. Usa 'local' o 'cloud'.")
+    os._exit(1)
+
 
 # ---------------------------------------------------------------
 # Lunghezza massima risposta — Apple IIe ha poca RAM!
 # ---------------------------------------------------------------
 MAX_RESPONSE_CHARS = 250
 
-
+# ---------------------------------------------------------------
+# Funzione per chiamare Amazon Nova tramite Bedrock
+# ---------------------------------------------------------------
 def call_nova(prompt: str) -> str:
     """
     Chiama Amazon Nova tramite Bedrock con il prompt fornito.
