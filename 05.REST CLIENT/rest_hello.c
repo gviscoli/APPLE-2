@@ -23,6 +23,7 @@
 //
 // cl65 -t apple2 rest_hello.c -o rest_hello.bin -O  -m rest_hello.map -vm ../00.LIBRERIE/IP65/lib/ip65.lib ../00.LIBRERIE/IP65/lib/ip65_tcp.lib ../00.LIBRERIE/IP65/drivers/ip65_apple2.lib ../00.LIBRERIE/PCH/pch_network.lib
 //
+// QUELLO GIUSTO:
 // cl65 -t apple2 rest_hello.c -o rest_hello.bin -O  -m rest_hello.map -vm ../00.LIBRERIE/IP65/lib/ip65_tcp.lib ../00.LIBRERIE/IP65/drivers/ip65_apple2.lib
 
 
@@ -232,7 +233,7 @@ int main(void) {
                 break;
 
             case '2':
-                result = do_get("/api/data",
+                result = do_get("/api/data?prompt=HELLO_FROM_APPLE2E",
                                 response_buf,
                                 RESPONSE_BUF_SIZE);
                 
