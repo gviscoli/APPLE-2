@@ -3,3 +3,4 @@
 .git/
 00.LIB.SORGENTI/
 .env
+*.bkp

@@ -31,7 +31,7 @@ Il salto temporale e tecnologico è di quarant'anni: nel 1983 Internet era ancor
 
 ### Diagramma architetturale
 
-![End-to-End Architecture](diag_01_architecture.png)
+![End-to-End Architecture](/Images/05.Chatbot/ApplicationArchitecture/diag_01_architecture.png)
 
 Il sistema si articola in quattro zone distinte collegate in sequenza:
 
@@ -69,10 +69,6 @@ Il 6502 è un processore a **8 bit** con bus indirizzi a 16 bit. Ogni ottimizzaz
 
 ## 3. Architettura a livelli
 
-### Diagramma dei layer con sfide
-
-![Layer Stack](diag_04_layers.png)
-
 Il sistema è composto da cinque strati software distinti — quattro sul client Apple IIe, uno in cloud — ciascuno con responsabilità e sfide tecniche proprie.
 
 ```
@@ -103,7 +99,7 @@ Il sistema è composto da cinque strati software distinti — quattro sul client
 
 ### Diagramma della mappa di memoria
 
-![Memory Map](diag_02_memory.png)
+![Memory Map](/Images/05.Chatbot/ApplicationArchitecture/diag_02_memory.png)
 
 La gestione della memoria sull'Apple IIe è uno dei vincoli più stringenti dell'intero progetto. Con 64 KB totali condivisi tra ROM, firmware, display buffer, stack hardware, codice e dati statici, ogni decisione di allocazione è critica.
 
@@ -362,7 +358,7 @@ La `temperature` a `0.4` garantisce risposte deterministiche e concise, riducend
 
 ### Sequence diagram
 
-![Sequence Diagram](diag_03_sequence.png)
+![Sequence Diagram](/Images/05.Chatbot/ApplicationArchitecture/diag_03_sequence.png)
 
 Il diagramma mostra i 9 passaggi principali di un singolo turno di conversazione, dall'input dell'utente alla visualizzazione della risposta sul display Apple IIe.
 
