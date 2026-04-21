@@ -113,7 +113,7 @@ static uint8_t read_line(char *buf, uint8_t max_len) {
     char    c;
 
     while (i < max_len) {
-        c = cgetc();
+        c = cgetc() & 0x7F;   /* [FIX BUG-5] strip high bit */
 
         if (c == '\r' || c == '\n') {
             break;
@@ -180,18 +180,49 @@ static bool build_json(const char *prompt, char *out, uint8_t out_size) {
     return true;
 }
 
+/* ═══════════════════════════════════════════════
+ * BANNER ASCII ART — mostrato UNA SOLA VOLTA
+ * all'avvio del programma.
+ *
+ * Ogni riga e' esattamente 40 caratteri (schermo
+ * Apple IIe in modalita' testo standard).
+ * ═══════════════════════════════════════════════ */
+static void show_ascii_banner(void) {
+    clrscr();
+
+    /* Riga 1  */ puts("*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*");
+    /* Riga 2  */ puts("*                                     *");
+    /* Riga 4  */ puts("*  =================================  *");    
+    /* Riga 3  */ puts("*  |      APPLE ][ - CPU: 6502     |  *");
+    /* Riga 4  */ puts("*  |                               |  *");    
+    /* Riga 5  */ puts("*  | (powered by Viscoli Giuseppe) |  *");    
+    /* Riga 6  */ puts("*  =================================  *");           
+    /* Riga 7  */ puts("*                                     *");
+    /* Riga 8  */ puts("*     ~~ LA MACCHINA DEL TEMPO ~~     *");
+    /* Riga 9  */ puts("*           (PCH.CHATBOT.BIN)         *");
+    /* Riga 10 */ puts("*                                     *");
+    /* Riga 11 */ puts("* [1983] --> Internet --> LLM [2026]  *");
+    /* Riga 12 */ puts("*                                     *");
+    /* Riga 13 */ puts("*   Una vecchia tecnologia che        *");
+    /* Riga 14 */ puts("*   dialoga con l'AI del futuro!      *");
+    /* Riga 15 */ puts("*                                     *");
+    /* Riga 16 */ puts("*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*");
+    /* Riga 17 */ puts("");
+    /* Riga 18 */ puts("  < Premi un tasto per iniziare... >");
+
+    cgetc();       /* attendi keypress                 */
+    clrscr();      /* pulisci prima della welcome page */
+}
+
 /* -----------------------------------------------
  * Schermata di benvenuto
  * ----------------------------------------------- */
 static void show_welcome(void) {
     clrscr();
     print_line();
-    puts(" APPLE IIe CHATBOT");
-    puts(" Powered by Viscoli Giuseppe");
-    print_line();
     puts("");
     puts(" Digita la tua domanda e premi");
-    puts(" INVIO. Digita Q per uscire.");
+    puts(" INVIO. (Digita Q per uscire.)");
     puts("");
     print_line();
     puts("");
@@ -284,6 +315,10 @@ int main(void) {
     uint8_t  msg_len;
     uint8_t  turn = 0;     /* contatore turni conversazione */
 
+    /* Banner ASCII art: mostrato una sola volta */
+    show_ascii_banner();
+
+    /* Welcome screen */    
     show_welcome();
 
     /* Inizializza rete */
@@ -294,7 +329,7 @@ int main(void) {
     }
 
     /* Test connessione al proxy */
-    puts("Test proxy...");
+    // puts("Test proxy...");
     {
         int16_t r = do_get("/api/data?prompt=test",
                             response_buf,

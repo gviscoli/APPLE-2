@@ -201,8 +201,9 @@ static int16_t do_get(const char *path,
     http_response_length = 0;
     http_response_body   = NULL;
 
-    printf("\nGET http://%s:%d%s\n", PROXY_HOST, PROXY_PORT, path);
-    puts("Attendo risposta...");
+    // Debug
+    // printf("\nGET http://%s:%d%s\n", PROXY_HOST, PROXY_PORT, path);
+    // puts("Attendo risposta...");
 
     request_len = (uint16_t)snprintf(
         request_buf, sizeof(request_buf),
