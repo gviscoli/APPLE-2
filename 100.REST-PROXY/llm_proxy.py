@@ -1,6 +1,7 @@
 import os
 import json
 import boto3
+import requests
 
 from flask import Flask, request, jsonify
 from dotenv import load_dotenv, find_dotenv
@@ -11,10 +12,13 @@ path_env = find_dotenv()
 load_dotenv(path_env)
 print(f"File .env caricato da: {path_env}")
 
-AWS_DEFAULT_REGION = os.getenv("AWS_DEFAULT_REGION")
-LLM_MODEL_LOCAL = os.getenv("LLM_MODEL_LOCAL")
-LLM_MODEL_CLOUD = os.getenv("LLM_MODEL_CLOUD")
-INFERENCE_MODE = os.getenv("INFERENCE_MODE", "cloud").lower()
+AWS_DEFAULT_REGION  = os.getenv("AWS_DEFAULT_REGION")
+LLM_MODEL_LOCAL     = os.getenv("LLM_MODEL_LOCAL")
+LLM_MODEL_CLOUD     = os.getenv("LLM_MODEL_CLOUD")
+LLM_MODEL_ANTHROPIC = os.getenv("LLM_MODEL_ANTHROPIC", "anthropic.claude-3-haiku-20240307-v1:0")
+LLM_MODEL_OLLAMA    = os.getenv("LLM_MODEL_OLLAMA", "llama4")
+OLLAMA_BASE_URL     = os.getenv("OLLAMA_BASE_URL", "http://localhost:11434")
+INFERENCE_MODE      = os.getenv("INFERENCE_MODE", "cloud").lower()
 
 # ---------------------------------------------------------------
 # Client AWS Bedrock
@@ -28,17 +32,20 @@ bedrock = boto3.client(
     region_name="us-east-1"         # cambia se usi una region diversa
 )
 
-if INFERENCE_MODE == "local":
+if INFERENCE_MODE == "ollama":
+    print(f"Modalità INFERENCE: OLLAMA locale (modello {LLM_MODEL_OLLAMA}, URL {OLLAMA_BASE_URL})")
+    MODEL_ID = LLM_MODEL_OLLAMA
+elif INFERENCE_MODE == "anthropic":
+    print(f"Modalità INFERENCE: ANTHROPIC via Bedrock (modello {LLM_MODEL_ANTHROPIC})")
+    MODEL_ID = LLM_MODEL_ANTHROPIC
+elif INFERENCE_MODE == "local":
     print(f"Modalità INFERENCE: LOCALE (modello {LLM_MODEL_LOCAL})")
-    # Qui potresti inizializzare un client per Ollama o simili  
     MODEL_ID = LLM_MODEL_LOCAL
-    OLLAMA_BASE_URL = os.getenv("OLLAMA_BASE_URL")
 elif INFERENCE_MODE == "cloud":
-    print(f"Modalità INFERENCE: CLOUD (modello {LLM_MODEL_CLOUD})")
+    print(f"Modalità INFERENCE: CLOUD Nova (modello {LLM_MODEL_CLOUD})")
     MODEL_ID = LLM_MODEL_CLOUD
 else:
-    raise ValueError(f"INFERENCE_MODE non valido: {INFERENCE_MODE}. Usa 'local' o 'cloud'.")
-    os._exit(1)
+    raise ValueError(f"INFERENCE_MODE non valido: '{INFERENCE_MODE}'. Usa 'cloud', 'anthropic', 'ollama' o 'local'.")
 
 
 # ---------------------------------------------------------------
@@ -131,6 +138,144 @@ def call_nova(prompt: str) -> str:
 
 #endregion
 
+#region call_anthropic
+
+# ---------------------------------------------------------------
+# Funzione per chiamare modelli Anthropic (Claude) tramite Bedrock
+#
+# Configura nel .env:
+#   LLM_MODEL_ANTHROPIC=anthropic.claude-3-haiku-20240307-v1:0
+#   INFERENCE_MODE=anthropic
+#
+# Modelli disponibili su Bedrock (esempi):
+#   anthropic.claude-3-haiku-20240307-v1:0     (veloce, economico)
+#   anthropic.claude-3-5-sonnet-20241022-v2:0  (bilanciato)
+#   anthropic.claude-3-opus-20240229-v1:0      (più capace)
+# ---------------------------------------------------------------
+
+def call_anthropic(prompt: str) -> str:
+    system_prompt = (
+        "Sei un assistente virtuale per un computer Apple IIe del 1983, ma oggi siamo nel 2026. "
+        "Rispondi in ITALIANO. Sii estremamente sintetico. "
+        "La tua risposta NON deve superare i 240 caratteri. "
+        "Non usare markdown (niente grassetto, elenchi o tabelle)."
+    )
+
+    body = {
+        "anthropic_version": "bedrock-2023-05-31",
+        "max_tokens": 150,
+        "temperature": 0.4,
+        "system": system_prompt,
+        "messages": [
+            {"role": "user", "content": prompt}
+        ]
+    }
+
+    try:
+        response = bedrock.invoke_model(
+            modelId=LLM_MODEL_ANTHROPIC,
+            body=json.dumps(body),
+            contentType="application/json",
+            accept="application/json"
+        )
+
+        result = json.loads(response["body"].read())
+        text = result["content"][0]["text"]
+
+        text = " ".join(text.split())
+        text = clean_for_apple2(text)
+
+        if len(text) > MAX_RESPONSE_CHARS:
+            truncated = text[:MAX_RESPONSE_CHARS]
+            last_space = truncated.rfind(' ')
+            text = truncated[:last_space] if last_space != -1 else truncated
+
+        return text.upper()
+
+    except Exception as e:
+        print(f"[call_anthropic] Errore: {e}")
+        return "ERRORE ANTHROPIC BEDROCK"
+
+#endregion
+
+#region call_ollama
+
+# ---------------------------------------------------------------
+# Funzione per chiamare un modello llama4 su server Ollama locale
+#
+# Configura nel .env:
+#   OLLAMA_BASE_URL=http://localhost:11434
+#   LLM_MODEL_OLLAMA=llama4
+#   INFERENCE_MODE=ollama
+#
+# Avvia Ollama prima di usare il proxy:
+#   ollama serve
+#   ollama pull llama4
+# ---------------------------------------------------------------
+
+def call_ollama(prompt: str) -> str:
+    system_prompt = (
+        "Sei un assistente virtuale per un computer Apple IIe del 1983, ma oggi siamo nel 2026. "
+        "Rispondi in ITALIANO. Sii estremamente sintetico. "
+        "La tua risposta NON deve superare i 240 caratteri. "
+        "Non usare markdown (niente grassetto, elenchi o tabelle)."
+    )
+
+    payload = {
+        "model": LLM_MODEL_OLLAMA,
+        "messages": [
+            {"role": "system", "content": system_prompt},
+            {"role": "user",   "content": prompt}
+        ],
+        "stream": False,
+        "options": {
+            "num_predict": 150,
+            "temperature": 0.4
+        }
+    }
+
+    try:
+        response = requests.post(
+            f"{OLLAMA_BASE_URL}/api/chat",
+            json=payload,
+            timeout=60
+        )
+        response.raise_for_status()
+
+        text = response.json()["message"]["content"]
+
+        text = " ".join(text.split())
+        text = clean_for_apple2(text)
+
+        if len(text) > MAX_RESPONSE_CHARS:
+            truncated = text[:MAX_RESPONSE_CHARS]
+            last_space = truncated.rfind(' ')
+            text = truncated[:last_space] if last_space != -1 else truncated
+
+        return text.upper()
+
+    except requests.exceptions.ConnectionError:
+        print(f"[call_ollama] Server Ollama non raggiungibile su {OLLAMA_BASE_URL}")
+        return "ERRORE: SERVER OLLAMA NON RAGGIUNGIBILE"
+    except Exception as e:
+        print(f"[call_ollama] Errore: {e}")
+        return "ERRORE OLLAMA"
+
+#endregion
+
+#region _dispatch
+
+def _dispatch(prompt: str) -> str:
+    """Smista la chiamata alla funzione LLM in base a INFERENCE_MODE."""
+    if INFERENCE_MODE == "anthropic":
+        return call_anthropic(prompt)
+    elif INFERENCE_MODE == "ollama":
+        return call_ollama(prompt)
+    else:
+        return call_nova(prompt)
+
+#endregion
+
 #region get_data
 
 # ---------------------------------------------------------------
@@ -149,17 +294,16 @@ def get_data():
     prompt = request.args.get('prompt', '').strip()
 
     if not prompt:
-        # Nessun prompt: risposta fissa di test
-        return "HELLO FROM PROXY! Passa ?prompt=testo per chiamare Nova."
+        return f"HELLO FROM PROXY! Modalita': {INFERENCE_MODE.upper()}. Passa ?prompt=testo per chiamare il modello."
 
     print(f"[GET] Prompt ricevuto: {prompt}")
 
     try:
-        risposta = call_nova(prompt)
-        print(f"[GET] Risposta Nova: {risposta}")
+        risposta = _dispatch(prompt)
+        print(f"[GET] Risposta ({INFERENCE_MODE}): {risposta}")
         return risposta
     except Exception as e:
-        print(f"[GET] Errore Bedrock: {e}")
+        print(f"[GET] Errore: {e}")
         return f"ERRORE: {str(e)[:100]}", 500
 
 #endregion
@@ -201,11 +345,11 @@ def post_data():
     print(f"[POST] Prompt ricevuto: {prompt}")
 
     try:
-        risposta = call_nova(prompt)
-        print(f"[POST] Risposta Nova: {risposta}")
+        risposta = _dispatch(prompt)
+        print(f"[POST] Risposta ({INFERENCE_MODE}): {risposta}")
         return risposta
     except Exception as e:
-        print(f"[POST] Errore Bedrock: {e}")
+        print(f"[POST] Errore: {e}")
         return f"ERRORE: {str(e)[:100]}", 500
 
 #endregion
@@ -217,7 +361,8 @@ def post_data():
 # ---------------------------------------------------------------
 if __name__ == '__main__':
     print("=" * 50)
-    print(f"  Proxy Apple IIe -> Amazon Nova")
+    print(f"  Proxy Apple IIe -> LLM")
+    print(f"  Modalita': {INFERENCE_MODE.upper()}")
     print(f"  Modello : {MODEL_ID}")
     print(f"  Porta   : 8080")
     print(f"  Max char: {MAX_RESPONSE_CHARS}")
