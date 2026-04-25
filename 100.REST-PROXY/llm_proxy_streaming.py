@@ -5,14 +5,13 @@ import requests
 
 from flask import Flask, request, Response, stream_with_context
 from dotenv import load_dotenv, find_dotenv
-from werkzeug.serving import WSGIRequestHandler
 
 app = Flask(__name__)
 
-# Forza risposte HTTP/1.0: il server chiude la connessione a fine stream
-# invece di usare Transfer-Encoding: chunked (HTTP/1.1).
-# Il client Apple IIe rileva la chiusura tramite ip65_error != 0.
-WSGIRequestHandler.protocol_version = "HTTP/1.0"
+# Flask usa HTTP/1.1 con Transfer-Encoding: chunked per le risposte streaming.
+# Il client C in rest_lib_streaming.c include il parser chunked TE per gestirlo.
+# NON forzare HTTP/1.0: Werkzeug bufferizzerebbe l'intera risposta prima di
+# inviarla, rendendo inutile lo streaming.
 
 path_env = find_dotenv()
 load_dotenv(path_env)
