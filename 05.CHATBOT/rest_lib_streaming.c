@@ -1,13 +1,11 @@
 /*
  * rest_lib_streaming.c — HTTP GET/POST verso il proxy con output streaming
  *
- * A differenza di rest_lib.c, NON accumula la risposta in un buffer.
  * I caratteri del body vengono stampati a schermo direttamente dal
  * callback TCP, man mano che arrivano dal server.
  *
- * Il loop di polling si ferma quando ip65 segnala la chiusura della
- * connessione (ip65_error != 0), oppure dopo STREAM_IDLE_MAX iterazioni
- * consecutive senza dati (safety valve).
+ * Supporta sia risposte HTTP/1.0 (connessione chiusa a fine stream)
+ * sia HTTP/1.1 con Transfer-Encoding: chunked.
  */
 
 #include <stdio.h>
@@ -25,19 +23,43 @@
 /* Iterazioni max per attendere i primi header (fase 1) */
 #define STREAM_INIT_WAIT    30000u
 
-/* Iterazioni idle consecutive prima di considerare lo stream terminato (fase 2).
+/* Iterazioni idle consecutive prima di considerare lo stream terminato.
  * Su Apple IIe reale a 1 MHz, ~1ms per iterazione -> ~5 secondi di idle. */
 #define STREAM_IDLE_MAX      5000u
 
 /* -----------------------------------------------
+ * Stati del parser Chunked Transfer Encoding
+ *
+ * Formato di ogni chunk:
+ *   <hex-size>\r\n
+ *   <data bytes>\r\n
+ * Chunk terminale:
+ *   0\r\n
+ *   \r\n
+ * ----------------------------------------------- */
+#define CK_SIZE      0    /* lettura cifre hex della dimensione */
+#define CK_SIZE_LF   1    /* attesa \n dopo \r della riga size  */
+#define CK_DATA      2    /* lettura e stampa dei byte del chunk */
+#define CK_TRAIL_CR  3    /* skip \r dopo i dati del chunk       */
+#define CK_TRAIL_LF  4    /* skip \n dopo i dati del chunk       */
+#define CK_DONE      5    /* chunk terminale (size 0) ricevuto   */
+
+/* -----------------------------------------------
  * Stato interno dello stream
  * ----------------------------------------------- */
-static uint16_t  http_status    = 0;
-static char      request_buf[512];
-static char      s_header_buf[HEADER_BUF_SIZE];
-static uint16_t  s_header_len   = 0;
-static uint8_t   s_headers_done = 0;
-static uint8_t   s_got_data     = 0;  /* 1 se il callback ha stampato dati nell'ultima iterazione */
+static uint16_t http_status    = 0;
+static char     request_buf[512];
+static char     s_header_buf[HEADER_BUF_SIZE];
+static uint16_t s_header_len   = 0;
+static uint8_t  s_headers_done = 0;
+static uint8_t  s_got_data     = 0;
+
+/* Chunked TE */
+static uint8_t  s_chunked      = 0;   /* 1 se il server usa chunked TE     */
+static uint8_t  s_ck_state     = CK_SIZE;
+static uint16_t s_ck_remain    = 0;   /* byte rimasti nel chunk corrente   */
+static char     s_ck_szline[8];       /* accumula le cifre hex della size  */
+static uint8_t  s_ck_szlen     = 0;
 
 /* -----------------------------------------------
  * print_ip65_error
@@ -45,15 +67,33 @@ static uint8_t   s_got_data     = 0;  /* 1 se il callback ha stampato dati nell'
 static void print_ip65_error(void) {
     printf("ip65 errore %d: ", (int)ip65_error);
     switch (ip65_error) {
-        case 0x80: puts("TIMEOUT ricezione");          break;
-        case 0x81: puts("TRASMISSIONE fallita");       break;
-        case 0x82: puts("DNS lookup fallito");         break;
-        case 0x83: puts("CONNESSIONE fallita");        break;
-        case 0x84: puts("Connessione chiusa");         break;
-        case 0x85: puts("Out of memory");              break;
-        case 0x86: puts("DHCP fallito");               break;
-        default:   puts("errore sconosciuto");         break;
+        case 0x80: puts("TIMEOUT ricezione");     break;
+        case 0x81: puts("TRASMISSIONE fallita");  break;
+        case 0x82: puts("DNS lookup fallito");    break;
+        case 0x83: puts("CONNESSIONE fallita");   break;
+        case 0x84: puts("Connessione chiusa");    break;
+        case 0x85: puts("Out of memory");         break;
+        case 0x86: puts("DHCP fallito");          break;
+        default:   puts("errore sconosciuto");    break;
     }
+}
+
+/* -----------------------------------------------
+ * parse_chunk_hex — converte s_ck_szline in uint16_t
+ * ----------------------------------------------- */
+static uint16_t parse_chunk_hex(void) {
+    uint16_t val = 0;
+    uint8_t  j;
+    char     c;
+
+    for (j = 0; j < s_ck_szlen; j++) {
+        c = s_ck_szline[j];
+        val <<= 4;
+        if      (c >= '0' && c <= '9') val |= (uint16_t)(c - '0');
+        else if (c >= 'a' && c <= 'f') val |= (uint16_t)(c - 'a' + 10);
+        else if (c >= 'A' && c <= 'F') val |= (uint16_t)(c - 'A' + 10);
+    }
+    return val;
 }
 
 /* -----------------------------------------------
@@ -61,18 +101,20 @@ static void print_ip65_error(void) {
  *
  * Fase 1 (s_headers_done == 0):
  *   Accumula byte in s_header_buf fino a trovare \r\n\r\n.
- *   Quando trovato, parsa l'HTTP status e passa in fase 2.
+ *   Parsa HTTP status e rileva Transfer-Encoding: chunked.
  *
  * Fase 2 (s_headers_done == 1):
- *   Stampa ogni byte direttamente a schermo con putchar().
- *   Imposta s_got_data = 1 per segnalare attivita' al loop.
+ *   - Se NON chunked: stampa direttamente ogni byte.
+ *   - Se chunked: parser della macchina a stati CK_*.
  * ----------------------------------------------- */
 static void __fastcall__ tcp_stream_cb(const uint8_t *data, int len) {
-    uint16_t i = 0;
-    uint16_t body_start;
+    uint16_t i          = 0;
+    uint16_t body_start = 0;
+    uint8_t  b;
 
     if (len <= 0) return;
 
+    /* ---- Fase 1: raccolta header ---- */
     if (!s_headers_done) {
         for (; i < (uint16_t)len; i++) {
             if (s_header_len < HEADER_BUF_SIZE - 1) {
@@ -86,12 +128,21 @@ static void __fastcall__ tcp_stream_cb(const uint8_t *data, int len) {
 
                     s_header_buf[s_header_len] = '\0';
                     sscanf(s_header_buf, "HTTP/1.%*d %hu", &http_status);
+
+                    /* Rileva Transfer-Encoding: chunked */
+                    if (strstr(s_header_buf, "chunked") != NULL) {
+                        s_chunked   = 1;
+                        s_ck_state  = CK_SIZE;
+                        s_ck_szlen  = 0;
+                        s_ck_remain = 0;
+                    }
+
                     s_headers_done = 1;
-                    i++;   /* prossimo byte e' gia' body */
+                    i++;
                     break;
                 }
             } else {
-                /* header_buf pieno senza trovare fine-header: forza body mode */
+                /* header_buf pieno: forza body mode senza chunked */
                 s_headers_done = 1;
                 i++;
                 break;
@@ -99,25 +150,69 @@ static void __fastcall__ tcp_stream_cb(const uint8_t *data, int len) {
         }
     }
 
-    if (s_headers_done) {
+    /* ---- Fase 2: output body ---- */
+    if (!s_headers_done) return;
+
+    if (!s_chunked) {
+        /* HTTP/1.0 o risposta senza chunked: stampa tutto direttamente */
         body_start = i;
         for (; i < (uint16_t)len; i++) {
             putchar((int)data[i]);
         }
-        if (i > body_start) {
-            s_got_data = 1;
+        if (i > body_start) s_got_data = 1;
+
+    } else {
+        /* Parser Chunked Transfer Encoding */
+        for (; i < (uint16_t)len; i++) {
+            b = data[i];
+
+            switch (s_ck_state) {
+
+                case CK_SIZE:
+                    if (b == '\r') {
+                        s_ck_remain = parse_chunk_hex();
+                        s_ck_szlen  = 0;
+                        s_ck_state  = CK_SIZE_LF;
+                    } else if (b != '\n') {
+                        /* accumula cifra hex (ignora eventuale \n residuo) */
+                        if (s_ck_szlen < 7)
+                            s_ck_szline[s_ck_szlen++] = (char)b;
+                    }
+                    break;
+
+                case CK_SIZE_LF:
+                    /* salta il \n dopo la riga di size */
+                    s_ck_state = (s_ck_remain == 0) ? CK_DONE : CK_DATA;
+                    break;
+
+                case CK_DATA:
+                    putchar((int)b);
+                    s_got_data = 1;
+                    s_ck_remain--;
+                    if (s_ck_remain == 0) s_ck_state = CK_TRAIL_CR;
+                    break;
+
+                case CK_TRAIL_CR:
+                    /* salta il \r dopo i dati */
+                    s_ck_state = CK_TRAIL_LF;
+                    break;
+
+                case CK_TRAIL_LF:
+                    /* salta il \n dopo i dati, torna a leggere il prossimo size */
+                    s_ck_state = CK_SIZE;
+                    break;
+
+                case CK_DONE:
+                    /* chunk terminale ricevuto: ignora il resto */
+                    goto done_chunked;
+            }
         }
+        done_chunked:;
     }
 }
 
 /* -----------------------------------------------
  * tcp_do_stream — logica comune a GET e POST
- *
- * Fase 1: attende gli header HTTP (max STREAM_INIT_WAIT iterazioni).
- * Fase 2: stampa il body token per token fino a chiusura connessione
- *         o STREAM_IDLE_MAX iterazioni consecutive senza dati.
- *
- * Ritorna: 0 OK, -1 errore
  * ----------------------------------------------- */
 static int8_t tcp_do_stream(uint16_t request_len) {
     uint32_t server_ip;
@@ -138,6 +233,10 @@ static int8_t tcp_do_stream(uint16_t request_len) {
     s_headers_done = 0;
     s_got_data     = 0;
     http_status    = 0;
+    s_chunked      = 0;
+    s_ck_state     = CK_SIZE;
+    s_ck_szlen     = 0;
+    s_ck_remain    = 0;
 
     if (tcp_connect(server_ip, PROXY_PORT, tcp_stream_cb) != 0) {
         puts("ERRORE: TCP connect fallita");
@@ -177,7 +276,13 @@ static int8_t tcp_do_stream(uint16_t request_len) {
     while (idle_count < STREAM_IDLE_MAX) {
         s_got_data = 0;
         ip65_process();
-        if (ip65_error != 0) break;  /* 0x84 = connessione chiusa = fine stream */
+
+        /* Connessione chiusa dal server (HTTP/1.0 = fine stream normale) */
+        if (ip65_error != 0) break;
+
+        /* Chunk terminale ricevuto (HTTP/1.1 chunked) */
+        if (s_chunked && s_ck_state == CK_DONE) break;
+
         if (s_got_data) {
             idle_count = 0;
         } else {
@@ -191,10 +296,6 @@ static int8_t tcp_do_stream(uint16_t request_len) {
 
 /* -----------------------------------------------
  * do_get_stream — HTTP GET con output streaming
- *
- * L'output viene stampato direttamente a schermo.
- * Non esiste buffer di ritorno.
- *
  * Ritorna: 0 OK, -1 errore
  * ----------------------------------------------- */
 static int8_t do_get_stream(const char *path) {
@@ -215,10 +316,6 @@ static int8_t do_get_stream(const char *path) {
 
 /* -----------------------------------------------
  * do_post_stream — HTTP POST con output streaming
- *
- * L'output viene stampato direttamente a schermo.
- * Non esiste buffer di ritorno.
- *
  * Ritorna: 0 OK, -1 errore
  * ----------------------------------------------- */
 static int8_t do_post_stream(const char *path,
