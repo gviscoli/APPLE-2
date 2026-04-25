@@ -15,3 +15,6 @@ LLM_MODEL_ANTHROPIC=eu.anthropic.claude-3-5-sonnet-20241022-v2:0
 #   ollama     → modello locale via Ollama    (LLM_MODEL_OLLAMA)
 #
 INFERENCE_MODE = "anthropic"  
+
+
+[call_anthropic] Errore: An error occurred (ValidationException) when calling the InvokeModel operation: The provided model identifier is invalid.
