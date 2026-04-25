@@ -48,6 +48,15 @@ static void print_line(void) {
 }
 
 /* -----------------------------------------------
+ * Utility: stampa separatore per bot/utente
+ * ----------------------------------------------- */
+static void print_separator(void) {
+    uint8_t i;
+    for (i = 0; i < 5; i++) putchar('=');
+    putchar('\n');
+}
+
+/* -----------------------------------------------
  * Utility: word wrap
  * Stampa una stringa andando a capo a SCREEN_COLS
  * senza spezzare le parole a meta'
@@ -290,9 +299,9 @@ static bool send_message(const char *message) {
 
     /* Stampa risposta con word wrap */
     puts("");
-    print_line();
+    print_separator();
     puts("BOT:");
-    print_line();
+    print_separator();
 
     if (http_response_body && http_response_length > 0) {
         /* Assicura terminazione stringa */
@@ -345,7 +354,10 @@ int main(void) {
     /* ── Loop principale chat  */
     for (;;) {
         /* Prompt utente */
+        print_separator();
         printf("TU[%d]: ", (int)turn + 1);
+
+
         msg_len = read_line(input_buf, INPUT_MAX);
 
         /* Gestisci comando uscita */
@@ -359,7 +371,8 @@ int main(void) {
         }
 
         /* Invia al proxy LLM */
-        puts("Invio...");
+        // s("Invio...");
+        print_separator();
         send_message(input_buf);
 
         turn++;
