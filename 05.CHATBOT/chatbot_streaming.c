@@ -12,10 +12,10 @@
  *
  * Compilazione:
  *
- *  cl65 -t apple2 chatbot_streaming.c -o pch_chatbot_stream.bin -O \
- *       -m chatbot_streaming.map -vm \
- *       ../00.LIBRERIE/IP65/lib/ip65_tcp.lib \
- *       ../00.LIBRERIE/IP65/drivers/ip65_apple2.lib
+ *  cl65 -t apple2 chatbot_streaming.c -o pch_chatbot_stream -O  -m chatbot_streaming.map -vm ../00.LIBRERIE/IP65/lib/ip65_tcp.lib ../00.LIBRERIE/IP65/drivers/ip65_apple2.lib
+ * 
+ *  java -jar C:\UTILITY\AppleCommander\AppleCommander-win32-x86_64-1.9.0.jar
+ * 
  */
 
 #include <stdio.h>

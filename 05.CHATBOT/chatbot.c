@@ -6,7 +6,7 @@
  *
  * Compilazione:
  * 
- *  cl65 -t apple2 chatbot.c -o pch_chatbot.bin -O  -m chatbot.map -vm ../00.LIBRERIE/IP65/lib/ip65_tcp.lib ../00.LIBRERIE/IP65/drivers/ip65_apple2.lib
+ *  cl65 -t apple2 chatbot.c -o pch_chatbot -O  -m chatbot.map -vm ../00.LIBRERIE/IP65/lib/ip65_tcp.lib ../00.LIBRERIE/IP65/drivers/ip65_apple2.lib
  * 
  *  java -jar C:\UTILITY\AppleCommander\AppleCommander-win32-x86_64-1.9.0.jar
  * 
