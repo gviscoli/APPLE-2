@@ -251,8 +251,12 @@ def call_ollama(prompt: str) -> str:
 
 #region _dispatch
 
+_MODEL_KEYWORDS = ("modello", "model", "chi sei", "who are you", "che llm", "quale ia", "quale ai")
+
 def _dispatch(prompt: str) -> str:
     """Smista la chiamata alla funzione LLM in base a INFERENCE_MODE."""
+    if any(kw in prompt.lower() for kw in _MODEL_KEYWORDS):
+        return f"MODO:{INFERENCE_MODE.upper()} MODELLO:{MODEL_ID}"
     if INFERENCE_MODE == "anthropic":
         return call_anthropic(prompt)
     elif INFERENCE_MODE == "ollama":
