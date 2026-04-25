@@ -1,0 +1,11 @@
+$body = @{
+  model = "llama3"
+  messages = @(
+    @{ role = "user"; content = "ciao" }
+  )
+  stream = $false
+}
+
+Invoke-RestMethod -Uri "http://127.0.0.1:11434/api/chat" -Method Post -Body ($body | ConvertTo-Json)
+
+Questo comando funziona, come mai il codice per OLLAMA no?

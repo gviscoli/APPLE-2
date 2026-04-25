@@ -13,7 +13,6 @@ load_dotenv(path_env)
 print(f"File .env caricato da: {path_env}")
 
 AWS_DEFAULT_REGION  = os.getenv("AWS_DEFAULT_REGION")
-LLM_MODEL_LOCAL     = os.getenv("LLM_MODEL_LOCAL")
 LLM_MODEL_CLOUD     = os.getenv("LLM_MODEL_CLOUD")
 LLM_MODEL_ANTHROPIC = os.getenv("LLM_MODEL_ANTHROPIC", "anthropic.claude-3-haiku-20240307-v1:0")
 LLM_MODEL_OLLAMA    = os.getenv("LLM_MODEL_OLLAMA", "llama4")
@@ -29,7 +28,16 @@ INFERENCE_MODE      = os.getenv("INFERENCE_MODE", "cloud").lower()
 # ---------------------------------------------------------------
 bedrock = boto3.client(
     service_name="bedrock-runtime",
-    region_name="us-east-1"         # cambia se usi una region diversa
+    region_name=AWS_DEFAULT_REGION        
+)
+
+system_prompt = (
+    "Sei un assistente virtuale che verrà utilizzato da un computer Apple IIe del 1983 ma oggi siamo nel 2026. "
+    "ricordati che nel 1983 i sistemi di Intelligenza Artificiale non esistevano ancora"
+    "prima di rispondere verifica le informazioni su internet e dai solo risposte concise, dirette e senza giri di parole. "
+    "Rispondi in ITALIANO. Sii estremamente sintetico. "
+    "La tua risposta NON deve superare i 240 caratteri. "
+    "Non usare markdown (niente grassetto o tabelle)."
 )
 
 if INFERENCE_MODE == "ollama":
@@ -38,9 +46,6 @@ if INFERENCE_MODE == "ollama":
 elif INFERENCE_MODE == "anthropic":
     print(f"Modalità INFERENCE: ANTHROPIC via Bedrock (modello {LLM_MODEL_ANTHROPIC})")
     MODEL_ID = LLM_MODEL_ANTHROPIC
-elif INFERENCE_MODE == "local":
-    print(f"Modalità INFERENCE: LOCALE (modello {LLM_MODEL_LOCAL})")
-    MODEL_ID = LLM_MODEL_LOCAL
 elif INFERENCE_MODE == "cloud":
     print(f"Modalità INFERENCE: CLOUD Nova (modello {LLM_MODEL_CLOUD})")
     MODEL_ID = LLM_MODEL_CLOUD
@@ -87,14 +92,7 @@ def clean_for_apple2(text: str) -> str:
 
 def call_nova(prompt: str) -> str:
     # Chiediamo all'LLM di essere breve e di non usare fronzoli
-    system_prompt = (
-        "Sei un assistente virtuale che verrà utilizzato da un computer Apple IIe del 1983 ma oggi siamo nel 2026. "
-        "ricordati che nel 1983 i sistemi di Intelligenza Artificiale non esistevano ancora"
-        "prima di rispondere verifica le informazioni su internet e dai solo risposte concise, dirette e senza giri di parole. "
-        "Rispondi in ITALIANO. Sii estremamente sintetico. "
-        "La tua risposta NON deve superare i 240 caratteri. "
-        "Non usare markdown (niente grassetto o tabelle)."
-    )
+
 
     body = {
         "system": [{"text": system_prompt}],
@@ -154,12 +152,6 @@ def call_nova(prompt: str) -> str:
 # ---------------------------------------------------------------
 
 def call_anthropic(prompt: str) -> str:
-    system_prompt = (
-        "Sei un assistente virtuale per un computer Apple IIe del 1983, ma oggi siamo nel 2026. "
-        "Rispondi in ITALIANO. Sii estremamente sintetico. "
-        "La tua risposta NON deve superare i 240 caratteri. "
-        "Non usare markdown (niente grassetto, elenchi o tabelle)."
-    )
 
     body = {
         "anthropic_version": "bedrock-2023-05-31",
@@ -214,12 +206,6 @@ def call_anthropic(prompt: str) -> str:
 # ---------------------------------------------------------------
 
 def call_ollama(prompt: str) -> str:
-    system_prompt = (
-        "Sei un assistente virtuale per un computer Apple IIe del 1983, ma oggi siamo nel 2026. "
-        "Rispondi in ITALIANO. Sii estremamente sintetico. "
-        "La tua risposta NON deve superare i 240 caratteri. "
-        "Non usare markdown (niente grassetto, elenchi o tabelle)."
-    )
 
     payload = {
         "model": LLM_MODEL_OLLAMA,
