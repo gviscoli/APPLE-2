@@ -1,6 +1,7 @@
 import os
 import json
 import boto3
+
 from flask import Flask, request, jsonify
 from dotenv import load_dotenv, find_dotenv
 
@@ -31,6 +32,7 @@ if INFERENCE_MODE == "local":
     print(f"Modalità INFERENCE: LOCALE (modello {LLM_MODEL_LOCAL})")
     # Qui potresti inizializzare un client per Ollama o simili  
     MODEL_ID = LLM_MODEL_LOCAL
+    OLLAMA_BASE_URL = os.getenv("OLLAMA_BASE_URL")
 elif INFERENCE_MODE == "cloud":
     print(f"Modalità INFERENCE: CLOUD (modello {LLM_MODEL_CLOUD})")
     MODEL_ID = LLM_MODEL_CLOUD
@@ -43,6 +45,8 @@ else:
 # Lunghezza massima risposta — Apple IIe ha poca RAM!
 # ---------------------------------------------------------------
 MAX_RESPONSE_CHARS = 250
+
+#region clean_for_apple2
 
 def clean_for_apple2(text: str) -> str:
     """
@@ -66,6 +70,10 @@ def clean_for_apple2(text: str) -> str:
     # mantenendo solo i caratteri leggibili dall'Apple II
     return "".join(c for c in text if ord(c) < 128)
 
+#endregion
+
+#region call_nova
+
 # ---------------------------------------------------------------
 # Funzione per chiamare Amazon Nova tramite Bedrock
 # ---------------------------------------------------------------
@@ -73,7 +81,9 @@ def clean_for_apple2(text: str) -> str:
 def call_nova(prompt: str) -> str:
     # Chiediamo all'LLM di essere breve e di non usare fronzoli
     system_prompt = (
-        "Sei un assistente per un computer Apple IIe del 1983. "
+        "Sei un assistente virtuale che verrà utilizzato da un computer Apple IIe del 1983 ma oggi siamo nel 2026. "
+        "ricordati che nel 1983 i sistemi di Intelligenza Artificiale non esistevano ancora"
+        "prima di rispondere verifica le informazioni su internet e dai solo risposte concise, dirette e senza giri di parole. "
         "Rispondi in ITALIANO. Sii estremamente sintetico. "
         "La tua risposta NON deve superare i 240 caratteri. "
         "Non usare markdown (niente grassetto o tabelle)."
@@ -119,6 +129,9 @@ def call_nova(prompt: str) -> str:
         print(f"Errore: {e}")
         return "ERRORE DI CONNESSIONE"
 
+#endregion
+
+#region get_data
 
 # ---------------------------------------------------------------
 # GET /api/data
@@ -149,6 +162,9 @@ def get_data():
         print(f"[GET] Errore Bedrock: {e}")
         return f"ERRORE: {str(e)[:100]}", 500
 
+#endregion
+
+#region post_data
 
 # ---------------------------------------------------------------
 # POST /api/data
@@ -192,6 +208,9 @@ def post_data():
         print(f"[POST] Errore Bedrock: {e}")
         return f"ERRORE: {str(e)[:100]}", 500
 
+#endregion
+
+#region Main
 
 # ---------------------------------------------------------------
 # Entry point
@@ -211,3 +230,5 @@ if __name__ == '__main__':
     print("             -d '{\"prompt\": \"chi era Steve Wozniak?\"}'")
     print()
     app.run(host='0.0.0.0', port=8080, debug=True)
+
+#endregion
