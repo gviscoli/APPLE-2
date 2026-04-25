@@ -17,7 +17,7 @@
  * Configurazione
  * ----------------------------------------------- */
 #define PROXY_HOST          "192.100.1.211"
-#define PROXY_PORT          8080
+#define PROXY_PORT          8081
 #define HEADER_BUF_SIZE     512
 
 /* Iterazioni max per attendere i primi header (fase 1) */

@@ -251,16 +251,16 @@ if __name__ == '__main__':
     print(f"  Proxy Apple IIe -> LLM  [STREAMING]")
     print(f"  Modalita': {INFERENCE_MODE.upper()}")
     print(f"  Modello : {MODEL_ID}")
-    print(f"  Porta   : 8080")
+    print(f"  Porta   : 8081")
     print("=" * 50)
     print()
     print("Esempi di test da PC:")
-    print("  GET : curl \"http://localhost:8080/api/data?prompt=ciao\"")
-    print("  POST: curl -X POST http://localhost:8080/api/data \\")
+    print("  GET : curl \"http://localhost:8081/api/data?prompt=ciao\"")
+    print("  POST: curl -X POST http://localhost:8081/api/data \\")
     print("             -H \"Content-Type: application/json\" \\")
     print("             -d '{\"prompt\": \"chi era Steve Wozniak?\"}'")
     print()
     # debug=False e threaded=True sono importanti per lo streaming
-    app.run(host='0.0.0.0', port=8080, debug=False, threaded=True)
+    app.run(host='0.0.0.0', port=8081, debug=False, threaded=True)
 
 #endregion
