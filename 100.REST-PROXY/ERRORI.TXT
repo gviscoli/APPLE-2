@@ -1,11 +1,17 @@
-$body = @{
-  model = "llama3"
-  messages = @(
-    @{ role = "user"; content = "ciao" }
-  )
-  stream = $false
-}
+AWS_DEFAULT_REGION=eu-central-1
 
-Invoke-RestMethod -Uri "http://127.0.0.1:11434/api/chat" -Method Post -Body ($body | ConvertTo-Json)
+# ─── Ollama Models ────────────────────────────────────────────────────────
+# LLM_MODEL_LOCAL: scegli tra llama3.2, mistral, gemma2, phi3, ...
+# LLM_MODEL_CLOUD: scegli tra quelli disponibili su Amazon Bedrock (amazon.nova-lite-v1:0...)
+#
+LLM_MODEL_OLLAMA=llama3
+LLM_MODEL_CLOUD=eu.amazon.nova-lite-v1:0
+LLM_MODEL_ANTHROPIC=eu.anthropic.claude-3-5-sonnet-20241022-v2:0
 
-Questo comando funziona, come mai il codice per OLLAMA no?
+# ─── Modalità di inferenza ────────────────────────────────────────────────────
+# Valori possibili:
+#   cloud      → Amazon Nova via AWS Bedrock  (LLM_MODEL_CLOUD)
+#   anthropic  → Claude via AWS Bedrock       (LLM_MODEL_ANTHROPIC)
+#   ollama     → modello locale via Ollama    (LLM_MODEL_OLLAMA)
+#
+INFERENCE_MODE = "anthropic"  

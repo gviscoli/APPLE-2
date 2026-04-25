@@ -251,7 +251,7 @@ def call_ollama(prompt: str) -> str:
 
 #region _dispatch
 
-_MODEL_KEYWORDS = ("modello", "model", "chi sei", "who are you", "che llm", "quale ia", "quale ai")
+_MODEL_KEYWORDS = ("modello", "model", "chi sei", "who are you", "che llm", "quale ia", "quale ai", "qual è il tuo nome", "what is your name", "dimmi che modello stai usando")
 
 def _dispatch(prompt: str) -> str:
     """Smista la chiamata alla funzione LLM in base a INFERENCE_MODE."""
