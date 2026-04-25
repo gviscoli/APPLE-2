@@ -26,11 +26,10 @@ bedrock = boto3.client(
 
 system_prompt = (
     "Sei un assistente virtuale che verrà utilizzato da un computer Apple IIe del 1983 ma oggi siamo nel 2026. "
-    "ricordati che nel 1983 i sistemi di Intelligenza Artificiale non esistevano ancora"
+    "ricordati che nel 1983 i sistemi di Intelligenza Artificiale non esistevano ancora. "
     "prima di rispondere verifica le informazioni su internet e dai solo risposte concise, dirette e senza giri di parole. "
-    "Rispondi in ITALIANO. Sii estremamente sintetico. "
-    "La tua risposta NON deve superare i 240 caratteri. "
-    "Non usare markdown (niente grassetto o tabelle)."
+    "Rispondi in ITALIANO. "
+    "Non usare markdown (niente grassetto, elenchi puntati o tabelle)."
 )
 
 if INFERENCE_MODE == "ollama":
@@ -44,11 +43,6 @@ elif INFERENCE_MODE == "cloud":
     MODEL_ID = LLM_MODEL_CLOUD
 else:
     raise ValueError(f"INFERENCE_MODE non valido: '{INFERENCE_MODE}'. Usa 'cloud', 'anthropic' o 'ollama'.")
-
-# ---------------------------------------------------------------
-# Lunghezza massima risposta — Apple IIe ha poca RAM!
-# ---------------------------------------------------------------
-MAX_RESPONSE_CHARS = 250
 
 #region clean_for_apple2
 
@@ -78,7 +72,7 @@ def stream_ollama(prompt: str):
         ],
         "stream": True,
         "options": {
-            "num_predict": 150,
+            "num_predict": 512,
             "temperature": 0.4
         }
     }
@@ -112,7 +106,7 @@ def stream_ollama(prompt: str):
 def stream_anthropic(prompt: str):
     body = {
         "anthropic_version": "bedrock-2023-05-31",
-        "max_tokens": 150,
+        "max_tokens": 512,
         "temperature": 0.4,
         "system": system_prompt,
         "messages": [{"role": "user", "content": prompt}]
@@ -147,7 +141,7 @@ def stream_nova(prompt: str):
             modelId=MODEL_ID,
             messages=[{"role": "user", "content": [{"text": prompt}]}],
             system=[{"text": system_prompt}],
-            inferenceConfig={"maxTokens": 150, "temperature": 0.4}
+            inferenceConfig={"maxTokens": 512, "temperature": 0.4}
         )
         for event in response.get("stream", []):
             if "contentBlockDelta" in event:
