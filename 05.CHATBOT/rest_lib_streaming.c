@@ -12,6 +12,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stdint.h>
+#include <conio.h>      /* cgetc() per il pager */
 
 /* -----------------------------------------------
  * Configurazione
@@ -19,6 +20,12 @@
 #define PROXY_HOST          "192.100.1.211"
 #define PROXY_PORT          8081
 #define HEADER_BUF_SIZE     512
+
+/* Pager: numero di righe di body dopo cui mettere in pausa.
+ * Lo schermo Apple IIe e' 40x24. Lasciamo 4 righe in fondo
+ * per il prompt di pausa e un po' di respiro visivo. */
+#define PAGE_LINES          20
+#define SCREEN_COLS         40
 
 /* Iterazioni max per attendere i primi header (fase 1) */
 #define STREAM_INIT_WAIT    30000u
@@ -71,6 +78,12 @@ static uint8_t  s_ck_szlen      = 0;
  * latenza alta dell'LLM) ma e' stata drenata da tcp_close(). */
 static uint8_t  s_body_received = 0;
 
+/* Pager: traccia posizione cursore nel body per sapere quando pausare.
+ * s_pg_col  : colonna corrente (0..SCREEN_COLS-1)
+ * s_pg_lines: righe di body stampate nella pagina corrente */
+static uint8_t  s_pg_col   = 0;
+static uint8_t  s_pg_lines = 0;
+
 /* -----------------------------------------------
  * print_ip65_error
  * ----------------------------------------------- */
@@ -104,6 +117,35 @@ static uint16_t parse_chunk_hex(void) {
         else if (c >= 'A' && c <= 'F') val |= (uint16_t)(c - 'A' + 10);
     }
     return val;
+}
+
+/* -----------------------------------------------
+ * stream_putchar — stampa un byte con pager integrato
+ *
+ * Traccia colonna e riga. Quando si raggiunge PAGE_LINES,
+ * stampa "-- PIU' --" e attende un tasto prima di continuare.
+ * Il wrap a 40 colonne e' rilevato contando i caratteri stampabili.
+ * ----------------------------------------------- */
+static void stream_putchar(uint8_t b) {
+    putchar((int)b);
+
+    if (b == '\n') {
+        s_pg_col = 0;
+        s_pg_lines++;
+    } else if (b >= 0x20) {          /* carattere stampabile */
+        s_pg_col++;
+        if (s_pg_col >= SCREEN_COLS) {
+            s_pg_col = 0;
+            s_pg_lines++;
+        }
+    }
+
+    if (s_pg_lines >= PAGE_LINES) {
+        puts("\n-- PIU': PREMI UN TASTO --");
+        cgetc();
+        s_pg_col   = 0;
+        s_pg_lines = 0;
+    }
 }
 
 /* -----------------------------------------------
@@ -167,7 +209,7 @@ static void __fastcall__ tcp_stream_cb(const uint8_t *data, int len) {
         /* HTTP/1.0 o risposta senza chunked: stampa tutto direttamente */
         body_start = i;
         for (; i < (uint16_t)len; i++) {
-            putchar((int)data[i]);
+            stream_putchar(data[i]);
         }
         if (i > body_start) {
             s_got_data      = 1;
@@ -199,7 +241,7 @@ static void __fastcall__ tcp_stream_cb(const uint8_t *data, int len) {
                     break;
 
                 case CK_DATA:
-                    putchar((int)b);
+                    stream_putchar(b);
                     s_got_data      = 1;
                     s_body_received = 1;
                     s_ck_remain--;
@@ -252,6 +294,8 @@ static int8_t tcp_do_stream(uint16_t request_len) {
     s_ck_state      = CK_SIZE;
     s_ck_szlen      = 0;
     s_ck_remain     = 0;
+    s_pg_col        = 0;
+    s_pg_lines      = 0;
 
     if (tcp_connect(server_ip, PROXY_PORT, tcp_stream_cb) != 0) {
         puts("ERRORE: TCP connect fallita");
