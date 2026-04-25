@@ -52,6 +52,15 @@ static void print_line(void) {
 }
 
 /* -----------------------------------------------
+ * Utility: stampa separatore per bot/utente
+ * ----------------------------------------------- */
+static void print_separator(void) {
+    uint8_t i;
+    for (i = 0; i < 5; i++) putchar('=');
+    putchar('\n');
+}
+
+/* -----------------------------------------------
  * Leggi una riga da tastiera con echo
  * ----------------------------------------------- */
 static uint8_t read_line(char *buf, uint8_t max_len) {
@@ -209,9 +218,9 @@ static bool send_message(const char *message) {
     }
 
     puts("");
-    print_line();
+    print_separator();
     puts("BOT:");
-    print_line();
+    print_separator();
 
     /* I token vengono stampati direttamente dal callback TCP */
     result = do_post_stream("/api/data", json_buf);
@@ -271,7 +280,7 @@ int main(void) {
             break;
         }
 
-        puts("Invio...");
+        print_separator();
         send_message(input_buf);
 
         turn++;
