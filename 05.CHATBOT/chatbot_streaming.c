@@ -268,6 +268,8 @@ int main(void) {
 
     /* Loop principale chat */
     for (;;) {
+        /* Prompt utente */
+        print_separator();
         printf("TU[%d]: ", (int)turn + 1);
         msg_len = read_line(input_buf, INPUT_MAX);
 
