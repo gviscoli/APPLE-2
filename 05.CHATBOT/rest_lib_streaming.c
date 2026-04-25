@@ -59,11 +59,17 @@ static uint8_t  s_headers_done = 0;
 static uint8_t  s_got_data     = 0;
 
 /* Chunked TE */
-static uint8_t  s_chunked      = 0;   /* 1 se il server usa chunked TE     */
-static uint8_t  s_ck_state     = CK_SIZE;
-static uint16_t s_ck_remain    = 0;   /* byte rimasti nel chunk corrente   */
-static char     s_ck_szline[8];       /* accumula le cifre hex della size  */
-static uint8_t  s_ck_szlen     = 0;
+static uint8_t  s_chunked       = 0;   /* 1 se il server usa chunked TE     */
+static uint8_t  s_ck_state      = CK_SIZE;
+static uint16_t s_ck_remain     = 0;   /* byte rimasti nel chunk corrente   */
+static char     s_ck_szline[8];        /* accumula le cifre hex della size  */
+static uint8_t  s_ck_szlen      = 0;
+
+/* Flag "almeno un byte di body e' stato stampato".
+ * Serve a distinguere un timeout reale (server assente) da un falso
+ * timeout in cui la risposta e' arrivata tardi (ip65_error stale o
+ * latenza alta dell'LLM) ma e' stata drenata da tcp_close(). */
+static uint8_t  s_body_received = 0;
 
 /* -----------------------------------------------
  * print_ip65_error
@@ -163,7 +169,10 @@ static void __fastcall__ tcp_stream_cb(const uint8_t *data, int len) {
         for (; i < (uint16_t)len; i++) {
             putchar((int)data[i]);
         }
-        if (i > body_start) s_got_data = 1;
+        if (i > body_start) {
+            s_got_data      = 1;
+            s_body_received = 1;
+        }
 
     } else {
         /* Parser Chunked Transfer Encoding */
@@ -191,7 +200,8 @@ static void __fastcall__ tcp_stream_cb(const uint8_t *data, int len) {
 
                 case CK_DATA:
                     putchar((int)b);
-                    s_got_data = 1;
+                    s_got_data      = 1;
+                    s_body_received = 1;
                     s_ck_remain--;
                     if (s_ck_remain == 0) s_ck_state = CK_TRAIL_CR;
                     break;
@@ -233,14 +243,15 @@ static int8_t tcp_do_stream(uint16_t request_len) {
     }
 
     /* Reset stato */
-    s_header_len   = 0;
-    s_headers_done = 0;
-    s_got_data     = 0;
-    http_status    = 0;
-    s_chunked      = 0;
-    s_ck_state     = CK_SIZE;
-    s_ck_szlen     = 0;
-    s_ck_remain    = 0;
+    s_header_len    = 0;
+    s_headers_done  = 0;
+    s_got_data      = 0;
+    s_body_received = 0;
+    http_status     = 0;
+    s_chunked       = 0;
+    s_ck_state      = CK_SIZE;
+    s_ck_szlen      = 0;
+    s_ck_remain     = 0;
 
     if (tcp_connect(server_ip, PROXY_PORT, tcp_stream_cb) != 0) {
         puts("ERRORE: TCP connect fallita");
@@ -264,8 +275,16 @@ static int8_t tcp_do_stream(uint16_t request_len) {
     }
 
     if (!s_headers_done) {
-        puts("\nERRORE: timeout in attesa della risposta");
+        /* Prima dreniamo il buffer TCP: tcp_close() chiama il callback
+         * con eventuali dati gia' arrivati ma non ancora consegnati.
+         * Solo DOPO decidiamo se e' un errore reale. */
         tcp_close();
+        if (s_body_received) {
+            /* Risposta arrivata tardi (ip65_error stale o latenza alta):
+             * i dati sono stati stampati durante il drain, non e' un errore. */
+            return 0;
+        }
+        puts("ERRORE: server non raggiungibile o timeout.");
         return -1;
     }
 

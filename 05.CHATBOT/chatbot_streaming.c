@@ -228,9 +228,13 @@ static bool send_message(const char *message) {
     putchar('\n');   /* assicura che il cursore vada a capo dopo l'ultimo token */
     print_line();
 
-    if (result < 0) {
-        puts("[ERR] Connessione al proxy fallita.");
-        puts("Verifica che llm_proxy_streaming.py sia attivo.");
+    /* Mostra [ERR] solo se NESSUN byte di body e' arrivato:
+     * distingue un vero fallimento (proxy assente) dal caso in cui
+     * la risposta e' stata drenata e stampata nonostante un timeout
+     * tecnico (ip65_error stale o alta latenza dell'LLM). */
+    if (result < 0 && !s_body_received) {
+        puts("[ERR] Proxy non raggiungibile.");
+        puts("Verifica llm_proxy_streaming.py");
         return false;
     }
 
