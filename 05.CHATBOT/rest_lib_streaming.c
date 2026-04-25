@@ -24,8 +24,12 @@
 #define STREAM_INIT_WAIT    30000u
 
 /* Iterazioni idle consecutive prima di considerare lo stream terminato.
- * Su Apple IIe reale a 1 MHz, ~1ms per iterazione -> ~5 secondi di idle. */
-#define STREAM_IDLE_MAX      5000u
+ * Con HTTP/1.1 chunked TE, tra un token LLM e l'altro possono passare
+ * anche 1-2 secondi. Su Apple IIe reale a 1 MHz, ip65_process() costa
+ * circa 500 cicli => ~0.5ms/iterazione => 20000 iter ~ 10 secondi di idle.
+ * Con HTTP/1.1 la connessione chiude dopo il chunk terminale (0\r\n\r\n):
+ * questo valore e' solo un safety valve contro hang infiniti. */
+#define STREAM_IDLE_MAX     20000u
 
 /* -----------------------------------------------
  * Stati del parser Chunked Transfer Encoding
