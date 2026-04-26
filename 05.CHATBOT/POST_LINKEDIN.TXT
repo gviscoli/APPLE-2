@@ -1,0 +1,29 @@
+🕹️ Quarant'anni separano la macchina dalla mente. Un proxy li unisce.
+
+Immaginate di digitare una domanda su una tastiera del 1983 e ricevere la risposta da una delle intelligenze artificiali più avanzate del 2024.
+Non è un esperimento da museo. È quello che fa CHATBOT.C.
+
+Ho collegato un Apple IIe del 1983 — CPU MOS 6502 a 1 MHz, 64 KB di RAM, schermo fosforescente da 40 colonne — con Amazon Nova su AWS Bedrock (e opzionalmente Anthropic Claude o Ollama in locale).
+
+Nel 1983 Internet era ancora ARPANET. I microcomputer non conoscevano TCP/IP. L'intelligenza artificiale generativa era fantascienza.
+
+Oggi, con una scheda di rete Uthernet II e un proxy Python intermedio, questo computer vintage pone domande a un LLM e riceve risposte — in streaming, token per token, in tempo reale — sul suo display verde anni '80.
+
+🔧 Le sfide tecniche che rendono questo progetto davvero estremo:
+
+→ Il chip 6502 non può eseguire TLS: un proxy Flask gestisce la crittografia lato server, l'Apple IIe vede solo HTTP/1.0 plain-text sulla LAN
+→ Solo 64 KB di RAM totali (~40 utili): nessun malloc(), solo buffer statici dimensionati a compile-time
+→ HTTP/1.1 chunked encoding decodificato a mano con una state machine in C/Assembly a 5 stati
+→ Stack hardware limitato a 256 byte: la call chain non può superare 5 livelli di profondità
+→ Gli accenti Unicode convertiti ad ASCII 7-bit per il display hardware degli anni '80
+→ Nessun interrupt disponibile: tutto in busy-wait polling su ip65
+
+🧠 Il risultato? L'Apple IIe non sa di stare parlando con un LLM. Vede solo un server HTTP su rete locale. Il salto temporale è invisibile alla macchina — e questo lo rende ancora più affascinante.
+
+C'è qualcosa di profondamente poetico nell'idea che la tecnologia del passato e quella del futuro possano dialogare. Basta trovare il traduttore giusto.
+
+Se siete curiosi di come un computer del 1983 con meno potenza di calcolo di un orologio digitale moderno riesca a interrogare un'AI del 2024 — passate a dare un'occhiata al progetto.
+
+Il codice è su GitHub: Apple IIe × LLM, 40 anni di distanza, 0 compromessi sulla curiosità.
+
+#RetroComputing #AI #AppleII #LLM #AmazonBedrock #AnthropicClaude #Innovation #Tech #6502 #Python #OpenSource #MachineLearning
