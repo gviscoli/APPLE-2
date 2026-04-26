@@ -23,4 +23,6 @@ Se siete curiosi di come un computer del 1983 con meno potenza di calcolo di un 
 
 Il codice è su GitHub: Apple IIe × LLM, 40 anni di distanza, 0 compromessi sulla curiosità.
 
+👉 VIDEO: https://www.youtube.com/watch?v=nImY2d2jits
+
 #RetroComputing #AppleII #CPU-6502 #AI #LLM #AmazonBedrock #Azure #AnthropicClaude #OpneAI #Ollama #Innovation #Tech #Python #OpenSource
