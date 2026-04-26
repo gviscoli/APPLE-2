@@ -1,8 +1,8 @@
-🕹️ Quarant'anni separano la macchina dalla mente. Un proxy li unisce.
+🚀 Coding for fun.
 
 Immaginate di digitare una domanda su una tastiera del 1983 e ricevere la risposta da una delle intelligenze artificiali più avanzate del 2026.
 
-Ho collegato un Apple IIe del 1983 — CPU MOS 6502 a 1 MHz, 64 KB di RAM, schermo a fosfori verdi da 40 colonne — con Amazon Nova / Anthropic Claude utilizzando il servizio AWS Bedrock (la soluzione è stata testata anche con un server Ollama in locale).
+🤖 Ho collegato un Apple IIe del 1983 — CPU MOS 6502 a 1 MHz, 64 KB di RAM, schermo a fosfori verdi da 40 colonne — con Amazon Nova / Anthropic Claude utilizzando il servizio AWS Bedrock (la soluzione è stata testata anche con un server Ollama in locale).
 
 Nel 1983 Internet era ancora ARPANET. I microcomputer non conoscevano TCP/IP. L'intelligenza artificiale generativa era fantascienza.
 
@@ -18,8 +18,6 @@ Oggi, con una scheda di rete Uthernet II e un proxy Python intermedio, questo co
 → Nessun interrupt disponibile: tutto in busy-wait polling su ip65
 
 🧠 Il risultato? L'Apple IIe non sa di che sta parlando con un LLM. Vede solo un server HTTP su rete locale. Il salto temporale è invisibile alla macchina.
-
-C'è qualcosa di profondamente poetico nell'idea che la tecnologia del passato e quella del futuro possano dialogare. Basta trovare il traduttore giusto.
 
 Se siete curiosi di come un computer del 1983 con meno potenza di calcolo di un orologio digitale moderno riesca a interrogare un'AI del 2026 — passate a dare un'occhiata al progetto (https://github.com/gviscoli/APPLE-2/blob/master/05.CHATBOT/ARCHITETTURA.MD).
 
