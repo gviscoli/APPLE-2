@@ -1,8 +1,39 @@
+## Introduzione
+
+Questo progetto mette in comunicazione un **Apple IIe del 1983** — dotato di CPU MOS 6502 a 1 MHz e 64 KB di RAM — con i moderni **Large Language Model** ospitati su cloud AWS / Azure ed eventualmente anche localmente attraverso l'utilizzo di OLLAMA. Il risultato è un chatbot funzionante che, dal punto di vista dell'utente, appare come una semplice applicazione testuale sullo storico schermo verde da 40 colonne di un Apple ][.
+
+Il salto temporale e tecnologico è di quarant'anni: nel 1983 Internet era ancora ARPANET, i microcomputer non conoscevano TCP/IP, e l'intelligenza artificiale generativa era fantascienza. Oggi, grazie a una scheda di rete **Uthernet II** (chip W5100) e a un proxy intermedio scritto in Python, l'Apple ][ riesce a porre domande a un LLM e ricevere risposte nel giro di pochi secondi.
+
+---
+
+## Indice
+
+1. [Panoramica del sistema](#1-panoramica-del-sistema)
+2. [Stack tecnologico e vincoli hardware](#2-stack-tecnologico-e-vincoli-hardware)
+3. [Architettura a livelli](#3-architettura-a-livelli)
+4. [Memory map Apple IIe](#4-memory-map-apple-iie)
+5. [Strato 1 — chatbot.c: il client Apple IIe](#5-strato-1--chatbotc-il-client-apple-iie)
+6. [Strato 2 — rest_lib.c: il layer HTTP/TCP](#6-strato-2--rest_libc-il-layer-httptcp)
+7. [Strato 3 — llm_proxy.py: il proxy Flask](#7-strato-3--llm_proxypy-il-proxy-flask)
+8. [Strato 4 — Amazon Bedrock e il modello Nova](#8-strato-4--amazon-bedrock-e-il-modello-nova)
+9. [Il flusso dati end-to-end](#9-il-flusso-dati-end-to-end)
+10. [Sfide tecniche principali](#10-sfide-tecniche-principali)
+11. [Tabella riepilogativa dei vincoli e soluzioni](#11-tabella-riepilogativa-dei-vincoli-e-soluzioni)
+12. [Possibili evoluzioni](#12-possibili-evoluzioni)
+
+---
+
+
+
 # Architettura del Sistema PCH.CHATBOT
 
-Un Apple IIe del 1983 (MOS 6502 @ 1 MHz, 64 KB RAM) che dialoga con un LLM Cloud (Amazon Nova, Anthropic Claude o Ollama locale) attraverso un proxy Python intermedio.
+**Un chatbot su CPU 6502 @ 1 MHz che dialoga con Amazon Nova via AWS Bedrock**
+
+Un Computer Apple IIe del 1983 (MOS 6502 @ 1 MHz, 64 KB RAM) che dialoga con un LLM Cloud (Amazon Nova, Anthropic Claude, OpenAI o Ollama locale) attraverso un proxy Python intermedio.
 
 Il sistema esiste in **due varianti** con architetture distinte per il protocollo di comunicazione e l'esperienza utente.
+
+> *"Quarant'anni separano la macchina dalla mente. Un proxy li unisce."*
 
 ---
 
@@ -13,7 +44,7 @@ Il sistema esiste in **due varianti** con architetture distinte per il protocoll
 │   Apple IIe (6502)  │ ──────────────────────────────────►   │  Proxy Python/Flask  │ ─────────────────► │   LLM Backend        │
 │   pch_chatbot.bin   │ ◄──────────────────────────────────   │  :8080 / :8081       │ ◄───────────────── │  Nova · Claude · LLM │
 │   Uthernet II       │     plain-text, no TLS                │  192.100.1.211       │   API REST/HTTPS   │                      │
-└─────────────────────┘                                        └──────────────────────┘                    └──────────────────────┘
+└─────────────────────┘                                       └──────────────────────┘                    └──────────────────────┘
   cartella 05.CHATBOT                                          cartella 100.REST-PROXY
 ```
 
@@ -23,19 +54,19 @@ Il sistema esiste in **due varianti** con architetture distinte per il protocoll
 
 ## Diagrammi
 
-> Le immagini seguenti si trovano in `Images/05.Chatbot/ApplicationArchitecture/`
+> Le immagini seguenti si trovano in `/00.ASSETS/images/05.Chatbot/ApplicationArchitecture/`
 
 ### Architettura completa del sistema
 
-![Architecture Overview](Images/05.Chatbot/ApplicationArchitecture/architecture_overview.png)
+![Architecture Overview](/00.ASSETS/images/05.Chatbot/ApplicationArchitecture/architecture_overview.png)
 
 ### Sequence Diagram — Versione Bufferizzata
 
-![Sequence Buffered](Images/05.Chatbot/ApplicationArchitecture/sequence_buffered.png)
+![Sequence Buffered](/00.ASSETS/images/05.Chatbot/ApplicationArchitecture/buffered.png)
 
 ### Sequence Diagram — Versione Streaming
 
-![Sequence Streaming](Images/05.Chatbot/ApplicationArchitecture/sequence_streaming.png)
+![Sequence Streaming](/00.ASSETS/images/05.Chatbot/ApplicationArchitecture/streaming.png)
 
 ---
 
@@ -89,10 +120,6 @@ Il sistema esiste in **due varianti** con architetture distinte per il protocoll
 ├── llm_proxy_streaming.py  # proxy Flask streaming (porta 8081)
 └── README.MD
 
-Images/05.Chatbot/ApplicationArchitecture/
-├── architecture_overview.png  # architettura completa entrambe le versioni
-├── sequence_buffered.png      # sequence diagram versione bufferizzata
-└── sequence_streaming.png     # sequence diagram versione streaming
 ```
 
 ---
