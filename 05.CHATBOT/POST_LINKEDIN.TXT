@@ -1,4 +1,4 @@
-🚀 Coding for fun.
+🚀 CODING FOR FUN !!!
 
 Immaginate di digitare una domanda su una tastiera del 1983 e ricevere la risposta da una delle intelligenze artificiali più avanzate del 2026.
 
@@ -19,10 +19,12 @@ Oggi, con una scheda di rete Uthernet II e un proxy Python intermedio, questo co
 
 🧠 Il risultato? L'Apple IIe non sa di che sta parlando con un LLM. Vede solo un server HTTP su rete locale. Il salto temporale è invisibile alla macchina.
 
+👉 VIDEO: https://www.youtube.com/watch?v=nImY2d2jits
+
 Se siete curiosi di come un computer del 1983 con meno potenza di calcolo di un orologio digitale moderno riesca a interrogare un'AI del 2026 — passate a dare un'occhiata al progetto (https://github.com/gviscoli/APPLE-2/blob/master/05.CHATBOT/ARCHITETTURA.MD).
 
 Il codice è su GitHub: Apple IIe × LLM, 40 anni di distanza, 0 compromessi sulla curiosità.
 
-👉 VIDEO: https://www.youtube.com/watch?v=nImY2d2jits
+
 
 #RetroComputing #AppleII #CPU-6502 #AI #LLM #AmazonBedrock #Azure #AnthropicClaude #OpneAI #Ollama #Innovation #Tech #Python #OpenSource
