@@ -141,7 +141,7 @@ static void stream_putchar(uint8_t b) {
     }
 
     if (s_pg_lines >= PAGE_LINES) {
-        puts("\n-- PIU': PREMI UN TASTO --");
+        puts("\n-- PIU': PREMI UN TASTO --\n");
         cgetc();
         s_pg_col   = 0;
         s_pg_lines = 0;
