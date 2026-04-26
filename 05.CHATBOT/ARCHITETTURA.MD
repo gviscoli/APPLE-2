@@ -4,7 +4,7 @@ Questo progetto mette in comunicazione un **Apple IIe del 1983** — dotato di C
 
 Il salto temporale e tecnologico è di quarant'anni: nel 1983 Internet era ancora ARPANET, i microcomputer non conoscevano TCP/IP, e l'intelligenza artificiale generativa era fantascienza. Oggi, grazie a una scheda di rete **Uthernet II** (chip W5100) e a un proxy intermedio scritto in Python, l'Apple ][ riesce a porre domande a un LLM e ricevere risposte nel giro di pochi secondi.
 
-[![Guarda il video](https://img.youtube.com/vi/nImY2d2jits/0.jpg)](https://www.youtube.com/watch?v=nImY2d2jits)
+👉 [![Guarda il video per approfondimenti]](https://www.youtube.com/watch?v=nImY2d2jits)
 
 Da dove siamo partiti:
 
